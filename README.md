@@ -34,20 +34,26 @@ Utilizamos os stats base da espécie (0-255) para definir os dados de RPG.
 | **81 - 110** | `d8` | Atlético / Forte |
 | **111 - 140** | `d10` | Elite / Brutal |
 | **141 - 170** | `d12` | Ápice Biológico |
-| **171+** | `d12 + X` | Anomalia / Lendário |
+| **171 - 200** | `d12 + 1` | Anomalia Genética |
+| **201+** | `d12 + 2/3` | Escala Divina / Kaiju |
 
-* **Defesa (Defense):** Convertida em Armadura Natural (`+0` a `+6`) somada à Resistência.
+* **Defesa (Defense):** Convertida em Armadura Natural (`+0` a `+8`) somada à Resistência.
 
 ### 2. Ciclo de Evolução (Bio-Data)
 Não existe XP tradicional. A evolução é baseada na coleta de **Bio-Data (BD)**.
 * **Avanço:** A cada **5 BD**, o Bio-Ativo ganha um upgrade (Perícia, Vantagem ou Atributo).
-* **Patamares:** De **Novato** (Nvl 1-20) a **Lendário** (Nvl 61+), desbloqueando capacidades físicas e ultimates.
+* **Patamares:** De **Novato** (Nvl 1-20) a **Lendário** (Nvl 81+), desbloqueando capacidades físicas e ultimates.
 
 ### 3. Sistema de Gênese
 Na criação, o jogador recebe um orçamento de **3 Pontos de Gênese** para customizar seu Bio-Ativo inicial.
 * **Anomalias (Custo 3):** Shiny (Vantagem Social/Sorte), Alpha (Tanque/Tamanho), Delta (Mudança de Tipo).
 * **Combate (Custo 2):** Pele de Adamantium, Instinto Predatório, Mira Computadorizada.
 * **Utilitários (Custo 1):** Visão Térmica, Escalador, Carapaça Reativa.
+
+### 4. Protocolos Modulares (TMs & HMs)
+Movimentos e habilidades de campo são softwares comprados com pontos de evolução.
+* **TMs (1 Ponto):** Táticas de combate (Protect, Toxic, U-Turn).
+* **HMs (2 Pontos):** Habilidades de elite (Fly, Surf, Strength).
 
 ---
 
@@ -61,7 +67,6 @@ Na criação, o jogador recebe um orçamento de **3 Pontos de Gênese** para cus
 1.  **Operativos Livres (Jogadores):** Focados em libertação e sobrevivência.
 2.  **Cartel Rocket:** Traficantes paramilitares que usam escravidão tecnológica e armaduras pesadas.
 3.  **Silph Co.:** Monopólio corporativo de biogenética e tecnologia S.Y.N.C.
-4.  **Frente de Libertação Natural (FLN):** Ecoterroristas radicais que querem o fim de qualquer interação humano-pokémon.
 
 ---
 
@@ -70,7 +75,7 @@ Na criação, o jogador recebe um orçamento de **3 Pontos de Gênese** para cus
 > *Planejamento para o Companion App do Jogador.*
 
 * **Front-end:** Next.js (App Router), React, TailwindCSS.
-* **UI/UX:** Glassmorphism, Dark Mode, Data-Heavy Interface (inspirado em Datadex).
+* **UI/UX:** Tech-Noir Aesthetic (Dark Mode, Red/Cyan Accents), Glassmorphism.
 * **Features:**
     * Gerenciamento de Ficha de Bio-Ativo.
     * Monitoramento de Estresse e Bio-Energia em tempo real.
