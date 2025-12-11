@@ -111,14 +111,14 @@
             display: flex;
             gap: 4px;
             align-items: center;
-            justify-content: flex-start; /* Alinha à esquerda para scroll natural */
+            justify-content: flex-start;
             flex-wrap: nowrap;
             overflow-x: auto;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
             height: 100%;
         }
         
-        .nav-content::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+        .nav-content::-webkit-scrollbar { display: none; }
 
         nav a {
             color: var(--text-muted);
@@ -791,33 +791,111 @@
         </section>
 
         <section id="logistics">
-            <h2>10. Logística & Equipamentos</h2>
+            <h2>10. Logística Detalhada & Estilo de Vida</h2>
+            
+            <div class="card" style="margin-bottom:2rem; border-color:var(--brand-green);">
+                <h4 style="color:var(--brand-green)">UPKEEP: ESTILO DE VIDA</h4>
+                <p style="color:var(--text-muted); margin-bottom:10px;">Onde você dorme define sua recuperação. O custo é <strong>semanal</strong> por Operativo + 1 Pokémon.</p>
+                <div class="trait-list">
+                    <div class="trait-item">
+                        <div class="trait-term">Squatter / Street (0 NC$)</div>
+                        <div class="trait-desc">Dorme na rua. Risco de roubo diário. <strong>Cura Natural:</strong> Nenhuma. Recupera apenas 2 PP por noite.</div>
+                    </div>
+                    <div class="trait-item">
+                        <div class="trait-term">Low / Capsule Hotel (200 NC$)</div>
+                        <div class="trait-desc">Seguro, mas apertado. <strong>Cura Natural:</strong> Normal (Vigor a cada 5 dias). Recupera 10 PP.</div>
+                    </div>
+                    <div class="trait-item">
+                        <div class="trait-term">Middle / Apt (1000 NC$)</div>
+                        <div class="trait-desc">Nutrição adequada. <strong>Cura Natural:</strong> +2 nos testes. Recupera PP Total.</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>10.1 Equipamento de Suporte (Humano)</h3>
             <div class="table-wrapper">
                 <table>
-                    <thead><tr><th>Item</th><th>Efeito</th><th>Custo</th></tr></thead>
+                    <thead><tr><th>Item</th><th>Efeito Mecânico</th><th>Custo</th></tr></thead>
                     <tbody>
-                        <tr><td>Bio-Gel (Leftovers)</td><td>Remove 1 Fadiga/hora.</td><td>2000 NC$</td></tr>
-                        <tr><td>Focus Sash</td><td>Evita morte (1 uso).</td><td>800 NC$</td></tr>
-                        <tr><td>Rocky Helmet</td><td>Dano 2d4 ao toque.</td><td>1200 NC$</td></tr>
+                        <tr><td>Bio-Stimpak (Potion)</td><td>Cura 1 Ferimento (Ação Completa).</td><td>500 NC$</td></tr>
+                        <tr><td>Nano-Curativo (Full Restore)</td><td>Cura tudo + Fadiga + Veneno.</td><td>2500 NC$</td></tr>
+                        <tr><td>AED Portátil (Revive)</td><td>Estabiliza Pokémon Crítico (Cura -2).</td><td>1500 NC$</td></tr>
+                        <tr><td>Max Repel (Sônico)</td><td>Afasta criaturas selvagens por 1 hora.</td><td>700 NC$</td></tr>
+                        <tr><td>Smoke Grenade</td><td>Cria Cobertura Pesada (-4 ataque) em Área Média.</td><td>300 NC$</td></tr>
+                        <tr><td>Jammer S.Y.N.C.</td><td>Bloqueia rastreio policial por 10 min.</td><td>2000 NC$</td></tr>
+                        <tr><td>Liberator Tool</td><td>Hackeia fechaduras digitais e Slave-Balls (Thievery).</td><td>5000 NC$</td></tr>
                     </tbody>
                 </table>
             </div>
+
+            <h3>10.2 Battle Gear (Pokémon Held Items)</h3>
+            <p style="color:var(--text-muted); margin-bottom:1rem;">Itens físicos acoplados ao Pokémon. Apenas 1 slot ativo.</p>
             <div class="card-grid">
-                <div class="card"><h4>JAMMER</h4><span style="font-size:0.8rem; color:var(--text-muted)">Bloqueia Pokébolas.</span></div>
-                <div class="card"><h4>LIBERATOR TOOL</h4><span style="font-size:0.8rem; color:var(--text-muted)">Hackeia Slave-Balls.</span></div>
+                <div class="card">
+                    <div class="kicker">BIO-GEL INJECTOR (Leftovers)</div>
+                    <p style="font-size:0.9rem; color:var(--text-muted)">Implante dérmico que libera cura constante. Recupera 1 Nível de Fadiga por hora.</p>
+                </div>
+                <div class="card">
+                    <div class="kicker">NEURAL LIMITER (Choice Band)</div>
+                    <p style="font-size:0.9rem; color:var(--text-muted)">Overclock muscular. +2 Dano, mas só pode usar o último golpe executado até ser desligado.</p>
+                </div>
+                <div class="card">
+                    <div class="kicker">FORCE FIELD EMITTER (Focus Sash)</div>
+                    <p style="font-size:0.9rem; color:var(--text-muted)">Gerador de escudo descartável. Impede Insta-Kill (Fica com 3 Ferimentos ao invés de morrer). Quebra após uso.</p>
+                </div>
+                <div class="card">
+                    <div class="kicker">REACTIVE PLATING (Rocky Helmet)</div>
+                    <p style="font-size:0.9rem; color:var(--text-muted)">Espinhos de cerâmica. Quem acertar ataque corpo-a-corpo sofre 2d4 de dano automático.</p>
+                </div>
+                <div class="card">
+                    <div class="kicker">KEVLAR HARNESS (Assault Vest)</div>
+                    <p style="font-size:0.9rem; color:var(--text-muted)">Colete tático. +2 Armadura contra Ataques Especiais, mas impede uso de golpes de Status.</p>
+                </div>
             </div>
         </section>
 
         <section id="missions">
-          <h2>11. Regras para Missões</h2>
-          <div class="card">
-            <div class="kicker">Estrutura Básica</div>
-            <ol style="color:var(--text-muted);padding-left:18px;margin-top:8px">
-              <li><strong>Briefing:</strong> Intel & objetivos.</li>
-              <li><strong>Planejamento:</strong> Equipamento e roles.</li>
-              <li><strong>Execução:</strong> Tática e combate.</li>
-              <li><strong>Extracção:</strong> Evacuação e custo social.</li>
-            </ol>
+          <h2>11. Regras para Missões (The Run)</h2>
+          
+          <div class="card" style="margin-bottom:2rem; border:1px solid var(--brand-primary); background:rgba(239,68,68,0.05);">
+              <h3 style="color:var(--brand-primary); margin-top:0;">MECÂNICA DE "HEAT" (NOTORIEDADE)</h3>
+              <p style="color:var(--text-muted)">Ações barulhentas atraem a S.Y.N.C. O nível sobe durante a missão.</p>
+              <ul class="tech-list">
+                  <li><strong>★ (Nível 1):</strong> Drones de vigilância. +1 para ser detectado.</li>
+                  <li><strong>★★ (Nível 2):</strong> Patrulha com Growlithes. Bloqueios de rua.</li>
+                  <li><strong>★★★ (Nível 3):</strong> Esquadrão Tático (SWAT) com Arcanines e Armas Sônicas.</li>
+                  <li><strong>★★★★ (Nível 4):</strong> Elite Four Operative despachado. Matar para matar.</li>
+                  <li><strong>★★★★★ (Nível 5):</strong> Lockdown da Cidade. Caça Aberta.</li>
+              </ul>
+          </div>
+
+          <div class="card-grid">
+            <div class="card">
+                <div class="kicker">FASE 1: INTEL (Legwork)</div>
+                <div class="trait-list" style="margin-top:10px;">
+                    <div class="trait-item"><div class="trait-term">Matrix (Hacking)</div><div class="trait-desc">Obter plantas do prédio, rotas de guarda. Sucesso revela 1 Falha de Segurança.</div></div>
+                    <div class="trait-item"><div class="trait-term">Street (Persuasão)</div><div class="trait-desc">Contatos no submundo. Revela quem paga mais ou perigos ocultos.</div></div>
+                    <div class="trait-item"><div class="trait-term">Astral (Psychic)</div><div class="trait-desc">Pokémon Psíquico pode sondar emoções no local (Medo/Raiva).</div></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="kicker">FASE 2: INFILTRAÇÃO</div>
+                <div class="trait-list" style="margin-top:10px;">
+                    <div class="trait-item"><div class="trait-term">Social</div><div class="trait-desc">Disfarces e identidades falsas. Falha gera ★ de Heat.</div></div>
+                    <div class="trait-item"><div class="trait-term">Física</div><div class="trait-desc">Entrar pelos dutos ou esgotos. Testes de Furtividade e Atletismo.</div></div>
+                    <div class="trait-item"><div class="trait-term">Força Bruta</div><div class="trait-desc">Explodir a porta. Gera ★★ de Heat imediato.</div></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="kicker">FASE 3: PAYOUT (Recompensas)</div>
+                <ul class="tech-list">
+                    <li><strong>Créditos (NC$):</strong> Pagamento base negociado.</li>
+                    <li><strong>Salvage:</strong> Peças de tecnologia, dados criptografados ou TMs roubados.</li>
+                    <li><strong>Street Cred:</strong> Reputação. Necessário para acesso a Fixers de alto nível.</li>
+                </ul>
+            </div>
           </div>
         </section>
 
