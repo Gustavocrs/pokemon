@@ -1339,7 +1339,15 @@
     document.body.style.overflow = '';
   }
 
-  if(openBtn) openBtn.addEventListener('click', openOff);
+  if(openBtn) {
+    openBtn.addEventListener('click', function(){
+        if(off.classList.contains('open')) {
+            closeOff();
+        } else {
+            openOff();
+        }
+    });
+  }
   if(closeBtn) closeBtn.addEventListener('click', closeOff);
   if(off){
     off.addEventListener('click', function(e){
