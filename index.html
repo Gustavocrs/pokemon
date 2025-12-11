@@ -1,707 +1,858 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PROJECT SYMBIOSIS: MANUAL DE OPERAÇÕES v.2077</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT SYMBIOSIS: MANUAL DE OPERAÇÕES v.2077</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+        :root {
+            --bg-body: #09090b;
+            --bg-card: #18181b;
+            --bg-header: #27272a;
+            
+            --text-main: #e4e4e7;
+            --text-muted: #a1a1aa;
+            
+            /* Paleta Tech-Noir */
+            --brand-primary: #ef4444; /* Vermelho Neon */
+            --brand-secondary: #06b6d4; /* Ciano Dados */
+            --brand-warning: #eab308; /* Amarelo */
+            --brand-rare: #a855f7; /* Roxo */
+            --brand-green: #10b981; /* Verde */
+            --brand-mega: #f472b6; /* Rosa Mega */
+            
+            --border-color: #3f3f46;
+            --glass-border: 1px solid rgba(239, 68, 68, 0.15);
+            
+            --radius: 8px;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 
-<style>
-:root{
-  --bg-sprawl-0: #070708;
-  --bg-sprawl-1: #0f0f11;
-  --bg-skybox-0:#f7fafc;
-  --bg-skybox-1:#eef2f7;
+            --mono: 'JetBrains Mono', monospace;
+            --ui: 'Inter', sans-serif;
+        }
 
-  --text-sprawl:#e6eef3;
-  --muted-sprawl:#9aa0a6;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  --text-skybox:#0b1220;
-  --muted-skybox:#5b6a76;
+        /* SCROLLBAR CUSTOMIZADA (Tema Cyberpunk) */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-body); }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
 
-  --accent-primary:#ef4444;
-  --accent-tech:#06b6d4;
-  --accent-rare:#a855f7;
-  --accent-warn:#eab308;
-  --accent-bio:#10b981;
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--ui);
+            line-height: 1.6;
+            font-size: 15px;
+            padding-bottom: 80px;
+            scroll-behavior: smooth;
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(239, 68, 68, 0.05) 0%, transparent 25%),
+                linear-gradient(rgba(9, 9, 11, 0.98), rgba(9, 9, 11, 0.98)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM22 11h4c2.53 0 4.963.878 6.904 2.334L30 16.207l-2.904-2.873C25.163 11.878 22.73 11 20.2 11H22zm-8.47 1.414l2.828 2.829A11.96 11.96 0 0 0 20.2 13H4c-2.53 0-4.963-.878-6.904-2.334L0 7.793l2.904 2.873A13.96 13.96 0 0 1 4 13h9.53zM22 0h-2.2l-2.873 2.904C15.463 4.878 13.03 5.756 10.5 5.756H22V0zm-9.53 3H4c-2.53 0-4.963-.878-6.904-2.334L-5.8 3.53 0 9.33V3h12.47zM0 0v2.2l2.904 2.873C4.837 3.622 7.27 2.744 9.8 2.744H0V0zm60 22h-4c-2.53 0-4.963-.878-6.904-2.334L46.2 16.793l2.904 2.873C51.037 21.122 53.47 22 56 22h4zm8.47-1.414l-2.828-2.829A11.96 11.96 0 0 0 55.8 20H60V0h-2.2l-2.873 2.904C53.463 4.878 51.03 5.756 48.5 5.756H60v14.83zM0 32h2.2l2.873-2.904c1.463-1.972 3.896-2.85 6.426-2.85H0v5.754zM0 60v-2.2l2.904-2.873c1.933-1.456 4.366-2.334 6.896-2.334H0v5.15zM22 32h-2.2l-2.873-2.904c-1.463-1.972-3.896-2.85-6.426-2.85H22v5.754zm9.53-3H20.2c2.53 0 4.963.878 6.904 2.334L30 34.207l2.904-2.873A13.96 13.96 0 0 1 30.2 29H31.53zM60 32h-2.2l-2.873-2.904c-1.463-1.972-3.896-2.85-6.426-2.85H60v5.754zM38 32h2.2l2.873-2.904c1.463-1.972 3.896-2.85 6.426-2.85H38v5.754zM60 60v-2.2l-2.904-2.873c-1.933-1.456-4.366-2.334-6.896-2.334H60v5.15zM38 60v-2.2l-2.904-2.873c-1.933-1.456-4.366-2.334-6.896-2.334H38v5.15z' fill='%233f3f46' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
 
-  --radius:10px;
-  --container-max:1200px;
-  --shadow: 0 10px 30px rgba(0,0,0,0.55);
-  --glass-border: 1px solid rgba(255,255,255,0.04);
-  --mono: 'JetBrains Mono', monospace;
-  --ui: 'Inter', sans-serif;
+        /* HEADER */
+        header {
+            background: linear-gradient(180deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%);
+            padding: 60px 20px 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-  --bg-body:var(--bg-sprawl-0);
-  --bg-panel:var(--bg-sprawl-1);
-  --text-main:var(--text-sprawl);
-  --text-muted:var(--muted-sprawl);
+        .badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--brand-primary);
+            border: 1px solid var(--brand-primary);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-family: var(--mono);
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.2);
+        }
 
-  --chip-bg: linear-gradient(90deg, rgba(168,85,247,0.12), rgba(244,114,182,0.08));
-  --focus-outline: rgba(6,182,212,0.18);
-}
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+            line-height: 1.1;
+        }
 
-html.theme-skybox {
-  --bg-body:var(--bg-skybox-0);
-  --bg-panel:var(--bg-skybox-1);
-  --text-main:var(--text-skybox);
-  --text-muted:var(--muted-skybox);
-  --glass-border: 1px solid rgba(11,18,32,0.04);
-  --chip-bg: linear-gradient(90deg, rgba(6,182,212,0.10), rgba(234,179,8,0.06));
-  --focus-outline: rgba(16,185,129,0.12);
-}
+        .subtitle {
+            color: var(--text-muted);
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            margin-top: 10px;
+        }
 
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  font-family:var(--ui);
-  background: radial-gradient(circle at 12% 8%, rgba(6,182,212,0.02), transparent 10%), linear-gradient(180deg,var(--bg-body),var(--bg-panel));
-  color:var(--text-main);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  padding-bottom:80px;
-  line-height:1.5;
-  font-size:15px;
-}
+        /* NAV STICKY & CENTERED (CORREÇÃO DE LAYOUT) */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(24, 24, 27, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-.wrap{max-width:var(--container-max);margin:0 auto;padding:16px;}
+        .nav-content {
+            width: 100%;
+            max-width: 1200px; /* Aumentado para caber mais itens */
+            padding: 10px 20px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto; /* Mantém scroll no mobile */
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        /* CORREÇÃO PARA DESKTOP: Wrap para não cortar */
+        @media (min-width: 1024px) {
+            .nav-content { 
+                justify-content: center; 
+                flex-wrap: wrap; /* Permite quebra de linha */
+                overflow-x: visible; /* Remove scroll no desktop */
+            }
+        }
 
-header.site{
-  padding:18px 8px;
-  text-align:center;
-  border-bottom:1px solid rgba(255,255,255,0.03);
-  backdrop-filter: blur(6px);
-  position:relative;
-}
-.badge{
-  display:inline-block;padding:6px 12px;border-radius:999px;
-  background:rgba(239,68,68,0.08);color:var(--accent-primary);
-  border:1px solid rgba(239,68,68,0.12);font-weight:800;font-family:var(--mono);
-  font-size:12px;letter-spacing:1px;margin-bottom:10px;
-  box-shadow:0 6px 20px rgba(239,68,68,0.03);
-}
-h1.title{
-  font-family:var(--mono);font-weight:900;font-size:1.6rem;
-  letter-spacing:-1px;text-transform:uppercase;color:var(--text-main);margin-top:8px;
-  text-shadow:0 0 12px rgba(239,68,68,0.06);
-}
-.subtitle{color:var(--text-muted);font-size:0.85rem;margin-top:6px;font-family:var(--mono)}
+        .nav-content::-webkit-scrollbar { height: 4px; } /* Scroll fino se necessário */
 
-.theme-chip{
-  position:absolute;right:16px;top:16px;
-  display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;
-  background:var(--chip-bg);cursor:pointer;border:1px solid rgba(255,255,255,0.04);
-  transition:transform .15s, box-shadow .15s;
-}
-.theme-chip:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,0.25)}
-.theme-chip .dot{width:12px;height:12px;border-radius:50%;box-shadow:0 0 8px rgba(0,0,0,0.2)}
-.theme-chip .dot.sprawl{background:linear-gradient(180deg,#ef4444,#f97373)}
-.theme-chip .dot.skybox{background:linear-gradient(180deg,#06b6d4,#7dd3fc)}
-.theme-chip .label{font-family:var(--mono);font-size:12px;color:var(--text-muted)}
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            white-space: nowrap;
+            padding: 8px 12px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            font-family: var(--mono);
+        }
+        nav a:hover, nav a:active, nav a:focus {
+            border-color: var(--brand-primary);
+            color: var(--brand-main);
+            background: rgba(239, 68, 68, 0.15);
+            transform: translateY(-1px);
+        }
 
-nav.hidden{display:none}
+        /* LAYOUT & SECTIONS */
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-/* Offcanvas fullscreen */
-.offcanvas {
-  position:fixed;inset:0;z-index:2000;display:none;
-  background:linear-gradient(180deg, rgba(0,0,0,0.85), rgba(0,0,0,0.9));
-  backdrop-filter: blur(8px);
-  color:var(--text-main);
-}
-.offcanvas.open{display:flex;align-items:center;justify-content:center;animation:fadeIn .18s ease-out}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        section { margin-bottom: 5rem; scroll-margin-top: 140px; padding-top: 2rem; }
 
-.offcanvas .menu {
-  width:100%;max-width:980px;padding:28px;display:grid;gap:18px;
-  grid-template-columns:1fr;
-}
-.offcanvas .menu a {
-  display:block;padding:18px;border-radius:12px;background:rgba(255,255,255,0.02);
-  color:var(--text-main);text-decoration:none;font-weight:800;font-family:var(--mono);font-size:18px;
-  border:1px solid rgba(255,255,255,0.03);transition:transform .12s,background .12s;
-}
-.offcanvas .menu a:hover{transform:translateY(-4px);background:rgba(6,182,212,0.04)}
-.offcanvas .close-btn{
-  position:absolute;right:18px;top:18px;background:transparent;border:0;color:var(--text-muted);font-size:18px;cursor:pointer;
-}
+        h2 {
+            font-family: var(--mono);
+            color: var(--brand-primary);
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+        h2::before { content: '>'; margin-right: 15px; color: var(--brand-secondary); }
 
-/* Section & cards */
-section{padding:18px 0 36px 0;scroll-margin-top:96px}
-h2.section-title{display:flex;align-items:center;gap:12px;font-family:var(--mono);color:var(--accent-primary);font-size:1.05rem;margin-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.03);padding-bottom:10px}
-h3.sub{font-family:var(--mono);font-size:0.98rem;margin-top:14px;margin-bottom:8px;color:var(--text-main);border-left:4px solid rgba(6,182,212,0.08);padding-left:12px}
-.grid{display:grid;gap:12px}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border:var(--glass-border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);overflow:hidden}
-.card p{color:var(--text-muted);font-size:0.95rem}
-.kicker{font-family:var(--mono);font-weight:700;color:var(--text-muted);font-size:12px;margin-bottom:6px}
-.card strong{color:var(--text-main)}
-.card--combat{border-left:4px solid rgba(239,68,68,0.14)}
-.card--tech{border-left:4px solid rgba(6,182,212,0.14)}
-.card--rare{border-left:4px solid rgba(168,85,247,0.14)}
-.card--log{border-left:4px solid rgba(234,179,8,0.12)}
-.card--bio{border-left:4px solid rgba(16,185,129,0.12)}
-.list-tech{list-style:none;padding-left:0}
-.list-tech li{padding:8px 0;color:var(--text-muted);position:relative;padding-left:22px}
-.list-tech li::before{content:"›";position:absolute;left:0;color:var(--accent-primary);font-weight:800}
-.trait-grid{display:grid;grid-template-columns:1fr;gap:8px}
-.trait{padding:8px;border-radius:8px;background:rgba(255,255,255,0.01);display:flex;justify-content:space-between;align-items:center}
-.trait .term{font-weight:700;font-family:var(--mono);color:var(--text-main)}
-.trait .desc{color:var(--text-muted);font-size:0.92rem}
-.table-wrap{overflow:auto;border-radius:8px;border:var(--glass-border);background:var(--bg-panel)}
-table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:0.85rem}
-th,td{padding:12px;text-align:left;border-top:1px solid rgba(255,255,255,0.02)}
-th{color:var(--accent-tech);background:rgba(255,255,255,0.01);font-size:0.78rem;text-transform:uppercase}
-footer{padding:28px 8px;text-align:center;color:var(--text-muted);font-family:var(--mono);border-top:1px solid rgba(255,255,255,0.02);margin-top:40px}
-.lore{background:linear-gradient(90deg, rgba(6,182,212,0.03), transparent);padding:12px;border-radius:8px;border:1px solid rgba(6,182,212,0.06);color:#bff6fb;margin-bottom:12px}
-.warning{background:linear-gradient(90deg, rgba(239,68,68,0.03), transparent);padding:12px;border-radius:8px;border:1px solid rgba(239,68,68,0.06);color:#ffc6c6;margin-bottom:12px}
-.badge-small{display:inline-block;padding:4px 8px;border-radius:6px;background:rgba(255,255,255,0.02);font-family:var(--mono);font-size:12px;color:var(--text-muted)}
-@media(min-width:720px){
-  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
-  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
-  .nav-inner{justify-content:flex-start;padding:12px 18px}
-  h1.title{font-size:2rem}
-}
-@media(min-width:1024px){
-  body{font-size:16px}
-  .wrap{padding:24px}
-  section{padding:28px 0 46px}
-  .grid.cols-4{grid-template-columns:repeat(4,1fr)}
-}
-a:focus,button:focus{outline:2px dashed var(--focus-outline);outline-offset:2px}
-@media print { nav.topnav, .theme-chip, .offcanvas { display:none; } body { background:white; color:black } }
-</style>
+        h3 {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            margin: 2.5rem 0 1.5rem 0;
+            font-weight: 800;
+            border-left: 4px solid var(--brand-secondary);
+            padding-left: 15px;
+        }
+
+        /* COMPONENTES VISUAIS */
+        .lore-box {
+            background: linear-gradient(90deg, rgba(6, 182, 212, 0.05) 0%, transparent 100%);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            color: #a5f3fc;
+        }
+        .lore-box strong { display: block; margin-bottom: 0.5rem; color: var(--brand-secondary); font-family: var(--mono); text-transform: uppercase; font-size: 0.8rem; }
+
+        .warning-box {
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.05) 0%, transparent 100%);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1.5rem 0;
+            color: #fca5a5;
+        }
+        .warning-box strong { color: var(--brand-primary); }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: var(--glass-border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover { border-color: var(--brand-secondary); transform: translateY(-3px); }
+
+        .card h4 {
+            color: var(--text-main);
+            font-family: var(--mono);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-badge {
+            font-size: 0.7rem;
+            background: rgba(255,255,255,0.05);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: var(--text-muted);
+        }
+        
+        .kicker {
+            color: var(--brand-secondary);
+            font-family: var(--mono);
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* TABLES */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+            margin: 1.5rem 0;
+            background: var(--bg-card);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+
+        th {
+            background: #27272a;
+            color: var(--brand-secondary);
+            text-align: left;
+            padding: 12px 16px;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        /* LISTS */
+        .tech-list, .list-tech { list-style: none; padding: 0; }
+        .tech-list li, .list-tech li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+        .tech-list li::before, .list-tech li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: var(--brand-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1rem;
+        }
+
+        /* TRAIT LISTS */
+        .trait-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        .trait-item {
+            border-left: 2px solid rgba(255,255,255,0.1);
+            padding-left: 12px;
+        }
+        .trait-term {
+            color: var(--text-main);
+            font-weight: 700;
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+        }
+        .trait-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        footer {
+            margin-top: 6rem;
+            text-align: center;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 2rem;
+        }
+
+        /* OFFCANVAS STYLES */
+        .open-nav-btn{
+            position:absolute;left:20px;top:20px;background:transparent;border:1px solid rgba(255,255,255,0.1);
+            color:var(--text-muted);padding:8px 12px;border-radius:8px;font-family:var(--mono);font-weight:800;cursor:pointer;
+            transition: all 0.2s; z-index: 200;
+        }
+        .open-nav-btn:hover{border-color:var(--brand-primary);color:var(--brand-primary); background: rgba(239,68,68,0.1);}
+        
+        .offcanvas{position:fixed;inset:0;z-index:2000;display:none;align-items:flex-start;justify-content:center;background:rgba(0,0,0,0.9);backdrop-filter:blur(6px);padding:20px;overflow-y:auto;}
+        .offcanvas.open{display:flex;animation:fadeIn .2s ease-out}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+        
+        .offcanvas .panel{
+            width:100%;max-width:900px;background:#18181b;border:1px solid #3f3f46;
+            border-radius:12px;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,0.8);
+            display:grid; grid-template-columns: 1fr; gap: 2rem;
+        }
+        
+        @media(min-width: 768px){ .offcanvas .panel{ grid-template-columns: 2fr 1fr; } }
+
+        .offcanvas .col-links{display:grid;gap:8px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));}
+        
+        .offcanvas a.menu-link{
+            display:block;padding:10px 14px;border-radius:6px;text-decoration:none;
+            font-family:var(--mono);font-size: 0.85rem; color:var(--text-muted);
+            background:rgba(255,255,255,0.02);border:1px solid transparent;transition:all .15s;
+        }
+        .offcanvas a.menu-link:hover{background:rgba(6, 182, 212, 0.1); color:#22d3ee; border-color: rgba(6, 182, 212, 0.3); transform: translateX(5px);}
+        
+        .offcanvas .close-btn{position:absolute;right:20px;top:20px;background:transparent;border:0;color:var(--text-muted);font-size:24px;cursor:pointer}
+        .offcanvas .close-btn:hover { color: var(--brand-primary); }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.8rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            header { padding-top: 80px; } /* Espaço para o botão menu */
+        }
+    </style>
 </head>
 <body>
 
-<script>
-  (function(){
-    const root = document.documentElement;
-    const saved = localStorage.getItem('ps_theme');
-    if(saved === 'skybox') root.classList.add('theme-skybox');
-
-    function toggleTheme(){
-      const isSky = root.classList.toggle('theme-skybox');
-      localStorage.setItem('ps_theme', isSky ? 'skybox' : 'sprawl');
-      document.querySelectorAll('.theme-chip .label').forEach(el=>{
-        el.textContent = isSky ? 'MODE: SKYBOX' : 'MODE: SPRAWL';
-      });
-    }
-
-    document.addEventListener('DOMContentLoaded', ()=>{
-      const chip = document.querySelector('.theme-chip');
-      if(chip) chip.addEventListener('click', toggleTheme);
-      const off = document.querySelector('.offcanvas');
-      const openBtn = document.querySelector('.open-nav-btn');
-      const closeBtn = document.querySelector('.offcanvas .close-btn');
-      if(openBtn) openBtn.addEventListener('click', ()=> off.classList.add('open'), false);
-      if(closeBtn) closeBtn.addEventListener('click', ()=> off.classList.remove('open'), false);
-      // open by chip middle-click too
-      document.querySelectorAll('.offcanvas .menu a').forEach(a=>{
-        a.addEventListener('click', (e)=>{
-          e.preventDefault();
-          const href = a.getAttribute('href');
-          off.classList.remove('open');
-          // allow small delay for close animation
-          setTimeout(()=> {
-            const el = document.querySelector(href);
-            if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-            // update hash without jumping
-            history.replaceState(null, '', href);
-          }, 160);
-        });
-      });
-
-      // set initial theme label
-      document.querySelectorAll('.theme-chip .label').forEach(el=>{
-        const isSky = root.classList.contains('theme-skybox');
-        el.textContent = isSky ? 'MODE: SKYBOX' : 'MODE: SPRAWL';
-      });
-    });
-  })();
-</script>
-
-<header class="site">
-  <div class="wrap">
-    <span class="badge">USO RESTRITO // OPERATIVOS</span>
-    <h1 class="title">PROJECT SYMBIOSIS</h1>
-    <div class="subtitle">MANUAL DE OPERAÇÕES v.2077 // NEO-KANTO</div>
-
-    <button class="theme-chip" aria-pressed="false" title="Alternar tema">
-      <div class="dot sprawl" aria-hidden="true"></div>
-      <div class="label" aria-hidden="true">MODE: SPRAWL</div>
-      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" style="opacity:.9"><path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="1.2" stroke-opacity="0.12" fill="none"/></svg>
-    </button>
-
-    <button class="open-nav-btn" aria-label="Abrir menu" style="position:absolute;left:16px;top:18px;background:transparent;border:0;color:var(--text-muted);font-weight:800;font-family:var(--mono);padding:8px 10px;border-radius:8px;cursor:pointer">▣ SYNC NAV</button>
-
-  </div>
-</header>
-
-<nav class="topnav" aria-label="Navegação principal">
-  <div class="nav-inner wrap" role="navigation">
-    <!-- kept for progressive enhancement, primary navigation will use offcanvas -->
-    <a href="#intro">1. Intro</a>
-    <a href="#operative">2. Operativo</a>
-    <a href="#bioactive">3. Bio-Ativos</a>
-    <a href="#genesis">4. Gênese</a>
-    <a href="#modules">5. TMs/HMs</a>
-    <a href="#mega">6. Mega</a>
-    <a href="#hindrances">7. Defeitos</a>
-    <a href="#mechanics">8. Mecânicas</a>
-    <a href="#logistics">9. Logística</a>
-    <a href="#missions">10. Missões</a>
-    <a href="#env">11. Ambientes</a>
-    <a href="#factions">12. Facções</a>
-    <a href="#npcs">13. NPCs</a>
-    <a href="#create">14. Criar Operativo</a>
-    <a href="#cases">15. Casos</a>
-    <a href="#economy">16. Economia</a>
-    <a href="#progress">17. Progressão</a>
-    <a href="#craft">18. Craft / Mods</a>
-    <a href="#gm">19. Mestre</a>
-  </div>
-</nav>
-
-<!-- Offcanvas Fullscreen Menu -->
-<div class="offcanvas" role="dialog" aria-modal="true" aria-hidden="false">
+<div class="offcanvas" aria-hidden="true" id="offcanvas">
   <button class="close-btn" aria-label="Fechar menu">✕</button>
-  <nav class="menu" aria-label="Navegação principal (fullscreen)">
-    <a href="#intro">1. Introdução & Ambientação</a>
-    <a href="#operative">2. O Operativo</a>
-    <a href="#bioactive">3. Bio-Ativos: Regras</a>
-    <a href="#genesis">4. Sistema de Gênese & Vantagens</a>
-    <a href="#modules">5. Protocolos Modulares (TMs & HMs)</a>
-    <a href="#mega">6. Mega S.Y.N.C.</a>
-    <a href="#hindrances">7. Desvantagens</a>
-    <a href="#mechanics">8. Mecânicas & Combate</a>
-    <a href="#logistics">9. Logística & Equipamentos</a>
-    <a href="#missions">10. Regras para Missões</a>
-    <a href="#env">11. Ambientes & Efeitos Climáticos</a>
-    <a href="#factions">12. Facções</a>
-    <a href="#npcs">13. NPCs & Protocolos</a>
-    <a href="#create">14. Criando Seu Operativo</a>
-    <a href="#cases">15. Casos Reais de Operações</a>
-    <a href="#economy">16. Economia & Mercado Negro</a>
-    <a href="#progress">17. Progressão Avançada</a>
-    <a href="#craft">18. Craft / Mods Cibernéticos</a>
-    <a href="#gm">19. Guia do Mestre</a>
-  </nav>
+  <div class="panel" role="navigation" aria-label="Menu principal">
+    
+    <div class="col-main">
+        <h4 style="color:var(--brand-primary); font-family:var(--mono); margin-bottom:1rem; text-transform:uppercase;">Índice Operacional</h4>
+        <div class="col-links">
+            <a class="menu-link" href="#intro">01. Introdução</a>
+            <a class="menu-link" href="#operative">02. O Operativo</a>
+            <a class="menu-link" href="#bioactive">03. Bio-Ativos</a>
+            <a class="menu-link" href="#genesis">04. Gênese</a>
+            <a class="menu-link" href="#modules">05. TMs & HMs</a>
+            <a class="menu-link" href="#mega">06. Mega S.Y.N.C.</a>
+            <a class="menu-link" href="#hindrances">07. Desvantagens</a>
+            <a class="menu-link" href="#mechanics">08. Mecânicas</a>
+            <a class="menu-link" href="#logistics">09. Logística</a>
+            <a class="menu-link" href="#missions">10. Missões</a>
+            <a class="menu-link" href="#env">11. Ambientes</a>
+            <a class="menu-link" href="#factions">12. Facções</a>
+            <a class="menu-link" href="#npcs">13. NPCs</a>
+            <a class="menu-link" href="#create">14. Criação</a>
+            <a class="menu-link" href="#cases">15. Casos Reais</a>
+            <a class="menu-link" href="#economy">16. Economia</a>
+            <a class="menu-link" href="#progress">17. Progressão</a>
+            <a class="menu-link" href="#craft">18. Crafting</a>
+            <a class="menu-link" href="#gm">19. Guia do Mestre</a>
+        </div>
+    </div>
+
+    <div style="border-left: 1px solid var(--border-color); padding-left: 20px; display: flex; flex-direction: column; justify-content: center;">
+      <div style="font-family:var(--mono);font-weight:800;color:var(--brand-primary);margin-bottom:8px; font-size: 1.2rem;">PROJECT SYMBIOSIS</div>
+      <div style="color:var(--text-muted);font-size:0.9rem; line-height: 1.5;">
+        Manual operacional para campanhas em <strong>Neo-Kanto</strong>.
+        <br><br>
+        <em style="color: var(--brand-secondary)">"A captura acabou. A simbiose começou."</em>
+      </div>
+    </div>
+  </div>
 </div>
 
-<main class="wrap" id="main">
+<button class="open-nav-btn">MENU // ÍNDICE</button>
 
-<!-- Integrated content: original content preserved and enhanced.
-     The following sections include the full original text (kept verbatim),
-     and additional new sections were added afterwards as requested.
--->
+    <header>
+        <span class="badge">USO RESTRITO // OPERATIVOS</span>
+        <h1>PROJECT SYMBIOSIS</h1>
+        <div class="subtitle">MANUAL DE OPERAÇÕES v.2077 // NEO-KANTO</div>
+    </header>
 
-<!-- 1. INTRO (original text integrated) -->
-<section id="intro">
-  <h2 class="section-title">1. Introdução & Ambientação</h2>
+    <nav>
+        <div class="nav-content">
+            <a href="#intro">1. Intro</a>
+            <a href="#operative">2. Operativo</a>
+            <a href="#bioactive">3. Bio-Ativos</a>
+            <a href="#genesis">4. Gênese</a>
+            <a href="#modules">5. TMs/HMs</a>
+            <a href="#mega">6. Mega</a>
+            <a href="#mechanics">8. Mecânicas</a>
+            <a href="#missions">10. Missões</a>
+            <a href="#create">14. Criação</a>
+            <a href="#gm">19. Mestre</a>
+        </div>
+    </nav>
 
-  <div class="lore">
-    <strong>Dossiê de Ambientação: Neo-Kanto</strong>
-    Neo-Kanto não é a região verdejante de antigamente. Imagine uma megalópole vertical. Nos níveis superiores ("Skybox"), jardins solarpunk e tecnologia limpa abrigam a elite. Nos níveis inferiores ("The Sprawl"), a luz do sol é rara, neons iluminam becos chuvosos e gangues lutam por território. É um mundo de contraste extremo entre a utopia tecnológica e a distopia urbana.
-  </div>
+    <div class="container">
 
-  <h3 class="sub">1.1 A Nova Ordem: S.Y.N.C.</h3>
-  <p style="color:var(--text-muted)">O mito do "Mestre Pokémon" morreu com a velha era. Há 20 anos, estudos neurológicos comprovaram que a tecnologia de compressão de matéria das Pokébolas causava danos irreparáveis ao lobo frontal dos Pokémon, suprimindo a vontade própria.</p>
-  <ul class="list-tech">
-    <li><strong>O Banimento:</strong> O Governo Global baniu a produção e uso de Dispositivos de Captura Esférica, considerando-os tortura digital.</li>
-    <li><strong>S.Y.N.C. (Sincronização):</strong> A captura foi substituída por um contrato biológico e digital via interface neural. É uma simbiose: o humano provê tática, o Pokémon provê poder.</li>
-    <li><strong>Conexão &gt; Coleção:</strong> Um Operativo raramente tem mais de 2 Bio-Ativos. Mantê-los custa caro (Créditos) e exige manutenção mental (Sanidade).</li>
-  </ul>
+        <section id="intro">
+            <h2>1. Introdução & Ambientação</h2>
+            
+            <div class="lore-box">
+                <strong>Dossiê de Ambientação: Neo-Kanto</strong>
+                Neo-Kanto não é a região verdejante de antigamente. Imagine uma megalópole vertical. Nos níveis superiores ("Skybox"), jardins solarpunk e tecnologia limpa abrigam a elite. Nos níveis inferiores ("The Sprawl"), a luz do sol é rara, neons iluminam becos chuvosos e gangues lutam por território. É um mundo de contraste extremo entre a utopia tecnológica e a distopia urbana.
+            </div>
 
-  <h3 class="sub">1.2 A Ameaça: A Cisma das Esferas</h3>
-  <p style="color:var(--text-muted)">Enquanto a sociedade migrou para o Link Neural, o submundo resistiu.</p>
+            <h3>1.1 A Nova Ordem: S.Y.N.C.</h3>
+            <p>O mito do "Mestre Pokémon" morreu com a velha era. Há 20 anos, estudos neurológicos comprovaram que a tecnologia de compressão de matéria das Pokébolas causava danos irreparáveis ao lobo frontal dos Pokémon, suprimindo a vontade própria.</p>
+            <ul class="tech-list">
+                <li><strong>O Banimento:</strong> O Governo Global baniu a produção e uso de Dispositivos de Captura Esférica, considerando-os tortura digital.</li>
+                <li><strong>S.Y.N.C. (Sincronização):</strong> A captura foi substituída por um contrato biológico e digital via interface neural. É uma simbiose: o humano provê tática, o Pokémon provê poder.</li>
+                <li><strong>Conexão > Coleção:</strong> Um Operativo raramente tem mais de 2 Bio-Ativos. Mantê-los custa caro (Créditos) e exige manutenção mental (Sanidade).</li>
+            </ul>
 
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card card--combat">
-      <div class="kicker">O CARTEL ROCKET</div>
-      <p>Uma evolução paramilitar da antiga equipe que domina o mercado negro. Eles operam nas sombras, controlando rotas de tráfico e laboratórios subterrâneos.</p>
+            <h3>1.2 A Ameaça: A Cisma das Esferas</h3>
+            <p>Enquanto a sociedade migrou para o Link Neural, o submundo resistiu.</p>
+            
+            <div class="card-grid">
+                <div class="card">
+                    <h4>O CARTEL ROCKET</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Uma evolução paramilitar da antiga equipe que domina o mercado negro. Eles operam nas sombras, controlando rotas de tráfico e laboratórios subterrâneos.</p>
+                </div>
+                <div class="card" style="border-color: var(--brand-primary);">
+                    <h4 style="color: var(--brand-primary);">SLAVE-BALLS (DARK BALLS)</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted);">Versões hackeadas das antigas esferas que fritam os inibidores de dor e medo do Pokémon.</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <strong>ALERTA TÁTICO:</strong> Um Pokémon escravizado obedece cegamente e luta até a morte (Vantagem Berserker), mas carece de criatividade tática (Burrice Artificial).
+            </div>
+        </section>
+
+        <section id="operative">
+            <h2>2. O Operativo</h2>
+            <p>Não existem classes fixas. Você constrói um perfil profissional usando as regras de Savage Worlds.</p>
+            
+            <div class="card">
+                <h4>ATRIBUTOS CHAVE</h4>
+                <ul class="tech-list">
+                    <li><strong>Astúcia (Smarts):</strong> Conhecimento tático e operação do SymbioDex.</li>
+                    <li><strong>Espírito (Spirit):</strong> Força de vontade para manter o Link Neural estável sob pressão.</li>
+                </ul>
+            </div>
+
+            <h3>Arquétipos Sugeridos</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>O HANDLER <span class="card-badge">Social</span></h4>
+                    <p class="trait-desc" style="margin-left:0; border:none; padding:0;">Especialista em comportamento. Seus Pokémon recuperam Estresse mais rápido e obedecem a comandos complexos.</p>
+                    <div class="lore-box" style="margin-bottom:0; font-size: 0.8rem;">Gancho: Psicólogo de monstros reabilitando vítimas dos Rockets.</div>
+                </div>
+                <div class="card">
+                    <h4>O TECH-OP <span class="card-badge">Suporte</span></h4>
+                    <p class="trait-desc" style="margin-left:0; border:none; padding:0;">Usa o SymbioDex para hackear o ambiente enquanto o Pokémon o protege. Usa drones e torretas.</p>
+                    <div class="lore-box" style="margin-bottom:0; font-size: 0.8rem;">Gancho: Ex-engenheiro da Silph Co. que roubou protótipos.</div>
+                </div>
+                <div class="card">
+                    <h4>O VANGUARD <span class="card-badge">Combate</span></h4>
+                    <p class="trait-desc" style="margin-left:0; border:none; padding:0;">Luta armada ao lado do Pokémon, usando o monstro como cobertura móvel.</p>
+                    <div class="lore-box" style="margin-bottom:0; font-size: 0.8rem;">Gancho: Mercenário aposentado protegendo seu último parceiro.</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bioactive">
+            <h2>3. Bio-Ativos: Regras</h2>
+
+            <h3>3.1 Conversão de Dados (Datadex -> Savage Worlds)</h3>
+            <p>Utilizamos os stats base da espécie (0-255) para definir os dados de RPG.</p>
+            
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stat Base (Datadex)</th>
+                            <th>Dado (SWADE)</th>
+                            <th>Classificação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>00 - 45</td><td>d4</td><td>Civil / Frágil</td></tr>
+                        <tr><td>46 - 80</td><td>d6</td><td>Padrão / Competente</td></tr>
+                        <tr><td>81 - 110</td><td>d8</td><td>Atlético / Forte</td></tr>
+                        <tr><td>111 - 140</td><td>d10</td><td>Elite / Brutal</td></tr>
+                        <tr><td>141 - 170</td><td>d12</td><td>Ápice Biológico</td></tr>
+                        <tr><td>171 - 200</td><td>d12 + 1</td><td>Anomalia Genética</td></tr>
+                        <tr><td>201 - 230</td><td>d12 + 2</td><td>Catástrofe Natural</td></tr>
+                        <tr><td>231 - 250+</td><td>d12 + 3</td><td>Divindade / Kaiju</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>MAPEAMENTO</h4>
+                    <ul class="tech-list">
+                        <li>HP Base → <strong>Vigor</strong></li>
+                        <li>Attack → <strong>Força</strong></li>
+                        <li>Speed → <strong>Agilidade</strong></li>
+                        <li>Sp. Atk → <strong>Espírito</strong></li>
+                        <li>Sp. Def → <strong>Astúcia</strong></li>
+                        <li>Defense → <strong>Armadura Natural</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="genesis">
+            <h2>4. Sistema de Gênese & Vantagens</h2>
+            <div class="lore-box">
+                <strong>Custo de Criação:</strong> Você tem <strong>3 PONTOS</strong> iniciais. Max 5 (com defeitos).<br>
+                Desvantagem Menor (+1), Desvantagem Maior (+2).
+            </div>
+
+            <h3>🔧 TIER 1: UTILITÁRIOS & CAMPO (Custo: 1)</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4 style="color: var(--brand-secondary);">PROTOCOLOS DE CAMPO</h4>
+                    <div class="trait-list">
+                        <div class="trait-item"><div class="trait-term">Sentinela</div><div class="trait-desc">Não dorme, +2 Perceber.</div></div>
+                        <div class="trait-item"><div class="trait-term">Rastreador K-9</div><div class="trait-desc">+2 Rastreio pelo cheiro.</div></div>
+                        <div class="trait-item"><div class="trait-term">Holofote</div><div class="trait-desc">Iluminação 20m. Cega alvos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Surfista</div><div class="trait-desc">Carrega 1 humano na água.</div></div>
+                        <div class="trait-item"><div class="trait-term">Escavador</div><div class="trait-desc">Cria túneis e trincheiras.</div></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--brand-green);">ADAPTAÇÃO BIOLÓGICA</h4>
+                    <div class="trait-list">
+                        <div class="trait-item"><div class="trait-term">Visão Térmica</div><div class="trait-desc">Ignora escuridão e fumaça.</div></div>
+                        <div class="trait-item"><div class="trait-term">Nadador Veloz</div><div class="trait-desc">Dobra movimentação na água.</div></div>
+                        <div class="trait-item"><div class="trait-term">Escalador</div><div class="trait-desc">Anda em paredes/tetos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Guelras</div><div class="trait-desc">Respira embaixo d'água.</div></div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="margin-top:2rem">⚔️ TIER 2 & 3 (Resumo)</h3>
+             <div class="card-grid">
+                <div class="card">
+                    <h4>COMBATE (Custo: 2)</h4>
+                    <div class="trait-list">
+                         <div class="trait-item"><div class="trait-term">Instinto Predatório</div><div class="trait-desc">+2 Dano fixo.</div></div>
+                         <div class="trait-item"><div class="trait-term">Pele de Adamantium</div><div class="trait-desc">Ignora dano extra de Críticos.</div></div>
+                         <div class="trait-item"><div class="trait-term">Voo/Levitação</div><div class="trait-desc">Ignora terreno.</div></div>
+                    </div>
+                </div>
+                <div class="card" style="border-color: var(--brand-rare);">
+                    <h4>ANOMALIAS (Custo: 3)</h4>
+                    <div class="trait-list">
+                        <div class="trait-item"><div class="trait-term">Cromático (Shiny)</div><div class="trait-desc">+1 Benne, Valor 5x.</div></div>
+                        <div class="trait-item"><div class="trait-term">Linhagem Alpha</div><div class="trait-desc">Tamanho +1, +1 Ferimento.</div></div>
+                        <div class="trait-item"><div class="trait-term">Fator Gigamax</div><div class="trait-desc">Dobra tamanho 1x/sessão.</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modules">
+            <h2>5. Protocolos Modulares (TMs & HMs)</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>TM (TECHNICAL MODULE) <span class="card-badge">1 Ponto</span></h4>
+                    <ul class="tech-list">
+                        <li><strong>Protect:</strong> Defesa Total (+4 Aparar).</li>
+                        <li><strong>Thunder Wave:</strong> Paralisa (Distraído/Vulnerável).</li>
+                        <li><strong>Toxic:</strong> Dano progressivo por rodada.</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color: var(--brand-warning);">
+                    <h4 style="color:var(--brand-warning);">HM (HIDDEN MACHINE) <span class="card-badge">2 Pontos</span></h4>
+                    <ul class="tech-list">
+                        <li><strong>HM01 Cut:</strong> Dano +4 e corta aço.</li>
+                        <li><strong>HM02 Fly:</strong> Voo Tático e Viagem Rápida.</li>
+                        <li><strong>HM03 Surf:</strong> Viagem aquática em grupo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="mega">
+            <h2>6. Mega S.Y.N.C.</h2>
+            <div class="lore-box" style="border-color:var(--brand-mega);">
+                <strong>Ressonância Genética:</strong> Transformação temporária (5 rodadas). Requer Rank Veterano, Keystone e Mega Stone.
+            </div>
+            <div class="card" style="border-color: var(--brand-mega);">
+                <h4 style="color:var(--brand-mega);">EFEITOS</h4>
+                <p style="color:var(--text-muted)">Todos atributos físicos sobem 1 dado. Imune a Medo. Fica Exausto após o uso.</p>
+            </div>
+        </section>
+
+        <section id="hindrances">
+            <h2>7. Desvantagens</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="trait-list">
+                        <div class="trait-item"><div class="trait-term">Trauma (Maior)</div><div class="trait-desc">Pânico com Pokébolas.</div></div>
+                        <div class="trait-item"><div class="trait-term">Desobediente (Maior)</div><div class="trait-desc">Age sozinho se dono falhar.</div></div>
+                        <div class="trait-item"><div class="trait-term">Vulnerabilidade</div><div class="trait-desc">+4 dano de elemento oposto.</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mechanics">
+            <h2>8. Mecânicas & Combate</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>BIO-ENERGIA (PP)</h4>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">Golpes Especiais custam PP. Se zerar, perde o golpe. Usar sem PP causa Fadiga.</p>
+                </div>
+                <div class="card">
+                    <h4>LETALIDADE</h4>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">
+                    <strong>Humanos:</strong> 3 Ferimentos = Incapacitado.<br>
+                    <strong>Pokémon:</strong> 3 Ferimentos = Estado Crítico (Morre em 3 rodadas sem ajuda).
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="logistics">
+            <h2>9. Logística & Equipamentos</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead><tr><th>Item</th><th>Efeito</th><th>Custo</th></tr></thead>
+                    <tbody>
+                        <tr><td>Bio-Gel (Leftovers)</td><td>Remove 1 Fadiga/hora.</td><td>2000 NC$</td></tr>
+                        <tr><td>Focus Sash</td><td>Evita morte (1 uso).</td><td>800 NC$</td></tr>
+                        <tr><td>Rocky Helmet</td><td>Dano 2d4 ao toque.</td><td>1200 NC$</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="missions">
+          <h2>10. Regras para Missões</h2>
+          <div class="card">
+            <div class="kicker">Estrutura Básica</div>
+            <ol style="color:var(--text-muted);padding-left:18px;margin-top:8px">
+              <li><strong>Briefing:</strong> Intel & objetivos primários/secundários.</li>
+              <li><strong>Planejamento:</strong> Recursos, equipamento e roles.</li>
+              <li><strong>Execução:</strong> Encenação tática (infiltração, combate, extração).</li>
+              <li><strong>Extracção:</strong> Evacuação e consequências (custo social/reputação).</li>
+            </ol>
+          </div>
+          <div class="card-grid" style="margin-top:1.5rem">
+            <div class="card"><div class="kicker">Tipos de Missão</div><ul class="list-tech"><li>Resgate</li><li>Sabotagem</li><li>Escolta</li><li>Investigação</li></ul></div>
+            <div class="card"><div class="kicker">Recompensas & Riscos</div><p style="color:var(--text-muted); font-size:0.9rem">Recompensas variam de créditos a mods ilegais; alto risco aumenta notoriedade com facções.</p></div>
+          </div>
+        </section>
+
+        <section id="env">
+          <h2>11. Ambientes & Efeitos Climáticos</h2>
+          <div class="card"><div class="kicker">Tipos de Terreno</div>
+            <ul class="list-tech">
+              <li><strong>Urbano denso:</strong> cobertura alta, ruído eletrônico (penalidade em stealth por sinais).</li>
+              <li><strong>Skybox:</strong> visibilidade alta, regras de gravidade reduzida.</li>
+              <li><strong>Sprawl subterrâneo:</strong> sinal fraco, vantagem para emboscadas.</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:1.5rem"><div class="kicker">Climas & Efeitos</div>
+            <ul class="list-tech">
+              <li><strong>Chuva Ácida:</strong> -1 resistência a bio-ativos expostos.</li>
+              <li><strong>Tempestade Elétrica:</strong> chance de sobrecarga em implantes (teste Vigor).</li>
+              <li><strong>Sol Intenso:</strong> Fotossíntese regenera +1 PP/rodada.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="factions">
+          <h2>12. Facções de Neo-Kanto</h2>
+          <div class="card-grid">
+            <div class="card"><div class="kicker">S.Y.N.C. (Governança)</div><p style="font-size:0.9rem; color:var(--text-muted)">Instituição reguladora que fiscaliza o uso de bio-tecnologia.</p></div>
+            <div class="card"><div class="kicker">Cartel Rocket</div><p style="font-size:0.9rem; color:var(--text-muted)">Operações ilegais, slave-balls e mercados negros.</p></div>
+            <div class="card"><div class="kicker">Silph Corporation</div><p style="font-size:0.9rem; color:var(--text-muted)">Corp gigante. Fonte de tecnologia e quests.</p></div>
+            <div class="card"><div class="kicker">Clãs de Rua</div><p style="font-size:0.9rem; color:var(--text-muted)">Controle de bairros; úteis como informantes.</p></div>
+          </div>
+        </section>
+
+        <section id="npcs">
+          <h2>13. NPCs & Protocolos</h2>
+          <div class="card"><div class="kicker">Modelos Rápidos</div>
+            <ul class="list-tech">
+              <li><strong>Informante:</strong> Persuasão d6 — Custo: 50 NC$</li>
+              <li><strong>Agente S.Y.N.C.:</strong> Investigação d8 — Autoridade legal</li>
+              <li><strong>Capitão Rocket:</strong> Intimidar d10 — Segurança armada</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="create">
+          <h2>14. Criando Seu Operativo</h2>
+          <div class="card">
+            <div class="kicker">Passo a Passo</div>
+            <ol style="color:var(--text-muted);padding-left:18px; margin-top:10px;">
+              <li><strong>Escolha um arquétipo</strong> (Handler / Tech-Op / Vanguard)</li>
+              <li><strong>Distribua pontos</strong>: Atributos primários / secundários</li>
+              <li><strong>Vantagens iniciais</strong>: 3 pontos (Tiers)</li>
+              <li><strong>Selecione Bio-Ativo</strong>: primeiro companheiro (ex.: urbano comum)</li>
+              <li><strong>Equipamento obrigatório</strong>: Jammer / Liberator Tool (mínimo)</li>
+              <li><strong>Vínculo inicial</strong>: defina % de lealdade e trauma</li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="cases">
+          <h2>15. Casos Reais (Exemplos)</h2>
+          <div class="card-grid">
+            <div class="card"><div class="kicker">Resgate Noturno</div><p style="color:var(--text-muted); font-size:0.9rem">Briefing: Carga roubada em armazém. Abordagem: infiltração + jammer. Resultado: libertar criatura e destruir Slave-Balls.</p></div>
+            <div class="card"><div class="kicker">Sabotagem de Linha</div><p style="color:var(--text-muted); font-size:0.9rem">Objetivo: destruir laboratório de mod. Requer: Tech-Op + drone EMP + backup para extração.</p></div>
+          </div>
+        </section>
+
+        <section id="economy">
+          <h2>16. Economia & Mercado Negro</h2>
+          <div class="table-wrapper">
+            <table>
+                <thead><tr><th>Item</th><th>Tipo</th><th>Preço Médio</th></tr></thead>
+                <tbody>
+                <tr><td>Keystone</td><td>Raro</td><td>5.000 NC$</td></tr>
+                <tr><td>Mega Stone</td><td>Épico</td><td>10.000 NC$</td></tr>
+                <tr><td>Mods Ilícitos</td><td>Varia</td><td>2k – 8k NC$</td></tr>
+                </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="progress">
+          <h2>17. Progressão Avançada</h2>
+          <div class="card"><div class="kicker">Operativo</div>
+            <ul class="list-tech">
+              <li>Patentes: Novato → Veterano → Oficial → Executor</li>
+              <li>Desbloqueio de equipamentos por patente</li>
+            </ul>
+          </div>
+          <div class="card" style="margin-top:1.5rem"><div class="kicker">Bio-Ativos</div><p style="color:var(--text-muted)">Evolução via Bio-Data (BD). A cada 5 BD, um avanço; pontos de evolução compram TMs/HMs.</p></div>
+        </section>
+
+        <section id="craft">
+          <h2>18. Craft & Mods Cibernéticos</h2>
+          <div class="card"><p style="color:var(--text-muted)">Operativos podem fabricar mods (implantes, boosters). Requer receitas, componentes e testes de Engenharia/Química. Peças ilegais são baratas, mas arriscadas.</p></div>
+        </section>
+
+        <section id="gm">
+            <h2>19. Guia do Mestre</h2>
+            
+            <div class="lore-box">
+                <strong>Regra de Sincronização:</strong> Não se joga uma bola. É um <strong>Desafio Social Estendido</strong>: 
+                1. Abordagem (Furtividade/Diplomacia) -> 2. Oferta (Recurso) -> 3. Pacto (Espírito vs Espírito).
+            </div>
+
+            <div class="kicker" style="margin-top:2rem">Ganchos de Missão (1d6)</div>
+            <div class="card-grid">
+                <div class="card"><h4>1. RESGATE</h4><span style="font-size:0.8rem; color:var(--text-muted)">Recuperar Pokémon roubado.</span></div>
+                <div class="card"><h4>2. SABOTAGEM</h4><span style="font-size:0.8rem; color:var(--text-muted)">Hackear servidores da Silph.</span></div>
+                <div class="card"><h4>3. ESCOLTA VIP</h4><span style="font-size:0.8rem; color:var(--text-muted)">Proteger Ovo raro.</span></div>
+                <div class="card"><h4>4. INVESTIGAÇÃO</h4><span style="font-size:0.8rem; color:var(--text-muted)">Tráfico de carne.</span></div>
+                <div class="card"><h4>5. CONTENÇÃO</h4><span style="font-size:0.8rem; color:var(--text-muted)">Caçar Ditto assassino.</span></div>
+                <div class="card"><h4>6. GUERRA</h4><span style="font-size:0.8rem; color:var(--text-muted)">Disputa territorial.</span></div>
+            </div>
+        </section>
+
     </div>
-    <div class="card card--combat">
-      <div class="kicker">SLAVE-BALLS (DARK BALLS)</div>
-      <p>Versões hackeadas das antigas esferas que fritam os inibidores de dor e medo do Pokémon.</p>
-    </div>
-  </div>
 
-  <div class="warning" style="margin-top:12px">
-    <strong>ALERTA TÁTICO:</strong> Um Pokémon escravizado obedece cegamente e luta até a morte (Vantagem Berserker), mas carece de criatividade tática (Burrice Artificial).
-  </div>
-
-  <p style="margin-top:10px;color:var(--text-muted)"><strong>Sua Missão:</strong> Os jogadores são "Libertadores". O objetivo é interceptar cargas de Pokébolas e destruir a tecnologia de escravidão. Quando você vence, destrói a bola para reabilitar a criatura.</p>
-</section>
-
-<!-- 2. OPERATIVE -->
-<section id="operative">
-  <h2 class="section-title">2. O Operativo</h2>
-  <p style="color:var(--text-muted)">Não existem classes fixas. Você constrói um perfil profissional usando as regras de Savage Worlds.</p>
-
-  <div class="card">
-    <div class="kicker">ATRIBUTOS CHAVE</div>
-    <ul class="list-tech">
-      <li><strong>Astúcia (Smarts):</strong> Conhecimento tático e operação do SymbioDex.</li>
-      <li><strong>Espírito (Spirit):</strong> Força de vontade para manter o Link Neural estável sob pressão.</li>
-    </ul>
-  </div>
-
-  <h3 class="sub">Arquétipos Sugeridos</h3>
-  <div class="grid cols-3" style="margin-top:10px">
-    <div class="card card--tech">
-      <div class="kicker">O HANDLER <span class="badge-small">Social</span></div>
-      <p>Especialista em comportamento. Seus Pokémon recuperam Estresse mais rápido e obedecem a comandos complexos.</p>
-      <div class="lore" style="margin-top:8px;color:var(--text-muted)">Gancho: Psicólogo de monstros reabilitando vítimas dos Rockets.</div>
-    </div>
-    <div class="card card--tech">
-      <div class="kicker">O TECH-OP <span class="badge-small">Suporte</span></div>
-      <p>Usa o SymbioDex para hackear o ambiente enquanto o Pokémon o protege. Usa drones e torretas.</p>
-      <div class="lore" style="margin-top:8px;color:var(--text-muted)">Gancho: Ex-engenheiro da Silph Co. que roubou protótipos.</div>
-    </div>
-    <div class="card card--combat">
-      <div class="kicker">O VANGUARD <span class="badge-small">Combate</span></div>
-      <p>Luta armada ao lado do Pokémon, usando o monstro como cobertura móvel.</p>
-      <div class="lore" style="margin-top:8px;color:var(--text-muted)">Gancho: Mercenário aposentado protegendo seu último parceiro.</div>
-    </div>
-  </div>
-</section>
-
-<!-- 3. BIO-ACTIVOS -->
-<section id="bioactive">
-  <h2 class="section-title">3. Bio-Ativos: Regras</h2>
-
-  <h3 class="sub">3.1 Conversão de Dados (Datadex -> Savage Worlds)</h3>
-  <p style="color:var(--text-muted)">Utilizamos os stats base da espécie (0-255) para definir os dados de RPG.</p>
-
-  <div class="table-wrap" style="margin-top:10px">
-    <table>
-      <thead><tr><th>Stat Base (Datadex)</th><th>Dado (SWADE)</th><th>Classificação</th></tr></thead>
-      <tbody>
-        <tr><td>00 - 45</td><td>d4</td><td>Civil / Frágil</td></tr>
-        <tr><td>46 - 80</td><td>d6</td><td>Padrão / Competente</td></tr>
-        <tr><td>81 - 110</td><td>d8</td><td>Atlético / Forte</td></tr>
-        <tr><td>111 - 140</td><td>d10</td><td>Elite / Brutal</td></tr>
-        <tr><td>141 - 170</td><td>d12</td><td>Ápice Biológico</td></tr>
-        <tr><td>171 - 200</td><td>d12 + 1</td><td>Anomalia Genética</td></tr>
-        <tr><td>201 - 230</td><td>d12 + 2</td><td>Catástrofe Natural</td></tr>
-        <tr><td>231 - 250+</td><td>d12 + 3</td><td>Divindade / Kaiju</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="grid cols-2" style="margin-top:12px">
-    <div class="card card--bio">
-      <div class="kicker">MAPEAMENTO</div>
-      <ul class="list-tech">
-        <li>HP Base → <strong>Vigor</strong></li>
-        <li>Attack → <strong>Força</strong></li>
-        <li>Speed → <strong>Agilidade</strong></li>
-        <li>Sp. Atk → <strong>Espírito</strong></li>
-        <li>Sp. Def → <strong>Astúcia</strong></li>
-        <li>Defense → <strong>Armadura Natural</strong></li>
-      </ul>
-    </div>
-    <div class="card card--bio">
-      <div class="kicker">REGRA DE ARMADURA</div>
-      <ul class="list-tech">
-        <li>Def &lt; 50: +0 (Pele Macia)</li>
-        <li>Def 51-100: +2 (Couro/Pelos)</li>
-        <li>Def 101-150: +4 (Rocha/Metal)</li>
-        <li>Def 150+: +6 (Blindagem Pesada)</li>
-        <li>Def 200+: +8 (Intransponível)</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3 class="sub">3.2 Ciclo de Evolução (Patamares)</h3>
-  <p style="color:var(--text-muted)">Evolução via Bio-Data (BD). A cada 5 BD, o Pokémon ganha um Avanço.</p>
-
-  <div class="grid cols-3" style="margin-top:10px">
-    <div class="card card--rare"><div class="kicker">NOVATO <span class="badge-small">Nvl 1-20</span></div><p>Frágil, depende de ordens. Perícias máx d8. Conhece apenas 1 Protocolo Especial.</p></div>
-    <div class="card card--tech"><div class="kicker">EXPERIENTE <span class="badge-small">Nvl 21-40</span></div><p>Desbloqueia Vantagens Táticas (Tier 2). Geralmente onde ocorre a 1ª Evolução Física.</p></div>
-    <div class="card card--combat"><div class="kicker">VETERANO <span class="badge-small">Nvl 41-60</span></div><p>Atributos Físicos podem subir (d8→d10). Perícias até d10. Evolução Final da maioria.</p></div>
-    <div class="card card--rare"><div class="kicker">HEROICO <span class="badge-small">Nvl 61-80</span></div><p>Acesso a Anomalias (Tier 3). Bio-Energia +5. Perícias até d12.</p></div>
-    <div class="card card--rare"><div class="kicker">LENDÁRIO <span class="badge-small">Nvl 81+</span></div><p>Acesso a Ultimates (Hyper Beam). Stats acima de d12. Lealdade Inabalável.</p></div>
-  </div>
-</section>
-
-<!-- 4. GENESIS -->
-<section id="genesis">
-  <h2 class="section-title">4. Sistema de Gênese & Vantagens</h2>
-  <div class="lore"><strong>Custo de Criação:</strong> Você tem <strong>3 PONTOS</strong> iniciais. Max 5 (com defeitos). Desvantagem Menor (+1), Desvantagem Maior (+2).</div>
-
-  <h3 class="sub">TIER 1: UTILITÁRIOS & CAMPO (Custo:1)</h3>
-  <div class="card">
-    <div class="kicker">PROTOCOLOS DE CAMPO</div>
-    <div class="trait-grid" style="margin-top:8px">
-      <div class="trait"><div class="term">Sentinela</div><div class="desc">Não dorme, +2 Perceber imóvel. Alerta telepático.</div></div>
-      <div class="trait"><div class="term">Rastreador K-9</div><div class="desc">+2 Rastreio pelo cheiro. Identifica químicos.</div></div>
-      <div class="trait"><div class="term">Holofote (Flash)</div><div class="desc">Luz de 20m. Cega alvos em combate (Agilidade).</div></div>
-      <div class="trait"><div class="term">Bateria Viva</div><div class="desc">Usa 1 Ferimento para recarregar eletrônicos.</div></div>
-    </div>
-  </div>
-
-  <h3 class="sub">TIER 2: COMBATE (Custo:2)</h3>
-  <div class="card card--combat">
-    <div class="kicker">OFENSIVA</div>
-    <ul class="list-tech">
-      <li>Instinto Predatório: +2 Dano fixo em ataques naturais.</li>
-      <li>Assassino Silencioso: +1d6 dano em ataques surpresa.</li>
-      <li>Mira Computadorizada: Imóvel — dobra alcance, ignora cobertura.</li>
-    </ul>
-  </div>
-
-  <h3 class="sub">TIER 3: ANOMALIAS (Custo:3)</h3>
-  <div class="grid cols-3" style="margin-top:8px">
-    <div class="card card--rare"><div class="kicker">ANOMALIA CROMÁTICA (SHINY)</div><p>+1 Benne (Sorte) exclusivo/sessão. +2 em testes sociais visuais. Status: Vale 5x mais.</p></div>
-    <div class="card card--rare"><div class="kicker">LINHAGEM ALPHA</div><p>Tamanho +1. Ganha +1 Ferimento Máximo. Ataques físicos empurram o alvo.</p></div>
-    <div class="card card--rare"><div class="kicker">FATOR GIGAMAX</div><p>1x/sessão: dobra de tamanho por 3 turnos. Maximiza dano; exaustão pós-uso.</p></div>
-  </div>
-</section>
-
-<!-- 5. MODULES -->
-<section id="modules">
-  <h2 class="section-title">5. Protocolos Modulares (TMs & HMs)</h2>
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card card--tech">
-      <div class="kicker">TM (TECHNICAL MODULE) — Custo: 1 Ponto</div>
-      <ul class="list-tech">
-        <li><strong>Protect:</strong> Defesa Total com +4 em Aparar.</li>
-        <li><strong>Substitute:</strong> Cria clone com 1 Ferimento (Custa 2 PP).</li>
-        <li><strong>Thunder Wave:</strong> Paralisa (Alvo fica Distraído e Vulnerável).</li>
-        <li><strong>U-Turn:</strong> Ataca e se move no mesmo turno.</li>
-      </ul>
-    </div>
-    <div class="card card--log">
-      <div class="kicker">HM (HIDDEN MACHINE) — Custo: 2 Pontos</div>
-      <ul class="list-tech">
-        <li><strong>HM01 Cut:</strong> Dano Físico +4 e corta obstáculos de aço.</li>
-        <li><strong>HM02 Fly:</strong> Voo Tático e Teleporte entre cidades conhecidas.</li>
-        <li><strong>HM03 Surf:</strong> Cria onda gigante e permite viagem aquática em grupo.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 6. MEGA -->
-<section id="mega">
-  <h2 class="section-title">6. Mega S.Y.N.C. (Mega Evolução)</h2>
-  <div class="lore" style="border-color:rgba(244,114,182,0.06)"><strong>Ressonância Genética:</strong> Transformação temporária que exige vínculo e recursos (Keystone + Mega Stone).</div>
-
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card card--rare"><div class="kicker">REQUISITOS</div><ul class="list-tech"><li>Keystone (Operativo)</li><li>Mega Stone (Pokémon)</li><li>Lealdade ≥ 80%</li></ul></div>
-    <div class="card card--rare"><div class="kicker">EFEITOS (5 rodadas)</div><ul class="list-tech"><li>Atributos físicos +1 tipo de dado</li><li>Vantagem de combate extra</li><li>Imune a medo/controle mental</li><li>Pós-uso: 2 níveis de fadiga</li></ul></div>
-  </div>
-</section>
-
-<!-- 7. HINDRANCES -->
-<section id="hindrances">
-  <h2 class="section-title">7. Desvantagens (Hindrances)</h2>
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card"><div class="kicker">COMPORTAMENTAIS</div>
-      <div class="trait-grid" style="margin-top:8px">
-        <div class="trait"><div class="term">Trauma de Cativeiro (Maior)</div><div class="desc">Pânico ao ver Pokébolas/grades.</div></div>
-        <div class="trait"><div class="term">Sede de Sangue (Menor)</div><div class="desc">Ataca inimigos caídos. Teste para parar.</div></div>
-        <div class="trait"><div class="term">Desobediente (Maior)</div><div class="desc">Perde respeito se dono falhar. Age sozinho.</div></div>
-      </div>
-    </div>
-    <div class="card"><div class="kicker">FISIOLÓGICAS &amp; TÁTICAS</div>
-      <div class="trait-grid" style="margin-top:8px">
-        <div class="trait"><div class="term">Metabolismo Hiperativo (Maior)</div><div class="desc">Custo de manutenção triplo.</div></div>
-        <div class="trait"><div class="term">Tamanho Colossal</div><div class="desc">+2 para ser acertado. Não entra em portas.</div></div>
-        <div class="trait"><div class="term">Pele Fina</div><div class="desc">-1 na Resistência.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. MECHANICS -->
-<section id="mechanics">
-  <h2 class="section-title">8. Mecânicas & Combate</h2>
-
-  <h3 class="sub">8.1 Bio-Energia (PBE)</h3>
-  <div class="card" style="margin-top:8px">
-    <p style="color:var(--text-muted)">Bio-Energia (PBE) alimenta Protocolos. Valores típicos: 10–20 PBE. Usar sem PBE causa fadiga.</p>
-    <ul class="list-tech">
-      <li>Ataques cinéticos: custo 0</li>
-      <li>Protocolos: custam PBE (gastos variam)</li>
-      <li>Sobrecarga: usar sem PBE = 1 nível de fadiga</li>
-    </ul>
-  </div>
-
-  <h3 class="sub">8.2 Letalidade &amp; Ruptura de Link</h3>
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card"><div class="kicker">LETALIDADE</div><ul class="list-tech"><li>Humanos: 3 Ferimentos = Incapacitado</li><li>Pokémon: 3 Ferimentos = Estado Crítico (estabilizar em 3 rodadas)</li></ul></div>
-    <div class="card"><div class="kicker">RUPTURA DE LINK</div><p style="color:var(--text-muted)">Se o estresse exceder o limite (por dano ou ordens ruins), o Pokémon entra em Pânico: Foge, Congela ou Ataca o dono.</p></div>
-  </div>
-</section>
-
-<!-- 9. LOGISTICS -->
-<section id="logistics">
-  <h2 class="section-title">9. Logística & Equipamentos</h2>
-  <div class="lore"><strong>Economia:</strong> Custo de Vida diário varia de 20 NC$ (Pequeno) a 200 NC$ (Colossal). Sem pagamento = Fadiga e Queda de Lealdade.</div>
-
-  <h3 class="sub">9.1 Gear de Pokémon (Held Items)</h3>
-  <div class="table-wrap" style="margin-top:8px">
-    <table>
-      <thead><tr><th>Item</th><th>Efeito</th><th>Custo</th></tr></thead>
-      <tbody>
-        <tr><td>Bio-Gel (Leftovers)</td><td>Cura lenta (remove 1 Fadiga/hora).</td><td>2000 NC$</td></tr>
-        <tr><td>Limiter (Choice Band)</td><td>+2 Dano, -2 Aparar (Exoesqueleto).</td><td>1500 NC$</td></tr>
-        <tr><td>Focus Sash</td><td>Campo de força descartável (Evita morte).</td><td>800 NC$</td></tr>
-        <tr><td>Rocky Helmet</td><td>Dano 2d4 em quem toca.</td><td>1200 NC$</td></tr>
-        <tr><td>Scope Lens</td><td>Amplia margem de Crítico em 1.</td><td>1800 NC$</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 class="sub">9.2 Ferramentas do Operativo</h3>
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card card--tech"><div class="kicker">JAMMER DE ESFERAS</div><p style="color:var(--text-muted)">Impede Rockets de recolherem Pokémon feridos.</p></div>
-    <div class="card card--tech"><div class="kicker">LIBERATOR TOOL</div><p style="color:var(--text-muted)">Hacker de Slave-Balls. Sucesso liberta. Falha Crítica deleta (morte).</p></div>
-  </div>
-</section>
-
-<!-- 10. MISSIONS (new integrated) -->
-<section id="missions">
-  <h2 class="section-title">10. Regras para Missões (estrutura)</h2>
-  <div class="card"><div class="kicker">Estrutura Básica</div>
-    <ol style="color:var(--text-muted);padding-left:18px;margin-top:8px">
-      <li><strong>Briefing:</strong> Intel & objetivos primários/secundários.</li>
-      <li><strong>Planejamento:</strong> Recursos, equipamento e roles.</li>
-      <li><strong>Execução:</strong> Encenação tática (infiltração, combate, extração).</li>
-      <li><strong>Extracção:</strong> Evacuação e consequências (custo social/reputação).</li>
-    </ol>
-  </div>
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card card--tech"><div class="kicker">Tipos de Missão</div><ul class="list-tech"><li>Resgate</li><li>Sabotagem</li><li>Escolta</li><li>Investigação</li></ul></div>
-    <div class="card card--log"><div class="kicker">Recompensas & Riscos</div><p style="color:var(--text-muted)">Recompensas variam de créditos a mods ilegais; alto risco aumenta notoriedade com facções.</p></div>
-  </div>
-</section>
-
-<!-- 11. ENVIRONMENTS (new integrated) -->
-<section id="env">
-  <h2 class="section-title">11. Ambientes & Efeitos Climáticos</h2>
-  <div class="card"><div class="kicker">Tipos de Terreno</div>
-    <ul class="list-tech">
-      <li>Urbano denso: cobertura alta, ruído eletrônico (penalidade em stealth por sinais).</li>
-      <li>Skybox: visibilidade alta, regras de gravidade reduzida (suporte aéreo).</li>
-      <li>Sprawl subterrâneo: sinal fraco, vantagem para furtividade e emboscadas.</li>
-      <li>Laboratórios: campos eletromagnéticos que atrapalham SymbioDex.</li>
-    </ul>
-  </div>
-  <div class="card" style="margin-top:10px"><div class="kicker">Climas & Efeitos</div>
-    <ul class="list-tech">
-      <li>Chuva Ácida: -1 resistência a bio-ativos não resistentes</li>
-      <li>Tempestade Elétrica: chance de sobrecarga em implantes (teste Vigor)</li>
-      <li>Nevoeiro Denso: reduz alcance visual à metade</li>
-      <li>Sol Intenso: Fotossíntese regenera +1 PBE/rodada (se aplicável)</li>
-    </ul>
-  </div>
-</section>
-
-<!-- 12. FACTIONS -->
-<section id="factions">
-  <h2 class="section-title">12. Facções de Neo-Kanto</h2>
-  <div class="grid cols-2" style="margin-top:10px">
-    <div class="card card--combat"><div class="kicker">S.Y.N.C. (Governança)</div><p>Instituição reguladora que fiscaliza o uso de bio-tecnologia. Tem recursos e leis próprias.</p></div>
-    <div class="card card--combat"><div class="kicker">Cartel Rocket</div><p>Operações ilegais, slave-balls e mercados negros.</p></div>
-    <div class="card card--tech"><div class="kicker">Silph Corporation</div><p>Corp gigante com braços legais e clandestinos. Fonte de tecnologia e quests.</p></div>
-    <div class="card card--log"><div class="kicker">Clãs de Rua</div><p>Pequenas facções que controlam bairros; úteis como informantes ou inimigos.</p></div>
-  </div>
-</section>
-
-<!-- 13. NPCS -->
-<section id="npcs">
-  <h2 class="section-title">13. NPCs & Protocolos de Interação</h2>
-  <div class="card"><div class="kicker">Modelos Rápidos</div>
-    <ul class="list-tech">
-      <li><strong>Informante de Rua:</strong> Skill: Persuasão d6 — valor: 50 NC$</li>
-      <li><strong>Agente S.Y.N.C.:</strong> Skill: Investigação d8 — pode emitir ordens legais</li>
-      <li><strong>Capitão do Cartel:</strong> Skill: Intimidar d10 — força bruta + segurança armada</li>
-    </ul>
-  </div>
-  <div class="card" style="margin-top:10px"><div class="kicker">Protocolos de Reação</div><p style="color:var(--text-muted)">NPCs reagem a notoriedade, alinhamento e escolhas do Operativo. Bons usos: filtros de reputação, missões alternativas e barganhas.</p></div>
-</section>
-
-<!-- 14. CREATE OPERATIVE -->
-<section id="create">
-  <h2 class="section-title">14. Criando Seu Operativo — Passo a Passo</h2>
-  <div class="card">
-    <ol style="color:var(--text-muted);padding-left:18px">
-      <li><strong>Escolha um arquétipo</strong> (Handler / Tech-Op / Vanguard)</li>
-      <li><strong>Distribua pontos</strong>: Atributos primários/ secundários</li>
-      <li><strong>Vantagens iniciais</strong>: 3 pontos (Tiers)</li>
-      <li><strong>Selecione Bio-Ativo</strong>: primeiro companheiro (ex.: urbano comum)</li>
-      <li><strong>Equipamento obrigatório</strong>: Jammer / Liberator Tool (mínimo)</li>
-      <li><strong>Vínculo inicial</strong>: defina % de lealdade e trauma</li>
-      <li><strong>Contrato de missão</strong>: defina objetivo e recompensa</li>
-    </ol>
-  </div>
-</section>
-
-<!-- 15. CASES -->
-<section id="cases">
-  <h2 class="section-title">15. Casos Reais de Operações (Exemplos)</h2>
-  <div class="card"><div class="kicker">Exemplo: Resgate Noturno</div><p style="color:var(--text-muted)">Briefing: Carga roubada em armazém subterrâneo. Abordagem: infiltração + jammer. Resultado ideal: libertar criatura, destruir Slave-Balls e escapar sem alarme.</p></div>
-  <div class="card" style="margin-top:8px"><div class="kicker">Exemplo: Sabotagem de Linha</div><p style="color:var(--text-muted)">Objetivo: destruir um laboratório de mod. Requer: Tech-Op + drone EMP + backup para extração.</p></div>
-</section>
-
-<!-- 16. ECONOMY -->
-<section id="economy">
-  <h2 class="section-title">16. Economia & Mercado Negro</h2>
-  <div class="card"><div class="kicker">Tabela Rápida</div>
-    <table style="margin-top:8px"><thead><tr><th>Item</th><th>Tier</th><th>Preço Médio</th></tr></thead><tbody>
-    <tr><td>Keystone</td><td>Raro</td><td>5.000 NC$</td></tr>
-    <tr><td>Mega Stone</td><td>Épico</td><td>10.000 NC$</td></tr>
-    <tr><td>Mods Ilícitos</td><td>Varia</td><td>2.000–8.000 NC$</td></tr>
-    </tbody></table>
-  </div>
-  <div class="card" style="margin-top:8px"><div class="kicker">Barganha</div><p style="color:var(--text-muted)">Os jogadores podem reduzir custos com testes de Persuasão/Trade e usando contatos (facções). Mercadorias ilegais trazem risco de perseguição.</p></div>
-</section>
-
-<!-- 17. PROGRESSION -->
-<section id="progress">
-  <h2 class="section-title">17. Progressão Avançada</h2>
-  <div class="card"><div class="kicker">Operativo</div>
-    <ul class="list-tech">
-      <li>Patentes: Novato → Veterano → Oficial → Executor</li>
-      <li>Desbloqueio de equipamentos por patente</li>
-      <li>Árvore de Protocolos: selecionar ramificações (suporte / ofensivo / stealth)</li>
-    </ul>
-  </div>
-  <div class="card" style="margin-top:8px"><div class="kicker">Bio-Ativos</div><p style="color:var(--text-muted)">Evolução via Bio-Data (BD). A cada 5 BD, um avanço; pontos de evolução compram TMs/HMs.</p></div>
-</section>
-
-<!-- 18. CRAFT -->
-<section id="craft">
-  <h2 class="section-title">18. Sistema de Craft / Mods Cibernéticos</h2>
-  <div class="card"><div class="kicker">Visão Geral</div><p style="color:var(--text-muted)">Operativos e laboratórios podem fabricar mods (implantes, boosters, peças de Mega). Requer receitas, componentes e testes de Engenharia/Química.</p></div>
-  <div class="grid cols-2" style="margin-top:10px"><div class="card card--tech"><div class="kicker">Exemplo: Filtro Neural</div><p>Reduz chance de ruído em implantes (-1 falha em testes de Sincronização)</p></div><div class="card card--log"><div class="kicker">Mercado Negro</div><p>Peças ilegais são baratas, mas elevam risco de sanções e vandalismo de facções rivais.</p></div></div>
-</section>
-
-<!-- 19. GM -->
-<section id="gm">
-  <h2 class="section-title">19. Guia do Mestre</h2>
-  <div class="card"><div class="kicker">Regra de Sincronização</div><p style="color:var(--text-muted)">Não se joga uma bola — é um Desafio Social Estendido: Abordagem → Oferta → Pacto (Espírito vs Espírito). Consequências narrativas incluem trauma, reputação e mutações.</p></div>
-
-  <h3 class="sub">Ganchos de Missão (1d6)</h3>
-  <div class="grid cols-3" style="margin-top:10px">
-    <div class="card card--tech"><div class="kicker">1. RESGATE</div><p style="color:var(--text-muted)">Recuperar Pokémon roubado.</p></div>
-    <div class="card card--tech"><div class="kicker">2. SABOTAGEM</div><p style="color:var(--text-muted)">Hackear servidores da Silph.</p></div>
-    <div class="card card--combat"><div class="kicker">3. ESCOLTA VIP</div><p style="color:var(--text-muted)">Proteger Ovo raro.</p></div>
-    <div class="card card--log"><div class="kicker">4. INVESTIGAÇÃO</div><p style="color:var(--text-muted)">Tráfico de carne de Tauros.</p></div>
-    <div class="card card--combat"><div class="kicker">5. CONTENÇÃO</div><p style="color:var(--text-muted)">Caçar Ditto assassino.</p></div>
-    <div class="card card--combat"><div class="kicker">6. GUERRA</div><p style="color:var(--text-muted)">Disputa territorial selvagem.</p></div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  SYS.ADMIN: SILPH CO. DATABASE // UNAUTHORIZED ACCESS IS A CRIME.<br>
-  2077 © PROJECT SYMBIOSIS
-</footer>
+    <footer>
+        SYS.ADMIN: SILPH CO. DATABASE // UNAUTHORIZED ACCESS IS A CRIME.<br>
+        2077 © PROJECT SYMBIOSIS
+    </footer>
 
 </body>
+
+<script>
+(function(){
+  const off = document.getElementById('offcanvas');
+  const openBtn = document.querySelector('.open-nav-btn');
+  const closeBtn = off ? off.querySelector('.close-btn') : null;
+  const menuLinks = off ? off.querySelectorAll('a.menu-link') : [];
+
+  function openOff(){
+    if(!off) return;
+    off.classList.add('open');
+    off.setAttribute('aria-hidden','false');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeOff(){
+    if(!off) return;
+    off.classList.remove('open');
+    off.setAttribute('aria-hidden','true');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+
+  if(openBtn) openBtn.addEventListener('click', openOff);
+  if(closeBtn) closeBtn.addEventListener('click', closeOff);
+  if(off){
+    off.addEventListener('click', function(e){
+      if(e.target === off) closeOff();
+    });
+  }
+  menuLinks.forEach(a=>{
+    a.addEventListener('click', function(e){
+      // Fecha o menu primeiro, depois scrolla
+      closeOff();
+      // Pequeno delay para permitir o fechamento visual
+      setTimeout(()=>{
+        // Navegação nativa cuidará do scroll pelo ID no href
+      }, 50);
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && off && off.classList.contains('open')){ closeOff(); }
+  });
+
+})();
+</script>
 </html>
