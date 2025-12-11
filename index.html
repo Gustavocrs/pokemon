@@ -90,46 +90,50 @@
             margin-top: 10px;
         }
 
-        /* --- NAV DESKTOP (STICKY & COMPACT) --- */
+        /* --- NAV DESKTOP (STICKY & SINGLE LINE) --- */
         nav {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(24, 24, 27, 0.95);
+            background: rgba(24, 24, 27, 0.98);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             width: 100%;
+            height: 50px; /* Altura fixa */
             display: flex;
+            align-items: center;
             justify-content: center;
         }
 
         .nav-content {
             width: 100%;
-            padding: 10px 10px; /* Padding reduzido nas laterais */
+            padding: 0 20px;
             display: flex;
-            gap: 4px; /* Gap bem pequeno para caber tudo */
-            justify-content: center; /* Tenta centralizar */
-            flex-wrap: nowrap; /* Tenta manter em uma linha */
-            overflow-x: auto; /* Permite scroll se a tela for pequena demais */
-            scrollbar-width: none; /* Firefox: esconde scrollbar */
+            gap: 4px;
+            align-items: center;
+            justify-content: flex-start; /* Alinha à esquerda para permitir scroll natural */
+            flex-wrap: nowrap;
+            overflow-x: auto; /* Permite scroll se necessário */
+            scrollbar-width: none;
+            height: 100%;
         }
         
-        .nav-content::-webkit-scrollbar { display: none; } /* Chrome: esconde scrollbar */
+        .nav-content::-webkit-scrollbar { display: none; }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.68rem; /* Fonte reduzida para caber muitos itens */
+            font-size: 0.65rem; /* Fonte compacta */
             font-weight: 700;
             text-transform: uppercase;
             white-space: nowrap;
-            padding: 8px 10px;
+            padding: 6px 8px;
             border-radius: 4px;
-            background: rgba(255,255,255,0.03);
+            background: rgba(255,255,255,0.02);
             border: 1px solid transparent;
             transition: all 0.2s;
             font-family: var(--mono);
-            flex-shrink: 0; /* Impede que os botões esmaguem demais */
+            flex-shrink: 0;
         }
         nav a:hover, nav a:active {
             border-color: var(--brand-primary);
@@ -140,7 +144,7 @@
         /* --- LAYOUT & SECTIONS --- */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        section { margin-bottom: 5rem; scroll-margin-top: 80px; padding-top: 2rem; }
+        section { margin-bottom: 5rem; scroll-margin-top: 60px; padding-top: 2rem; }
 
         h2 {
             font-family: var(--mono);
@@ -184,6 +188,15 @@
             color: #fca5a5;
         }
         .warning-box strong { color: var(--brand-primary); }
+        
+        .sync-box {
+            background: linear-gradient(135deg, #18181b 0%, rgba(239,68,68,0.05) 100%);
+            border: 1px solid var(--brand-primary);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin: 2rem 0;
+            box-shadow: 0 0 20px rgba(239,68,68,0.1);
+        }
 
         .card-grid {
             display: grid;
@@ -402,16 +415,16 @@
       <a class="menu-link" href="#modules">6. TMs & HMs</a>
       <a class="menu-link" href="#mega">7. Mega Evolução</a>
       <a class="menu-link" href="#hindrances">8. Desvantagens</a>
-      <a class="menu-link" href="#mechanics">9. Mecânicas</a>
+      <a class="menu-link" href="#mechanics">9. Mecânicas & Sincronização</a>
       <a class="menu-link" href="#logistics">10. Logística</a>
-      <a class="menu-link" href="#missions">11. Missões</a>
+      <a class="menu-link" href="#missions">11. Regras de Missões</a>
       <a class="menu-link" href="#env">12. Clima & Ambiente</a>
-      <a class="menu-link" href="#factions">13. Facções</a>
+      <a class="menu-link" href="#factions">13. Facções Detalhadas</a>
       <a class="menu-link" href="#npcs">14. NPCs</a>
       <a class="menu-link" href="#cases">15. Casos Reais</a>
-      <a class="menu-link" href="#economy">16. Economia</a>
+      <a class="menu-link" href="#economy">16. Mercado Negro</a>
       <a class="menu-link" href="#progress">17. Progressão</a>
-      <a class="menu-link" href="#craft">18. Crafting</a>
+      <a class="menu-link" href="#craft">18. Crafting & Mods</a>
       <a class="menu-link" href="#gm">19. Guia do Mestre</a>
     </div>
   </div>
@@ -437,7 +450,7 @@
             <a href="#intro">1. Intro</a>
             <a href="#create">2. Criação</a>
             <a href="#operative">3. Operativo</a>
-            <a href="#bioactive">4. Bio-Ativos</a>
+            <a href="#bioactive">4. Bio</a>
             <a href="#genesis">5. Gênese</a>
             <a href="#modules">6. TMs</a>
             <a href="#mega">7. Mega</a>
@@ -446,6 +459,12 @@
             <a href="#logistics">10. Gear</a>
             <a href="#missions">11. Missões</a>
             <a href="#env">12. Clima</a>
+            <a href="#factions">13. Facções</a>
+            <a href="#npcs">14. NPCs</a>
+            <a href="#cases">15. Casos</a>
+            <a href="#economy">16. Mercado</a>
+            <a href="#progress">17. Evol</a>
+            <a href="#craft">18. Craft</a>
             <a href="#gm">19. Mestre</a>
         </div>
     </nav>
@@ -557,38 +576,23 @@
                         <div class="trait-item"><div class="trait-term">Isolamento Elétrico</div><div class="trait-desc">Imune a choque (não dano elétrico de ataque).</div></div>
                     </div>
                 </div>
-                
-                <div class="card">
-                    <h4 style="color: var(--brand-rare);">SOCIAL & MENTAL</h4>
-                    <div class="trait-list">
-                        <div class="trait-item"><div class="trait-term">Link Empático</div><div class="trait-desc">Compartilha Bennies com o Operativo.</div></div>
-                        <div class="trait-item"><div class="trait-term">Mimetismo (Chatot)</div><div class="trait-desc">Imita vozes humanas e sons perfeitamente.</div></div>
-                        <div class="trait-item"><div class="trait-term">Ilusionista Menor</div><div class="trait-desc">Altera a própria aparência levemente (disfarce).</div></div>
-                        <div class="trait-item"><div class="trait-term">Detector de Mentiras</div><div class="trait-desc">Sente variação cardíaca (Insight).</div></div>
-                    </div>
-                </div>
             </div>
 
-            <h3>⚔️ TIER 2: COMBATE (Custo: 2)</h3>
+            <h3>⚔️ TIER 2 & 3: COMBATE & ANOMALIAS</h3>
             <div class="card-grid">
                 <div class="card">
-                    <h4>OFENSIVA & DEFENSIVA</h4>
+                    <h4>COMBATE (Custo: 2)</h4>
                     <div class="trait-list">
                         <div class="trait-item"><div class="trait-term">Instinto Predatório</div><div class="trait-desc">+2 Dano fixo em ataques naturais.</div></div>
                         <div class="trait-item"><div class="trait-term">Assassino Silencioso</div><div class="trait-desc">+1d6 dano em ataques surpresa.</div></div>
-                        <div class="trait-item"><div class="trait-term">Mira Computadorizada</div><div class="trait-desc">Imóvel: dobra alcance, ignora cobertura.</div></div>
-                        <div class="trait-item"><div class="trait-term">Breacher</div><div class="trait-desc">+4 Dano contra objetos (portas/paredes).</div></div>
                         <div class="trait-item"><div class="trait-term">Pele de Adamantium</div><div class="trait-desc">Ignora dano extra de Críticos.</div></div>
                         <div class="trait-item"><div class="trait-term">Regeneração</div><div class="trait-desc">Vigor cura 1 Ferimento (1x/cena).</div></div>
                         <div class="trait-item"><div class="trait-term">Movimentação 3D</div><div class="trait-desc">Voo/Levitação. Ignora terreno.</div></div>
                         <div class="trait-item"><div class="trait-term">Escavar Combate</div><div class="trait-desc">Pode se mover sob a terra.</div></div>
                     </div>
                 </div>
-            </div>
-            
-            <h3>💎 TIER 3: ANOMALIAS (Custo: 3)</h3>
-            <div class="card-grid">
-                <div class="card" style="border-color: var(--brand-rare);">
+                 <div class="card" style="border-color: var(--brand-rare);">
+                   <h4>ANOMALIAS (Custo: 3)</h4>
                    <div class="trait-list">
                         <div class="trait-item"><div class="trait-term">Shiny (Cromático)</div><div class="trait-desc">+1 Benne, Valor 5x.</div></div>
                         <div class="trait-item"><div class="trait-term">Linhagem Alpha</div><div class="trait-desc">Tamanho +1, +1 Ferimento.</div></div>
@@ -600,7 +604,6 @@
 
         <section id="modules">
             <h2>6. Protocolos Modulares (TMs)</h2>
-            <p>Softwares de combate adquiridos com Pontos de Evolução.</p>
             <div class="card">
                 <h4>TM (TECHNICAL MODULE) <span class="card-badge">Custo: 1 Ponto</span></h4>
                 <ul class="tech-list">
@@ -642,6 +645,42 @@
 
         <section id="mechanics">
             <h2>9. Mecânicas & Combate</h2>
+            
+            <div class="sync-box">
+                <h3 style="margin-top:0; color:var(--brand-primary);">A REGRA DE SINCRONIZAÇÃO</h3>
+                <p style="color:var(--text-muted);">A captura forçada é crime. A Sincronização é um <strong>Desafio Social Estendido</strong> que exige respeito e estratégia.</p>
+                
+                <div class="trait-list" style="margin-top:1.5rem;">
+                    <div class="trait-item" style="border-color:var(--brand-secondary);">
+                        <div class="trait-term">FASE 1: A ABORDAGEM (The Approach)</div>
+                        <div class="trait-desc">
+                            O Operativo deve se aproximar sem ser visto como ameaça. 
+                            <br><strong>Teste:</strong> Furtividade (se oculto) ou Persuasão (se visível).
+                            <br><em>Falha:</em> O Pokémon foge ou ataca (-2 no próximo teste).
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item" style="border-color:var(--brand-warning);">
+                        <div class="trait-term">FASE 2: A OFERTA (The Offering)</div>
+                        <div class="trait-desc">
+                            Demonstração de boa vontade. Pode ser comida (Ração/Berry), cura (Potion) ou proteção contra um predador.
+                            <br><strong>Teste:</strong> Sobrevivência (Comida), Cura (Medicina) ou Intimidar (afastar predador).
+                            <br><em>Bônus:</em> Usar comida favorita da espécie dá +2.
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item" style="border-color:var(--brand-primary);">
+                        <div class="trait-term">FASE 3: O PACTO (The Bond)</div>
+                        <div class="trait-desc">
+                            O teste final de vontade. O humano estende a mão/mente para o link.
+                            <br><strong>Teste:</strong> Espírito vs Espírito do Pokémon.
+                            <br><em>Sucesso:</em> Sincronização completa. O Pokémon aceita o SymbioDex.
+                            <br><em>Falha Crítica:</em> O Pokémon se sente ofendido e ataca com Vantagem.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="card-grid">
                 <div class="card">
                     <h4>BIO-ENERGIA (PP)</h4>
@@ -732,11 +771,43 @@
         </section>
 
         <section id="factions">
-          <h2>13. Facções</h2>
-          <div class="card-grid">
-            <div class="card"><div class="kicker">S.Y.N.C.</div><p style="font-size:0.9rem; color:var(--text-muted)">Governo e Polícia.</p></div>
-            <div class="card"><div class="kicker">Cartel Rocket</div><p style="font-size:0.9rem; color:var(--text-muted)">Crime organizado e Slave-Balls.</p></div>
-            <div class="card"><div class="kicker">Silph Co.</div><p style="font-size:0.9rem; color:var(--text-muted)">Corporação Tech.</p></div>
+          <h2>13. Facções Detalhadas</h2>
+          <div class="card-grid" style="grid-template-columns: 1fr;">
+            
+            <div class="card" style="border-left: 4px solid var(--brand-secondary);">
+                <h4>S.Y.N.C. (Strategic Yield & Neural Control)</h4>
+                <div class="trait-list" style="margin-top:1rem;">
+                    <div class="trait-item"><div class="trait-term">Liderança</div><div class="trait-desc">Diretora Miranda Chen (Ex-Elite Four).</div></div>
+                    <div class="trait-item"><div class="trait-term">Organização</div><div class="trait-desc">Opera como uma força policial militarizada. Agentes de Campo (Paladinos) usam uniformes brancos e Pokémon psíquicos para controle de multidão.</div></div>
+                    <div class="trait-item"><div class="trait-term">Agenda</div><div class="trait-desc">Manter a ordem e garantir que ninguém viole as Leis de Bioética. Odeiam Vigilantes.</div></div>
+                </div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid var(--brand-primary);">
+                <h4>CARTEL ROCKET</h4>
+                <div class="trait-list" style="margin-top:1rem;">
+                    <div class="trait-item"><div class="trait-term">Liderança</div><div class="trait-desc">"O Don" (Identidade desconhecida, suspeita-se de um clone de Giovanni).</div></div>
+                    <div class="trait-item"><div class="trait-term">Organização</div><div class="trait-desc">Máfia global. Capos controlam setores (Drogas, Tráfico de Ovos, Rinhas). Soldados (Grunts) são dispensáveis.</div></div>
+                    <div class="trait-item"><div class="trait-term">Recursos</div><div class="trait-desc">Únicos produtores da droga "R-Dosage" (Shadow Pokémon) e Slave-Balls.</div></div>
+                </div>
+            </div>
+
+            <div class="card" style="border-left: 4px solid #eab308;">
+                <h4>SILPH CORPORATION</h4>
+                <div class="trait-list" style="margin-top:1rem;">
+                    <div class="trait-item"><div class="trait-term">Liderança</div><div class="trait-desc">Conselho Administrativo (IA Porygon-Z é suspeita de manipular as ações).</div></div>
+                    <div class="trait-item"><div class="trait-term">Organização</div><div class="trait-desc">Mega-corporação que fabrica tudo, de comida a armas. Possui exército privado de segurança.</div></div>
+                    <div class="trait-item"><div class="trait-term">Segredos</div><div class="trait-desc">Realizam testes genéticos ilegais (Tipo Null) nos subsolos de Saffron.</div></div>
+                </div>
+            </div>
+            
+             <div class="card" style="border-left: 4px solid #a855f7;">
+                <h4>GANGUES DE RUA (The Glitch, Iron Ronins)</h4>
+                <div class="trait-list" style="margin-top:1rem;">
+                    <div class="trait-item"><div class="trait-term">Modus Operandi</div><div class="trait-desc">Grupos anarquistas que usam Pokémon modificados com sucata cibernética.</div></div>
+                    <div class="trait-item"><div class="trait-term">Utilidade</div><div class="trait-desc">Excelentes informantes e mercenários baratos, mas imprevisíveis.</div></div>
+                </div>
+            </div>
           </div>
         </section>
 
@@ -752,22 +823,65 @@
         </section>
 
         <section id="cases">
-          <h2>15. Casos Reais</h2>
+          <h2>15. Casos Reais (Missões)</h2>
           <div class="card-grid">
-            <div class="card"><div class="kicker">Resgate Noturno</div><p style="color:var(--text-muted); font-size:0.9rem">Infiltração em armazém. Destruir Slave-Balls.</p></div>
-            <div class="card"><div class="kicker">Sabotagem</div><p style="color:var(--text-muted); font-size:0.9rem">Destruir laboratório de mods ilegais com EMP.</p></div>
+            <div class="card">
+                <div class="kicker">1. O LABORATÓRIO FANTASMA</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Invasão a um complexo abandonado da Silph onde Ditto instáveis imitam os PCs.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">2. ESGOTOS DE CELADON</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Caçada a um Muk Gigamax que está intoxicando o suprimento de água do setor pobre.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">3. CARGA VIVA</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Interceptar um trem magnético transportando Ovos Raros antes que chegue ao território Rocket.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">4. ESCOLTA VIP</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Proteger uma Popstar e sua Jynx de stalkers e sequestradores durante um show na Skybox.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">5. A TORRE DE LAVENDER</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Investigar um sinal de rádio ilegal na torre, enfrentando hologramas e espectros reais.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">6. CLUBE DA LUTA</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Infiltrar-se numa rinha subterrânea para resgatar um Machamp campeão escravizado.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">7. BLACKOUT</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Um grupo de Electrode está drenando a energia do hospital. Negociação tensa ou combate explosivo.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">8. DADOS CORROMPIDOS</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Entrar no ciberespaço para deletar um vírus Porygon que está hackeando contas bancárias.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">9. SAFARI DE CONCRETO</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Um Tyranitar enfurecido (Sombra) escapou no centro. Contenção com dano colateral mínimo.</p>
+            </div>
+            <div class="card">
+                <div class="kicker">10. O LEILÃO</div>
+                <p style="font-size:0.85rem; color:var(--text-muted)">Social: Infiltrar um baile de gala para roubar uma Key Stone antes que seja vendida ao Cartel.</p>
+            </div>
           </div>
         </section>
 
         <section id="economy">
-          <h2>16. Economia</h2>
+          <h2>16. Mercado Negro</h2>
+          <div class="lore-box" style="border-color:var(--brand-primary);">
+              Itens proibidos pela S.Y.N.C. mas essenciais para Operativos. Posse pode levar à prisão.
+          </div>
           <div class="table-wrapper">
             <table>
-                <thead><tr><th>Item</th><th>Preço Médio</th></tr></thead>
+                <thead><tr><th>Item Ilegal</th><th>Efeito</th><th>Preço (NC$)</th></tr></thead>
                 <tbody>
-                <tr><td>Keystone</td><td>5.000 NC$</td></tr>
-                <tr><td>Mega Stone</td><td>10.000 NC$</td></tr>
-                <tr><td>Mods Ilícitos</td><td>2k – 8k NC$</td></tr>
+                <tr><td>Slave-Ball (Hackeada)</td><td>Captura forçada (Crime Capital).</td><td>15.000</td></tr>
+                <tr><td>X-Attack (Droga)</td><td>+2 Força por 1 hora. Vicia.</td><td>500</td></tr>
+                <tr><td>Rare Candy (Sintético)</td><td>Avanço instantâneo (Risco de Mutação).</td><td>50.000</td></tr>
+                <tr><td>TM Chip (Queimado)</td><td>Ensina golpe proibido (Explosão, Guilhotina).</td><td>3.000</td></tr>
+                <tr><td>Bloqueador Neural</td><td>Impede leitura mental de Alakazams da polícia.</td><td>1.200</td></tr>
                 </tbody>
             </table>
           </div>
@@ -779,14 +893,35 @@
         </section>
 
         <section id="craft">
-          <h2>18. Craft & Mods</h2>
-          <div class="card"><p style="color:var(--text-muted)">Fabricação de implantes e boosters requer receitas e componentes raros.</p></div>
+          <h2>18. Crafting & Mods</h2>
+          <div class="lore-box">
+              Fabricação exige <strong>Receita (Blueprint)</strong>, <strong>Componentes</strong> e um teste de <strong>Ciência/Reparos</strong>.
+          </div>
+          
+          <div class="card-grid">
+             <div class="card">
+                <h4 style="color:var(--brand-secondary)">RECEITAS COMUNS</h4>
+                <ul class="tech-list">
+                    <li><strong>Adrenalina Shot:</strong> (Química -2). Remove 1 Fadiga. <br><em style="font-size:0.8rem">Req: 2x Químicos.</em></li>
+                    <li><strong>Smoke Bomb:</strong> (Reparos). Cria cobertura instantânea. <br><em style="font-size:0.8rem">Req: 1x Pólvora, 1x Recipiente.</em></li>
+                    <li><strong>Repelente Sônico:</strong> (Ciência). Afasta Zubats/Rattatas. <br><em style="font-size:0.8rem">Req: 1x Bateria, 1x Speaker.</em></li>
+                </ul>
+             </div>
+             <div class="card">
+                <h4 style="color:var(--brand-rare)">RECEITAS AVANÇADAS</h4>
+                <ul class="tech-list">
+                    <li><strong>Visor Noturno:</strong> (Engenharia -2). Visão no escuro. <br><em style="font-size:0.8rem">Req: 1x Lente Óptica, 1x Chipset.</em></li>
+                    <li><strong>Taser de Pulso:</strong> (Engenharia -4). Dano elétrico não letal. <br><em style="font-size:0.8rem">Req: 1x Bateria Alta Voltagem, 1x Condutor.</em></li>
+                    <li><strong>Colete Reativo:</strong> (Ciência -4). +2 Armadura. <br><em style="font-size:0.8rem">Req: 3x Kevlar, 1x Placa Cerâmica.</em></li>
+                </ul>
+             </div>
+          </div>
         </section>
 
         <section id="gm">
             <h2>19. Guia do Mestre</h2>
             <div class="immersion-tip">
-                <strong>Regra de Sincronização:</strong> Desafio Social Estendido. Abordagem -> Oferta -> Pacto.
+                <strong>O Tom do Jogo:</strong> Cyberpunk + Pokémon. Menos "Aventura Mágica", mais "Sobrevivência Urbana".
             </div>
             <div class="kicker" style="margin-top:20px">Ganchos (1d6)</div>
             <div class="card-grid">
