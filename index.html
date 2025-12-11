@@ -90,7 +90,7 @@
             margin-top: 10px;
         }
 
-        /* --- NAV DESKTOP (STICKY) --- */
+        /* --- NAV DESKTOP (STICKY & FULL WIDTH) --- */
         nav {
             position: sticky;
             top: 0;
@@ -105,23 +105,27 @@
 
         .nav-content {
             width: 100%;
-            max-width: 1100px;
+            /* Removemos max-width para ocupar a tela toda no desktop */
+            max-width: none; 
             padding: 10px 20px;
             display: flex;
-            gap: 10px;
-            /* Wrap permite quebrar linha no desktop para não cortar */
-            flex-wrap: wrap; 
+            gap: 5px; /* Gap reduzido para caber tudo */
             justify-content: center;
+            flex-wrap: nowrap; /* Garante uma linha só */
+            overflow-x: auto; /* Scroll horizontal caso a tela seja pequena demais para o desktop mode */
         }
+        
+        /* Esconde scrollbar na nav desktop */
+        .nav-content::-webkit-scrollbar { display: none; }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.75rem;
+            font-size: 0.7rem; /* Fonte levemente menor para caber tudo */
             font-weight: 700;
             text-transform: uppercase;
             white-space: nowrap;
-            padding: 8px 12px;
+            padding: 8px 10px;
             border-radius: 4px;
             background: rgba(255,255,255,0.03);
             border: 1px solid transparent;
@@ -210,7 +214,6 @@
             align-items: center;
         }
         
-        /* Classe auxiliar para subtítulos dentro de cards (Kickers) */
         .kicker {
             color: var(--brand-secondary);
             font-family: var(--mono);
@@ -312,30 +315,34 @@
             padding-top: 2rem;
         }
 
-        /* --- MENU FLUTUANTE & OFFCANVAS (MOBILE) --- */
+        /* --- OFFCANVAS & BOTÃO MOBILE (FIXED) --- */
         .open-nav-btn {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 2000;
+            bottom: 10px; /* Ajustado conforme pedido */
+            right: 10px;  /* Ajustado conforme pedido */
+            z-index: 9999; /* Z-index alto para ficar sempre visível */
             background: rgba(24, 24, 27, 0.95);
-            border: 1px solid var(--brand-primary);
+            border: 2px solid var(--brand-primary);
             color: var(--brand-primary);
-            padding: 12px 20px;
-            border-radius: 50px;
-            font-family: var(--mono);
-            font-weight: 800;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 0;
+            display: none; /* Desktop = none */
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
             backdrop-filter: blur(5px);
-            display: none; /* Escondido por padrão (Desktop) */
+            transition: transform 0.2s;
         }
-        .open-nav-btn:hover { background: var(--brand-primary); color: #fff; }
+        .open-nav-btn:hover { background: var(--brand-primary); color: #fff; transform: scale(1.1); }
+        .open-nav-btn:active { transform: scale(0.95); }
 
         .offcanvas {
-            position: fixed; inset: 0; z-index: 3000;
+            position: fixed; inset: 0; z-index: 9998;
             display: none; align-items: flex-start; justify-content: center;
-            background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.95); backdrop-filter: blur(8px);
             padding: 20px; overflow: auto;
         }
         .offcanvas.open { display: flex; animation: fadeIn .16s ease-out; }
@@ -346,7 +353,7 @@
             background: #18181b; border: 1px solid #3f3f46;
             border-radius: 12px; padding: 24px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.8);
-            margin-top: auto; margin-bottom: auto; /* Centraliza vertical */
+            margin-top: auto; margin-bottom: auto;
         }
 
         .offcanvas .close-btn {
@@ -368,16 +375,16 @@
 
         /* --- MEDIA QUERIES --- */
         @media (max-width: 1023px) {
-            /* MOBILE: Esconde NAV superior, Mostra botão flutuante */
+            /* MOBILE: NAV superior some, Botão Pokébola aparece */
             nav { display: none !important; }
-            .open-nav-btn { display: block; }
+            .open-nav-btn { display: flex; }
             h1 { font-size: 1.8rem; }
             .card-grid { grid-template-columns: 1fr; }
         }
 
         @media (min-width: 1024px) {
-            /* DESKTOP: NAV superior visível, Botão flutuante oculto */
-            .open-nav-btn { display: none; }
+            /* DESKTOP: NAV superior visível, Botão some */
+            .open-nav-btn { display: none !important; }
         }
     </style>
 </head>
@@ -411,7 +418,14 @@
   </div>
 </div>
 
-<button class="open-nav-btn">MENU // ÍNDICE</button>
+<button class="open-nav-btn" aria-label="Abrir Menu">
+    <svg viewBox="0 0 100 100" width="30" height="30" style="fill:none; stroke:currentColor; stroke-width:8; stroke-linecap:round;">
+        <circle cx="50" cy="50" r="45" />
+        <path d="M 5,50 L 95,50" />
+        <circle cx="50" cy="50" r="14" fill="#18181b" />
+        <circle cx="50" cy="50" r="6" fill="currentColor" stroke="none" />
+    </svg>
+</button>
 
     <header>
         <span class="badge">USO RESTRITO // OPERATIVOS</span>
@@ -600,11 +614,7 @@
                     <div class="trait-list">
                         <div class="trait-item"><div class="trait-term">Sentinela (Prontidão)</div><div class="trait-desc">Não dorme, +2 Perceber imóvel. Alerta telepático.</div></div>
                         <div class="trait-item"><div class="trait-term">Rastreador K-9</div><div class="trait-desc">+2 Rastreio pelo cheiro. Identifica químicos.</div></div>
-                        <div class="trait-item"><div class="trait-term">Holofote (Flash)</div><div class="trait-desc">Luz de 20m. Cega alvos em combate (Agilidade).</div></div>
                         <div class="trait-item"><div class="trait-term">Bateria Viva</div><div class="trait-desc">Usa 1 Ferimento para recarregar eletrônicos.</div></div>
-                        <div class="trait-item"><div class="trait-term">Cortador (Cut)</div><div class="trait-desc">Corta obstáculos naturais e cercas leves.</div></div>
-                        <div class="trait-item"><div class="trait-term">Escavador (Dig)</div><div class="trait-desc">Cria túneis e trincheiras em solo macio.</div></div>
-                        <div class="trait-item"><div class="trait-term">Surfista</div><div class="trait-desc">Carrega 1 humano na água sem penalidade.</div></div>
                         <div class="trait-item"><div class="trait-term">Teleporte de Carga</div><div class="trait-desc">Teleporta objetos pequenos (não vivos) a 10m.</div></div>
                         <div class="trait-item"><div class="trait-term">Antena de Rádio</div><div class="trait-desc">Capta sinais de rádio/celular num raio de 1km.</div></div>
                         <div class="trait-item"><div class="trait-term">Detector de Veneno</div><div class="trait-desc">Identifica toxinas no ar ou comida.</div></div>
@@ -612,7 +622,6 @@
                         <div class="trait-item"><div class="trait-term">Criogenia</div><div class="trait-desc">Preserva alimentos ou corpos com gelo.</div></div>
                         <div class="trait-item"><div class="trait-term">Sonar (Echolocation)</div><div class="trait-desc">Mapeia cavernas escuras perfeitamente.</div></div>
                         <div class="trait-item"><div class="trait-term">Curandeiro de Campo</div><div class="trait-desc">+2 em testes de Cura no Operativo.</div></div>
-                        <div class="trait-item"><div class="trait-term">Guincho (Strength)</div><div class="trait-desc">Move objetos pesados (Força +2 para carga).</div></div>
                     </div>
                 </div>
 
