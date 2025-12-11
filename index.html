@@ -4,72 +4,297 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROJECT SYMBIOSIS: MANUAL DE OPERAÇÕES v.2077</title>
-    <style>
+   <style>
         :root {
-            --bg-body: #0a0f1c;
-            --bg-panel: #151e32;
-            --bg-card: rgba(21, 30, 50, 0.7);
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --accent-cyan: #00f0ff;
-            --accent-pink: #ff0055;
-            --accent-yellow: #fcee0a;
-            --accent-green: #00ff9d;
-            --border-glass: 1px solid rgba(255, 255, 255, 0.1);
-            --shadow-glow: 0 0 10px rgba(0, 240, 255, 0.1);
+            /* Paleta SymbioDex */
+            --bg-body: #121214;      /* Cinza Chumbo Profundo */
+            --bg-panel: #202024;     /* Cinza Painel */
+            --bg-card: rgba(32, 32, 36, 0.75); /* Vidro Escuro */
+            
+            --text-primary: #e1e1e6;
+            --text-secondary: #a8a8b3;
+            --text-highlight: #ffffff;
+
+            /* Cores de Destaque - Tema "Red Version" Sombrio */
+            --brand-red: #ff3e3e;    /* Vermelho Pokédex Neon */
+            --brand-dark-red: #820000;
+            --tech-cyan: #00d2ff;    /* Para dados digitais */
+            --alert-yellow: #eab308;
+            --rare-purple: #bd93f9;
+
+            --border-glass: 1px solid rgba(255, 62, 62, 0.2);
+            --shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            --shadow-glow: 0 0 15px rgba(255, 62, 62, 0.15);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             background-color: var(--bg-body);
             color: var(--text-primary);
-            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-            line-height: 1.6;
-            padding: 20px;
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif; /* Mais limpo */
+            line-height: 1.7;
+            padding: 40px 20px;
+            
+            /* Fundo com padrão sutil de grade hexagonal */
             background-image: 
-                linear-gradient(rgba(10, 15, 28, 0.95), rgba(10, 15, 28, 0.95)),
-                url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+                radial-gradient(circle at 100% 0%, rgba(255, 62, 62, 0.1) 0%, transparent 20%),
+                linear-gradient(rgba(18, 18, 20, 0.95), rgba(18, 18, 20, 0.95)),
+                url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V26H0v-5.5l6-5.5-6-5.5V4h20v5.5l-6 5.5 6 5.5zm0-11l6-5.5V26h20v-5.5l-6-5.5 6-5.5V4H20v5.5zM0 26h20v14H0V26zm20 0h20v14H20V26z' fill='%23252525' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
 
-        /* TIPOGRAFIA */
-        h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
-        h1 { color: var(--accent-cyan); font-size: 2.5rem; text-shadow: 0 0 15px rgba(0, 240, 255, 0.3); border-bottom: 2px solid var(--accent-cyan); padding-bottom: 10px; }
-        h2 { color: var(--accent-green); font-size: 1.8rem; margin-top: 3rem; border-left: 5px solid var(--accent-green); padding-left: 15px; background: linear-gradient(90deg, rgba(0,255,157,0.1) 0%, transparent 100%); }
-        h3 { color: var(--accent-yellow); font-size: 1.2rem; margin-top: 1.5rem; border-bottom: 1px dashed var(--text-secondary); padding-bottom: 5px; }
+        /* TIPOGRAFIA & CABEÇALHO */
+        header {
+            border-left: 5px solid var(--brand-red);
+            padding-left: 20px;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        /* Efeito de "Luz de Status" da Pokedex no topo */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--tech-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--tech-cyan);
+            animation: pulse 3s infinite;
+        }
 
-        .classification-badge { display: inline-block; background: var(--accent-pink); color: #fff; padding: 5px 10px; font-weight: bold; font-size: 0.8rem; border-radius: 2px; margin-bottom: 20px; box-shadow: 0 0 10px var(--accent-pink); }
-        .lore-box { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--text-secondary); padding: 15px; margin: 15px 0; font-style: italic; color: var(--text-secondary); }
-        .immersion-tip { border-left: 3px solid var(--accent-cyan); background: rgba(0, 240, 255, 0.05); padding: 15px; margin: 20px 0; }
-        .immersion-tip strong { color: var(--accent-cyan); }
-        .warning-alert { background: rgba(255, 0, 85, 0.1); border: 1px solid var(--accent-pink); color: #ff99bb; padding: 15px; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
+        h1 {
+            color: var(--text-highlight);
+            font-family: 'Consolas', monospace; /* Manter monospaced só no título */
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px rgba(255, 62, 62, 0.4);
+        }
+        
+        h1 span { color: var(--brand-red); }
 
-        /* GRID SYSTEM */
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        h2 {
+            color: var(--brand-red);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--brand-red);
+            margin-right: 10px;
+            transform: rotate(45deg);
+        }
 
-        .card { background: var(--bg-card); border: var(--border-glass); padding: 20px; border-radius: 4px; transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); border-color: var(--accent-cyan); }
-        .card-header { color: var(--accent-cyan); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; }
+        h3 {
+            color: var(--text-highlight);
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--bg-panel);
+            padding-bottom: 5px;
+        }
+
+        /* COMPONENTES DE UI */
+        .classification-badge {
+            display: inline-block;
+            background: rgba(255, 62, 62, 0.15);
+            border: 1px solid var(--brand-red);
+            color: var(--brand-red);
+            padding: 4px 12px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.75rem;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        /* Caixas de Lore / Dicas */
+        .immersion-tip, .lore-box, .warning-alert {
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .immersion-tip {
+            background: linear-gradient(90deg, rgba(0, 210, 255, 0.05) 0%, transparent 100%);
+            border-left: 3px solid var(--tech-cyan);
+            padding: 20px;
+            margin: 25px 0;
+            font-size: 0.95rem;
+        }
+        .immersion-tip strong { color: var(--tech-cyan); }
+
+        .lore-box {
+            background: var(--bg-body);
+            border: 1px solid #333;
+            padding: 12px;
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .warning-alert {
+            background: linear-gradient(90deg, rgba(234, 179, 8, 0.05) 0%, transparent 100%);
+            border: 1px solid var(--alert-yellow);
+            color: #fef08a; /* Amarelo claro */
+            padding: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        /* GRIDS & CARDS */
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 3px solid #333; /* Topo neutro padrão */
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-top-color: var(--brand-red);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .card-header {
+            font-family: 'Consolas', monospace;
+            color: var(--text-highlight);
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+        }
 
         /* TABELAS */
-        .tech-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--bg-panel); }
-        .tech-table th { background: rgba(0, 240, 255, 0.1); color: var(--accent-cyan); padding: 12px; text-align: left; border-bottom: 1px solid var(--accent-cyan); }
-        .tech-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .tech-table tr:hover { background: rgba(255,255,255,0.05); }
+        .tech-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 25px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            background: var(--bg-panel);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
 
-        /* LISTAS */
+        .tech-table th {
+            background: #18181b;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        .tech-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            color: var(--tech-cyan);
+        }
+        
+        .tech-table tr:last-child td { border-bottom: none; }
+        .tech-table tr:hover { background: rgba(255, 255, 255, 0.03); }
+
+        /* LISTAS & DEFINIÇÕES */
         ul { list-style: none; }
-        li { margin-bottom: 8px; position: relative; padding-left: 20px; }
-        li::before { content: "►"; color: var(--accent-cyan); position: absolute; left: 0; font-size: 0.8em; top: 2px; }
+        li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        
+        /* Bullet point estilo Pokeball minimalista */
+        li::before { 
+            content: ""; 
+            position: absolute; 
+            left: 0; 
+            top: 8px; 
+            width: 6px; 
+            height: 6px; 
+            background: var(--brand-red); 
+            border-radius: 50%; 
+        }
 
-        /* DEFINIÇÃO LISTAS (DL/DT/DD) */
-        .trait-list dt { color: var(--accent-cyan); font-weight: bold; margin-top: 15px; border-left: 3px solid var(--accent-cyan); padding-left: 10px; }
-        .trait-list dd { margin-left: 13px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; }
+        .trait-list dt {
+            color: var(--text-highlight);
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+        .trait-list dt::before {
+            content: '>';
+            color: var(--brand-red);
+            margin-right: 8px;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        
+        .trait-list dd {
+            margin-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            border-left: 1px solid rgba(255,255,255,0.05);
+            padding-left: 12px;
+        }
 
-        .footer { margin-top: 50px; border-top: 1px solid var(--text-secondary); padding-top: 20px; text-align: center; color: var(--text-secondary); font-size: 0.8rem; }
+        .footer {
+            margin-top: 80px;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            text-align: center;
+            color: #555;
+            font-size: 0.75rem;
+            font-family: 'Consolas', monospace;
+            letter-spacing: 1px;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0); }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 20px 15px; }
+            h1 { font-size: 1.8rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
