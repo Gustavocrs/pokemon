@@ -22,15 +22,12 @@
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
-            font-family: 'Courier New', monospace; /* Tech feel */
+            font-family: 'Courier New', monospace;
             line-height: 1.6;
             padding: 2rem;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1000px; margin: 0 auto; }
 
         /* Header Tático */
         header {
@@ -40,6 +37,8 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         h1 {
@@ -59,9 +58,7 @@
         }
 
         /* Seções e Cards */
-        section {
-            margin-bottom: 4rem;
-        }
+        section { margin-bottom: 4rem; }
 
         h2 {
             color: var(--accent-cyan);
@@ -76,6 +73,8 @@
             color: var(--text-light);
             margin-top: 2rem;
             margin-bottom: 1rem;
+            border-bottom: 1px solid var(--bg-panel);
+            padding-bottom: 0.5rem;
         }
 
         .card-grid {
@@ -105,18 +104,21 @@
             margin-bottom: 0.5rem;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         .cost-badge {
             background: var(--bg-dark);
             padding: 2px 6px;
             border-radius: 4px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: var(--accent-warn);
+            border: 1px solid var(--accent-warn);
         }
 
-        .tier-3 .cost-badge { color: var(--accent-rare); border: 1px solid var(--accent-rare); }
-        .tier-2 .cost-badge { color: var(--accent-danger); }
+        .tier-3 .cost-badge { color: var(--accent-rare); border-color: var(--accent-rare); }
+        .tier-2 .cost-badge { color: var(--accent-danger); border-color: var(--accent-danger); }
+        .tier-1 .cost-badge { color: var(--accent-cyan); border-color: var(--accent-cyan); }
         
         /* Tabelas Futuristas */
         table {
@@ -124,6 +126,8 @@
             border-collapse: collapse;
             margin: 1rem 0;
             background: var(--bg-panel);
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         th, td {
@@ -136,30 +140,15 @@
             color: var(--accent-cyan);
             text-transform: uppercase;
             font-size: 0.9rem;
+            background: rgba(0,0,0,0.2);
         }
 
-        tr:hover {
-            background: rgba(255,255,255,0.05);
-        }
+        tr:hover { background: rgba(255,255,255,0.05); }
 
-        /* Listas e Notas */
-        ul {
-            list-style: none;
-            margin-left: 0;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        li::before {
-            content: ">";
-            color: var(--accent-cyan);
-            position: absolute;
-            left: 0;
-        }
+        /* Listas e Elementos */
+        ul { list-style: none; }
+        li { margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative; }
+        li::before { content: "►"; color: var(--accent-cyan); position: absolute; left: 0; font-size: 0.8rem; top: 2px; }
 
         .warning-box {
             border: 1px solid var(--accent-danger);
@@ -167,7 +156,24 @@
             color: var(--accent-danger);
             padding: 1rem;
             margin: 1rem 0;
-            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .info-box {
+            border: 1px solid var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            color: var(--text-light);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+
+        .stat-bar {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px dashed #334155;
+            padding-bottom: 0.2rem;
         }
 
         /* Footer */
@@ -179,7 +185,6 @@
             border-top: 1px solid #334155;
             padding-top: 2rem;
         }
-
     </style>
 </head>
 <body>
@@ -194,22 +199,48 @@
     </header>
 
     <section id="intro">
-        <h2>1. Status do Mundo</h2>
-        <p>A era da inocência acabou. A tecnologia de teletransporte de matéria (Pokébolas) foi banida por convenções éticas internacionais, consideradas tortura digital. Nós não somos treinadores; somos <strong>Operativos</strong>.</p>
-        
+        <h2>1. Introdução & Ambientação</h2>
+        <div class="card">
+            <p><strong>Status do Mundo (2077):</strong> A era da inocência acabou. A tecnologia de teletransporte de matéria (Pokébolas) foi banida por convenções éticas internacionais, consideradas tortura digital. Nós não somos treinadores; somos <strong>Operativos</strong>.</p>
+            <br>
+            <ul>
+                <li><strong>S.Y.N.C.:</strong> Captura substituída por contrato biológico via interface neural.</li>
+                <li><strong>Conexão > Coleção:</strong> Manter um Bio-Ativo custa caro e exige sanidade.</li>
+                <li><strong>O Inimigo:</strong> O Cartel Rocket utiliza "Slave-Balls" que fritam inibidores de dor.</li>
+            </ul>
+        </div>
         <div class="warning-box">
-            ⚠ ALERTA DE AMEAÇA: O Cartel Rocket utiliza "Slave-Balls" ilegais que fritam os inibidores de dor dos Pokémon. Engajamento requer cautela extrema.
+            ⚠ AMEAÇA ATIVA: Unidades Rocket possuem vantagem "Berserker" (não sentem dor) mas sofrem de "Burrice Artificial".
+        </div>
+    </section>
+
+    <section id="operative">
+        <h2>2. O Operativo (Humano)</h2>
+        <p>Não existem classes fixas. Construa seu perfil profissional:</p>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">O HANDLER</div>
+                <p>Especialista em comportamento. Seus Pokémon recuperam Estresse mais rápido e obedecem comandos complexos.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">O TECH-OP</div>
+                <p>Usa o SymbioDex para hackear o ambiente e controla Drones de suporte enquanto o Pokémon protege.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">O VANGUARD</div>
+                <p>Luta armada lado a lado com o Pokémon, usando o monstro como cobertura móvel tática.</p>
+            </div>
         </div>
     </section>
 
     <section id="conversion">
-        <h2>2. Conversão de Bio-Ativos</h2>
+        <h2>3. Bio-Ativos: Conversão & Dados</h2>
         <p>Algoritmo de tradução de Datadex (0-255) para Sistema Savage (Dados).</p>
         
         <table>
             <thead>
                 <tr>
-                    <th>Stat (Base)</th>
+                    <th>Stat Base</th>
                     <th>Dado (SWADE)</th>
                     <th>Classificação</th>
                 </tr>
@@ -242,52 +273,21 @@
                 </tr>
             </tbody>
         </table>
-    </section>
 
-    <section id="genesis">
-        <h2>3. Sistema de Gênese (Vantagens)</h2>
-        <p>Orçamento Inicial: <strong>3 Pontos</strong>. Max: 5 Pontos.</p>
-
-        <h3>💎 Tier 3: Anomalias (Custo: 3)</h3>
-        <div class="card-grid">
-            <div class="card tier-3">
-                <div class="card-title">ANOMALIA CROMÁTICA (SHINY) <span class="cost-badge">3 PTS</span></div>
-                <p>+1 Benne exclusivo/sessão. +2 em testes sociais. Valor de mercado 5x maior. Alvo prioritário de ladrões.</p>
-            </div>
-            <div class="card tier-3">
-                <div class="card-title">LINHAGEM ALPHA <span class="cost-badge">3 PTS</span></div>
-                <p>Tamanho +1. Ganha +1 Ferimento Máximo (Total 4). Seus ataques empurram o alvo.</p>
-            </div>
-            <div class="card tier-3">
-                <div class="card-title">GENOMA DELTA <span class="cost-badge">3 PTS</span></div>
-                <p>Altera Tipo elemental e fraquezas. Acesso a Protocolos de outro elemento impossível para a espécie.</p>
-            </div>
-        </div>
-
-        <h3>⚔️ Tier 2: Combate (Custo: 2)</h3>
-        <div class="card-grid">
-            <div class="card tier-2">
-                <div class="card-title">PELE DE ADAMANTIUM <span class="cost-badge">2 PTS</span></div>
-                <p>Ignora dano extra de Acertos Críticos. Só recebe o dano base.</p>
-            </div>
-            <div class="card tier-2">
-                <div class="card-title">INSTINTO PREDATÓRIO <span class="cost-badge">2 PTS</span></div>
-                <p>+2 de Dano fixo em todos os ataques naturais (Mordidas/Garras).</p>
-            </div>
-            <div class="card tier-2">
-                <div class="card-title">MIRA COMPUTADORIZADA <span class="cost-badge">2 PTS</span></div>
-                <p>Se imóvel, dobra o alcance de projéteis e ignora penalidades de cobertura.</p>
-            </div>
+        <div class="info-box">
+            <strong>Regra de Defesa (Armadura):</strong><br>
+            Def < 50 (+0) | Def 51-100 (+2) | Def 101-150 (+4) | Def 150+ (+6)
         </div>
     </section>
 
     <section id="evolution">
-        <h2>4. Ciclo de Evolução</h2>
+        <h2>4. Ciclo de Evolução (Patamares)</h2>
+        <p>A evolução é constante, baseada em coleta de <strong>Bio-Data (BD)</strong>.</p>
         <table>
             <thead>
                 <tr>
                     <th>Posto</th>
-                    <th>Bio-Data (XP)</th>
+                    <th>Bio-Data</th>
                     <th>Benefício Principal</th>
                 </tr>
             </thead>
@@ -295,7 +295,7 @@
                 <tr>
                     <td>NOVATO</td>
                     <td>0 - 15</td>
-                    <td>Acesso a Perícias Básicas (Max d8).</td>
+                    <td>Perícias Básicas (Max d8). 1 Protocolo Especial.</td>
                 </tr>
                 <tr>
                     <td>EXPERIENTE</td>
@@ -319,6 +319,158 @@
                 </tr>
             </tbody>
         </table>
+    </section>
+
+    <section id="genesis">
+        <h2>5. Sistema de Gênese (Vantagens)</h2>
+        <p>Orçamento Inicial: <strong>3 Pontos</strong>.</p>
+
+        <h3>💎 Tier 3: Anomalias (Custo: 3)</h3>
+        <div class="card-grid">
+            <div class="card tier-3">
+                <div class="card-title">ANOMALIA CROMÁTICA (SHINY) <span class="cost-badge">3 PTS</span></div>
+                <p>+1 Benne exclusivo. +2 em testes sociais. Valor de mercado 5x maior. Alvo prioritário de roubo.</p>
+            </div>
+            <div class="card tier-3">
+                <div class="card-title">LINHAGEM ALPHA <span class="cost-badge">3 PTS</span></div>
+                <p>Tamanho +1. Ganha +1 Ferimento Máximo (Total 4). Ataques empurram o alvo.</p>
+            </div>
+            <div class="card tier-3">
+                <div class="card-title">GENOMA DELTA <span class="cost-badge">3 PTS</span></div>
+                <p>Altera Tipo elemental e fraquezas. Acesso a Protocolos de outro elemento.</p>
+            </div>
+        </div>
+
+        <h3>⚔️ Tier 2: Combate (Custo: 2)</h3>
+        <div class="card-grid">
+            <div class="card tier-2">
+                <div class="card-title">PELE DE ADAMANTIUM <span class="cost-badge">2 PTS</span></div>
+                <p>Ignora dano extra de Acertos Críticos. Só recebe o dano base.</p>
+            </div>
+            <div class="card tier-2">
+                <div class="card-title">INSTINTO PREDATÓRIO <span class="cost-badge">2 PTS</span></div>
+                <p>+2 de Dano fixo em todos os ataques naturais (Mordidas/Garras).</p>
+            </div>
+            <div class="card tier-2">
+                <div class="card-title">MIRA COMPUTADORIZADA <span class="cost-badge">2 PTS</span></div>
+                <p>Se imóvel, dobra o alcance de projéteis e ignora penalidades de cobertura.</p>
+            </div>
+        </div>
+
+        <h3>🔧 Tier 1: Utilitários (Custo: 1)</h3>
+        <ul class="card">
+            <li><strong>Visão Térmica:</strong> Enxerga no escuro e através de fumaça.</li>
+            <li><strong>Carapaça Reativa:</strong> Quem tocar sofre 2d4 de dano.</li>
+            <li><strong>Escalador:</strong> Anda em paredes/tetos.</li>
+            <li><strong>Dentes de Vampiro:</strong> Recupera 1 Fadiga se ferir com mordida.</li>
+            <li><strong>Link Empático:</strong> Compartilha Bennies com o Operativo.</li>
+        </ul>
+    </section>
+
+    <section id="hindrances">
+        <h2>6. Desvantagens (Defeitos)</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title" style="color: var(--accent-danger)">COMPORTAMENTAIS</div>
+                <ul>
+                    <li><strong>Trauma de Cativeiro (Maior):</strong> Pânico ao ver Pokébolas/grades.</li>
+                    <li><strong>Sede de Sangue (Menor):</strong> Ataca inimigos caídos.</li>
+                    <li><strong>Desobediente (Maior):</strong> Age sozinho se o dono falhar.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title" style="color: var(--accent-danger)">BIOLÓGICAS & TÁTICAS</div>
+                <ul>
+                    <li><strong>Metabolismo Hiperativo:</strong> Custo de manutenção triplo.</li>
+                    <li><strong>Tamanho Colossal:</strong> +2 para ser acertado. Não entra em portas.</li>
+                    <li><strong>Bateria Viciada:</strong> Recupera Bio-Energia pela metade.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="mechanics">
+        <h2>7. Mecânicas de Combate</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">RECURSOS</div>
+                <div class="stat-bar"><span>Bio-Energia (PBE)</span> <span>Combustível para golpes especiais.</span></div>
+                <div class="stat-bar"><span>Sobrecarga</span> <span>Golpe sem PBE = 1 Fadiga.</span></div>
+                <div class="stat-bar"><span>Estresse</span> <span>Se estourar = Ruptura de Link.</span></div>
+            </div>
+            <div class="card">
+                <div class="card-title">LETALIDADE</div>
+                <div class="stat-bar"><span>Humanos</span> <span>3 Ferimentos = Incapacitado.</span></div>
+                <div class="stat-bar"><span>Pokémon</span> <span>3 Ferimentos = Estado Crítico (Morte).</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="logistics">
+        <h2>8. Logística & Equipamentos</h2>
+        <p>A economia de Neo-Kanto (NC$) é implacável.</p>
+        
+        <h3>8.1 Gear de Pokémon (Implantes)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Efeito</th>
+                    <th>Custo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bio-Gel Injector</td>
+                    <td>Implante de cura lenta (Remove Fadiga).</td>
+                    <td>2000 NC$</td>
+                </tr>
+                <tr>
+                    <td>Limitador Muscular</td>
+                    <td>+2 Dano, -2 Aparar (Exoesqueleto).</td>
+                    <td>1500 NC$</td>
+                </tr>
+                <tr>
+                    <td>Escudo de Emergência</td>
+                    <td>Evita morte imediata (1 uso).</td>
+                    <td>800 NC$</td>
+                </tr>
+                <tr>
+                    <td>Armadura Reativa</td>
+                    <td>Dano 2d4 em quem toca.</td>
+                    <td>1200 NC$</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>8.2 Ferramentas do Operativo</h3>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-title">JAMMER DE ESFERAS</div>
+                <p>Impede que Rockets recolham Pokémon feridos ("Retornar"). Força o inimigo a lidar com as consequências.</p>
+            </div>
+            <div class="card">
+                <div class="card-title">LIBERATOR TOOL</div>
+                <p>Ferramenta hacker para abrir Slave-Balls apreendidas. Falha crítica causa Morte Digital do Pokémon.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gm-guide">
+        <h2>9. Guia do Mestre</h2>
+        <div class="info-box">
+            <strong>A Regra de Sincronização:</strong> Não se joga uma bola. É um Desafio Social Estendido:<br>
+            1. Abordagem (Furtividade/Diplomacia) -> 2. Oferta (Recurso) -> 3. Pacto (Espírito vs Espírito).
+        </div>
+        
+        <h3>Ganchos de Missão</h3>
+        <ul>
+            <li><strong>Resgate de Ativo:</strong> Recuperar Pokémon roubado por gangue.</li>
+            <li><strong>Sabotagem Corporativa:</strong> Hackear servidores da Silph Co.</li>
+            <li><strong>Escolta VIP:</strong> Proteger carga viva (Ovo raro) na Zona Industrial.</li>
+            <li><strong>Investigação Noir:</strong> Rastrear tráfico de carne de Tauros.</li>
+            <li><strong>Contenção de Falha:</strong> Caçar um Ditto assassino que imita humanos.</li>
+        </ul>
     </section>
 
     <footer>
