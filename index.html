@@ -99,7 +99,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             width: 100%;
-            height: 50px; /* Altura fixa */
+            height: 54px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -111,23 +111,23 @@
             display: flex;
             gap: 4px;
             align-items: center;
-            justify-content: flex-start; /* Alinha à esquerda para permitir scroll natural */
+            justify-content: flex-start; /* Alinha à esquerda para scroll natural */
             flex-wrap: nowrap;
-            overflow-x: auto; /* Permite scroll se necessário */
-            scrollbar-width: none;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
             height: 100%;
         }
         
-        .nav-content::-webkit-scrollbar { display: none; }
+        .nav-content::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.65rem; /* Fonte compacta */
+            font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
             white-space: nowrap;
-            padding: 6px 8px;
+            padding: 8px 10px;
             border-radius: 4px;
             background: rgba(255,255,255,0.02);
             border: 1px solid transparent;
@@ -144,7 +144,7 @@
         /* --- LAYOUT & SECTIONS --- */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        section { margin-bottom: 5rem; scroll-margin-top: 60px; padding-top: 2rem; }
+        section { margin-bottom: 5rem; scroll-margin-top: 70px; padding-top: 2rem; }
 
         h2 {
             font-family: var(--mono);
@@ -330,8 +330,8 @@
         /* --- OFFCANVAS & BOTÃO MOBILE (FIXED & SAFE) --- */
         .open-nav-btn {
             position: fixed;
-            bottom: 25px; /* Mais margem para não cortar */
-            right: 25px;  /* Mais margem para não cortar */
+            bottom: 25px;
+            right: 25px;
             z-index: 9999;
             background: rgba(24, 24, 27, 0.95);
             border: 2px solid var(--brand-primary);
@@ -408,14 +408,14 @@
     <div style="font-family:var(--mono);font-weight:800;color:var(--brand-primary);margin-bottom:15px; font-size:1.1rem;">ÍNDICE OPERACIONAL</div>
     <div class="col-links">
       <a class="menu-link" href="#intro">1. Introdução</a>
-      <a class="menu-link" href="#create">2. Criação de Personagem</a>
+      <a class="menu-link" href="#create">2. Criação</a>
       <a class="menu-link" href="#operative">3. O Operativo</a>
       <a class="menu-link" href="#bioactive">4. Bio-Ativos</a>
-      <a class="menu-link" href="#genesis">5. Gênese (Traits)</a>
+      <a class="menu-link" href="#genesis">5. Gênese</a>
       <a class="menu-link" href="#modules">6. TMs & HMs</a>
       <a class="menu-link" href="#mega">7. Mega Evolução</a>
       <a class="menu-link" href="#hindrances">8. Desvantagens</a>
-      <a class="menu-link" href="#mechanics">9. Mecânicas & Sincronização</a>
+      <a class="menu-link" href="#mechanics">9. Mecânicas & Combate</a>
       <a class="menu-link" href="#logistics">10. Logística</a>
       <a class="menu-link" href="#missions">11. Regras de Missões</a>
       <a class="menu-link" href="#env">12. Clima & Ambiente</a>
@@ -450,7 +450,7 @@
             <a href="#intro">1. Intro</a>
             <a href="#create">2. Criação</a>
             <a href="#operative">3. Operativo</a>
-            <a href="#bioactive">4. Bio</a>
+            <a href="#bioactive">4. Bio-Ativos</a>
             <a href="#genesis">5. Gênese</a>
             <a href="#modules">6. TMs</a>
             <a href="#mega">7. Mega</a>
@@ -517,21 +517,111 @@
 
         <section id="bioactive">
             <h2>4. Bio-Ativos: Regras</h2>
-            <h3>4.1 Conversão de Dados</h3>
+
+            <h3>4.1 Conversão de Dados (Datadex -> Savage Worlds)</h3>
+            <p>Utilizamos os stats base da espécie (0-255) para definir os dados de RPG.</p>
+            
             <div class="table-wrapper">
                 <table>
-                    <thead><tr><th>Stat Base</th><th>Dado (SWADE)</th><th>Classificação</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th style="color: var(--brand-secondary);">STAT BASE (DATADEX)</th>
+                            <th style="color: var(--brand-secondary);">DADO (SWADE)</th>
+                            <th style="color: var(--brand-secondary);">CLASSIFICAÇÃO</th>
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr><td>00 - 45</td><td>d4</td><td>Civil / Frágil</td></tr>
                         <tr><td>46 - 80</td><td>d6</td><td>Padrão / Competente</td></tr>
                         <tr><td>81 - 110</td><td>d8</td><td>Atlético / Forte</td></tr>
                         <tr><td>111 - 140</td><td>d10</td><td>Elite / Brutal</td></tr>
-                        <tr><td>141+</td><td>d12</td><td>Ápice Biológico</td></tr>
+                        <tr><td>141 - 170</td><td>d12</td><td>Ápice Biológico</td></tr>
+                        <tr><td>171 - 200</td><td>d12 + 1</td><td>Anomalia Genética</td></tr>
+                        <tr><td>201 - 230</td><td>d12 + 2</td><td>Catástrofe Natural</td></tr>
+                        <tr><td>231 - 250+</td><td>d12 + 3</td><td>Divindade / Kaiju</td></tr>
                     </tbody>
                 </table>
             </div>
-            <h3>4.2 Ciclo de Evolução</h3>
-            <p>A cada 5 pontos de Bio-Data (BD), o Pokémon ganha um Avanço.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4 style="border:none; margin-bottom:0.5rem">MAPEAMENTO</h4>
+                    <div style="border-top:1px dashed var(--border-color); padding-top:1rem;">
+                        <ul class="tech-list" style="font-weight:600;">
+                            <li><span style="color:var(--brand-primary)">></span> HP Base → <strong>Vigor</strong></li>
+                            <li><span style="color:var(--brand-primary)">></span> Attack → <strong>Força</strong></li>
+                            <li><span style="color:var(--brand-primary)">></span> Speed → <strong>Agilidade</strong></li>
+                            <li><span style="color:var(--brand-primary)">></span> Sp. Atk → <strong>Espírito</strong></li>
+                            <li><span style="color:var(--brand-primary)">></span> Sp. Def → <strong>Astúcia</strong></li>
+                            <li><span style="color:var(--brand-primary)">></span> Defense → <strong>Armadura Natural</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="border:none; margin-bottom:0.5rem">REGRA DE ARMADURA</h4>
+                     <div style="border-top:1px dashed var(--border-color); padding-top:1rem;">
+                        <ul class="tech-list" style="font-weight:600;">
+                            <li><span style="color:var(--brand-primary)">></span> Def < 50: <strong>+0</strong> (Pele Macia)</li>
+                            <li><span style="color:var(--brand-primary)">></span> Def 51-100: <strong>+2</strong> (Couro/Pelos)</li>
+                            <li><span style="color:var(--brand-primary)">></span> Def 101-150: <strong>+4</strong> (Rocha/Metal)</li>
+                            <li><span style="color:var(--brand-primary)">></span> Def 150+: <strong>+6</strong> (Blindagem Pesada)</li>
+                            <li><span style="color:var(--brand-primary)">></span> Def 200+: <strong>+8</strong> (Intransponível)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>4.2 Ciclo de Evolução (Patamares)</h3>
+            <p>Evolução via Bio-Data (BD). A cada 5 BD, o Pokémon ganha um Avanço.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color:var(--text-main); font-family:var(--mono); text-transform:uppercase;">1. NOVATO</strong>
+                        <span style="background:#27272a; font-size:0.7rem; padding:2px 6px; border-radius:4px; font-weight:bold; color:var(--text-muted);">NVL 1-20</span>
+                    </div>
+                    <div style="border-top:1px dashed var(--border-color); padding-top:10px; font-size:0.9rem; color:var(--text-muted);">
+                        Frágil, depende de ordens. Perícias máx d8. Conhece apenas 1 Protocolo Especial.
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color:var(--text-main); font-family:var(--mono); text-transform:uppercase;">2. EXPERIENTE</strong>
+                        <span style="background:#27272a; font-size:0.7rem; padding:2px 6px; border-radius:4px; font-weight:bold; color:var(--text-muted);">NVL 21-40</span>
+                    </div>
+                    <div style="border-top:1px dashed var(--border-color); padding-top:10px; font-size:0.9rem; color:var(--text-muted);">
+                        Desbloqueia Vantagens Táticas (Tier 2). Geralmente onde ocorre a 1ª Evolução Física.
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color:var(--text-main); font-family:var(--mono); text-transform:uppercase;">3. VETERANO</strong>
+                        <span style="background:#27272a; font-size:0.7rem; padding:2px 6px; border-radius:4px; font-weight:bold; color:var(--text-muted);">NVL 41-60</span>
+                    </div>
+                    <div style="border-top:1px dashed var(--border-color); padding-top:10px; font-size:0.9rem; color:var(--text-muted);">
+                        Atributos Físicos podem subir (d8->d10). Perícias até d10. Evolução Final da maioria.
+                    </div>
+                </div>
+                <div class="card">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color:var(--text-main); font-family:var(--mono); text-transform:uppercase;">4. HEROICO</strong>
+                        <span style="background:#27272a; font-size:0.7rem; padding:2px 6px; border-radius:4px; font-weight:bold; color:var(--text-muted);">NVL 61-80</span>
+                    </div>
+                    <div style="border-top:1px dashed var(--border-color); padding-top:10px; font-size:0.9rem; color:var(--text-muted);">
+                        Acesso a Anomalias (Tier 3). Bio-Energia +5. Perícias até d12.
+                    </div>
+                </div>
+                <div class="card">
+                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <strong style="color:var(--text-main); font-family:var(--mono); text-transform:uppercase;">5. LENDÁRIO</strong>
+                        <span style="background:#27272a; font-size:0.7rem; padding:2px 6px; border-radius:4px; font-weight:bold; color:var(--text-muted);">NVL 81+</span>
+                    </div>
+                    <div style="border-top:1px dashed var(--border-color); padding-top:10px; font-size:0.9rem; color:var(--text-muted);">
+                        Acesso a Ultimates (Hyper Beam). Stats acima de d12. Lealdade Inabalável.
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="genesis">
@@ -638,6 +728,10 @@
                         <div class="trait-item"><div class="trait-term">Sede de Sangue</div><div class="trait-desc">Ataca inimigos caídos.</div></div>
                         <div class="trait-item"><div class="trait-term">Vulnerabilidade</div><div class="trait-desc">+4 dano de elemento oposto.</div></div>
                         <div class="trait-item"><div class="trait-term">Bateria Viciada</div><div class="trait-desc">Recupera Bio-Energia pela metade.</div></div>
+                        <div class="trait-item"><div class="trait-term">Guloso</div><div class="trait-desc">Pode se distrair com comida em combate.</div></div>
+                        <div class="trait-item"><div class="trait-term">Covarde</div><div class="trait-desc">+2 para testes de Medo. Foge se ferido.</div></div>
+                        <div class="trait-item"><div class="trait-term">Barulhento</div><div class="trait-desc">Não consegue fazer furtividade.</div></div>
+                        <div class="trait-item"><div class="trait-term">Destrutivo</div><div class="trait-desc">Quebra objetos do cenário sem querer.</div></div>
                     </div>
                 </div>
             </div>
