@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PROJECT SYMBIOSIS: MANUAL DE OPERAÇÕES v.2077</title>
-   <style>
+    <style>
         :root {
-            /* Paleta SymbioDex */
-            --bg-body: #121214;      /* Cinza Chumbo Profundo */
-            --bg-panel: #202024;     /* Cinza Painel */
-            --bg-card: rgba(32, 32, 36, 0.75); /* Vidro Escuro */
+            /* Paleta SymbioDex - Tech-Noir Red */
+            --bg-body: #121214;      
+            --bg-panel: #202024;     
+            --bg-card: rgba(32, 32, 36, 0.75); 
             
             --text-primary: #e1e1e6;
             --text-secondary: #a8a8b3;
             --text-highlight: #ffffff;
 
-            /* Cores de Destaque - Tema "Red Version" Sombrio */
-            --brand-red: #ff3e3e;    /* Vermelho Pokédex Neon */
+            --brand-red: #ff3e3e;    
             --brand-dark-red: #820000;
-            --tech-cyan: #00d2ff;    /* Para dados digitais */
+            --tech-cyan: #00d2ff;    
             --alert-yellow: #eab308;
             --rare-purple: #bd93f9;
 
@@ -27,32 +26,23 @@
             --shadow-glow: 0 0 15px rgba(255, 62, 62, 0.15);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-body);
             color: var(--text-primary);
-            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif; /* Mais limpo */
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
             line-height: 1.7;
             padding: 40px 20px;
-            
-            /* Fundo com padrão sutil de grade hexagonal */
             background-image: 
                 radial-gradient(circle at 100% 0%, rgba(255, 62, 62, 0.1) 0%, transparent 20%),
                 linear-gradient(rgba(18, 18, 20, 0.95), rgba(18, 18, 20, 0.95)),
                 url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V26H0v-5.5l6-5.5-6-5.5V4h20v5.5l-6 5.5 6 5.5zm0-11l6-5.5V26h20v-5.5l-6-5.5 6-5.5V4H20v5.5zM0 26h20v14H0V26zm20 0h20v14H20V26z' fill='%23252525' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1100px; margin: 0 auto; }
 
-        /* TIPOGRAFIA & CABEÇALHO */
+        /* HEADER */
         header {
             border-left: 5px solid var(--brand-red);
             padding-left: 20px;
@@ -60,14 +50,10 @@
             position: relative;
         }
         
-        /* Efeito de "Luz de Status" da Pokedex no topo */
         header::after {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 15px;
-            height: 15px;
+            top: 0; right: 0; width: 15px; height: 15px;
             background: var(--tech-cyan);
             border-radius: 50%;
             box-shadow: 0 0 10px var(--tech-cyan);
@@ -76,7 +62,7 @@
 
         h1 {
             color: var(--text-highlight);
-            font-family: 'Consolas', monospace; /* Manter monospaced só no título */
+            font-family: 'Consolas', monospace;
             font-size: 2.2rem;
             letter-spacing: -1px;
             text-transform: uppercase;
@@ -98,13 +84,8 @@
         }
         
         h2::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--brand-red);
-            margin-right: 10px;
-            transform: rotate(45deg);
+            content: ''; display: inline-block; width: 8px; height: 8px;
+            background: var(--brand-red); margin-right: 10px; transform: rotate(45deg);
         }
 
         h3 {
@@ -116,7 +97,7 @@
             padding-bottom: 5px;
         }
 
-        /* COMPONENTES DE UI */
+        /* COMPONENTES */
         .classification-badge {
             display: inline-block;
             background: rgba(255, 62, 62, 0.15);
@@ -129,19 +110,13 @@
             margin-bottom: 15px;
         }
 
-        /* Caixas de Lore / Dicas */
-        .immersion-tip, .lore-box, .warning-alert {
-            border-radius: 6px;
-            position: relative;
-            overflow: hidden;
-        }
-
         .immersion-tip {
             background: linear-gradient(90deg, rgba(0, 210, 255, 0.05) 0%, transparent 100%);
             border-left: 3px solid var(--tech-cyan);
             padding: 20px;
             margin: 25px 0;
             font-size: 0.95rem;
+            border-radius: 6px;
         }
         .immersion-tip strong { color: var(--tech-cyan); }
 
@@ -153,17 +128,19 @@
             font-size: 0.85rem;
             color: var(--text-secondary);
             font-style: italic;
+            border-radius: 4px;
         }
         
         .warning-alert {
             background: linear-gradient(90deg, rgba(234, 179, 8, 0.05) 0%, transparent 100%);
             border: 1px solid var(--alert-yellow);
-            color: #fef08a; /* Amarelo claro */
+            color: #fef08a;
             padding: 15px;
             margin: 20px 0;
             display: flex;
             align-items: flex-start;
             gap: 15px;
+            border-radius: 6px;
         }
 
         /* GRIDS & CARDS */
@@ -173,7 +150,7 @@
         .card {
             background: var(--bg-card);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            border-top: 3px solid #333; /* Topo neutro padrão */
+            border-top: 3px solid #333;
             padding: 25px;
             border-radius: 12px;
             backdrop-filter: blur(5px);
@@ -234,17 +211,9 @@
         /* LISTAS & DEFINIÇÕES */
         ul { list-style: none; }
         li { margin-bottom: 10px; padding-left: 20px; position: relative; }
-        
-        /* Bullet point estilo Pokeball minimalista */
         li::before { 
-            content: ""; 
-            position: absolute; 
-            left: 0; 
-            top: 8px; 
-            width: 6px; 
-            height: 6px; 
-            background: var(--brand-red); 
-            border-radius: 50%; 
+            content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; 
+            background: var(--brand-red); border-radius: 50%; 
         }
 
         .trait-list dt {
@@ -256,20 +225,12 @@
             align-items: center;
         }
         .trait-list dt::before {
-            content: '>';
-            color: var(--brand-red);
-            margin-right: 8px;
-            font-family: monospace;
-            font-weight: bold;
+            content: '>'; color: var(--brand-red); margin-right: 8px; font-family: monospace; font-weight: bold;
         }
         
         .trait-list dd {
-            margin-left: 20px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 12px;
-            border-left: 1px solid rgba(255,255,255,0.05);
-            padding-left: 12px;
+            margin-left: 20px; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 12px;
+            border-left: 1px solid rgba(255,255,255,0.05); padding-left: 12px;
         }
 
         .footer {
@@ -283,7 +244,6 @@
             letter-spacing: 1px;
         }
 
-        /* ANIMAÇÕES */
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(0, 210, 255, 0.4); }
             70% { box-shadow: 0 0 0 10px rgba(0, 210, 255, 0); }
@@ -309,8 +269,13 @@
     <section>
         <h2>1. INTRODUÇÃO & AMBIENTAÇÃO</h2>
         
+        <div class="immersion-tip">
+            <strong>Dossiê de Ambientação: Neo-Kanto</strong><br>
+            Neo-Kanto não é a região verdejante de antigamente. Imagine uma megalópole vertical. Nos níveis superiores ("Skybox"), jardins solarpunk e tecnologia limpa abrigam a elite. Nos níveis inferiores ("The Sprawl"), a luz do sol é rara, neons iluminam becos chuvosos e gangues lutam por território. É um mundo de contraste extremo entre a utopia tecnológica e a distopia urbana.
+        </div>
+        
         <h3>1.1 A Nova Ordem: S.Y.N.C.</h3>
-        <p>O ano é 2077. Neo-Kanto é uma megalópole vertical que respira a estética Solarpunk e Cyberpunk. O mito do "Mestre Pokémon" morreu com a velha era. Há 20 anos, estudos neurológicos comprovaram que a tecnologia de compressão de matéria das Pokébolas causava danos irreparáveis ao lobo frontal dos Pokémon, suprimindo a vontade própria.</p>
+        <p>O mito do "Mestre Pokémon" morreu com a velha era. Há 20 anos, estudos neurológicos comprovaram que a tecnologia de compressão de matéria das Pokébolas causava danos irreparáveis ao lobo frontal dos Pokémon, suprimindo a vontade própria.</p>
         <ul>
             <li><strong>O Banimento:</strong> O Governo Global baniu a produção e uso de Dispositivos de Captura Esférica, considerando-os tortura digital.</li>
             <li><strong>S.Y.N.C. (Sincronização):</strong> A captura foi substituída por um contrato biológico e digital via interface neural. É uma simbiose: o humano provê tática, o Pokémon provê poder.</li>
@@ -322,10 +287,10 @@
         <div class="grid-2">
             <div class="card">
                 <div class="card-header">O CARTEL ROCKET</div>
-                <p>Uma evolução paramilitar da antiga equipe que domina o mercado negro.</p>
+                <p>Uma evolução paramilitar da antiga equipe que domina o mercado negro. Eles operam nas sombras, controlando rotas de tráfico e laboratórios subterrâneos.</p>
             </div>
-            <div class="card" style="border-color: var(--accent-pink);">
-                <div class="card-header" style="color: var(--accent-pink);">SLAVE-BALLS (DARK BALLS)</div>
+            <div class="card" style="border-color: var(--brand-red);">
+                <div class="card-header" style="color: var(--brand-red);">SLAVE-BALLS (DARK BALLS)</div>
                 <p>Versões hackeadas das antigas esferas que fritam os inibidores de dor e medo do Pokémon.</p>
                 <div class="warning-alert">
                     Um Pokémon escravizado obedece cegamente e luta até a morte (Vantagem Berserker), mas carece de criatividade tática (Burrice Artificial).
@@ -424,19 +389,21 @@
                 <p>Requisito: 0 a 3 Avanços (0 - 15 BD).</p>
                 <p>Equivalência: Nvl 1-20.</p>
                 <p>Limitações: Perícias limitadas a d8 (regra Savage). Conhece apenas 1 Protocolo Especial.</p>
+                <p>Foco: O Pokémon é frágil e depende de ordens diretas.</p>
             </div>
             <div class="card">
                 <div class="card-header">⚡ 2. POSTO EXPERIENTE</div>
                 <p>Requisito: 4 a 7 Avanços (20 - 35 BD).</p>
                 <p>Equivalência: Nvl 21-40.</p>
                 <p>Benefícios: Desbloqueia Vantagens Táticas de Tier 2.</p>
-                <p>Metamorfose: Geralmente onde ocorre a primeira evolução física. Aumenta o Limite de Estresse.</p>
+                <p>Metamorfose: Geralmente onde ocorre a primeira evolução física (Ex: Charmander -> Charmeleon). Aumenta o Limite de Estresse.</p>
             </div>
             <div class="card">
                 <div class="card-header">🎖️ 3. POSTO VETERANO</div>
                 <p>Requisito: 8 a 11 Avanços (40 - 55 BD).</p>
                 <p>Equivalência: Nvl 41-60.</p>
                 <p>Benefícios: Atributos Físicos podem subir um tipo de dado (d8->d10). Perícias podem chegar a d10.</p>
+                <p>Foco: Estágio final da maioria (Ex: Charizard).</p>
             </div>
             <div class="card">
                 <div class="card-header">🦸 4. POSTO HEROICO</div>
@@ -448,7 +415,7 @@
                 <div class="card-header">👑 5. POSTO LENDÁRIO</div>
                 <p>Requisito: 16+ Avanços (80+ BD).</p>
                 <p>Equivalência: Nvl 81+.</p>
-                <p>Benefícios: Acesso a Protocolos de Destruição em Massa (Hyper Beam, etc). Atributos podem superar d12.</p>
+                <p>Benefícios: Acesso a Protocolos de Destruição em Massa (Hyper Beam, etc). Atributos podem superar d12. Lealdade inabalável.</p>
             </div>
         </div>
     </section>
@@ -583,19 +550,33 @@
         <h3>💎 TIER 3: ANOMALIAS (Custo: 3 Pontos)</h3>
         <p>Identidade única. Consome todo o orçamento inicial.</p>
         <div class="grid-2">
-            <div class="card" style="border-color: var(--accent-pink);">
+            <div class="card" style="border-color: var(--brand-red);">
                 <div class="card-header">ANOMALIA CROMÁTICA (SHINY)</div>
-                <p>+1 Benne (Sorte) exclusivo/sessão. +2 em testes sociais visuais. Vale 5x mais no mercado.</p>
+                <p>O Pokémon possui coloração única e sorte alterada.</p>
+                <ul>
+                    <li>+1 Benne (Ponto de Sorte) extra por sessão, exclusivo para ele.</li>
+                    <li>+2 em testes sociais visuais (Impressionar/Persuadir).</li>
+                    <li><strong>Status:</strong> Vale 5x mais no mercado. Alvo de roubo constante.</li>
+                </ul>
             </div>
-            <div class="card" style="border-color: var(--accent-pink);">
-                <div class="card-header">GENOMA DELTA</div>
-                <p>Altera Tipo e Fraquezas. Acesso a Protocolos de outro elemento.</p>
-            </div>
-            <div class="card" style="border-color: var(--accent-pink);">
+            <div class="card" style="border-color: var(--brand-red);">
                 <div class="card-header">LINHAGEM ALPHA</div>
-                <p>Tamanho +1. Ganha +1 Ferimento Máximo (Total 4). Ataques físicos empurram o alvo.</p>
+                <p>Um espécime gigante e dominante.</p>
+                <ul>
+                    <li>Tamanho +1 (Mais fácil de acertar).</li>
+                    <li><strong>Tanque:</strong> Ganha +1 Ferimento Máximo (Total 4 antes de cair).</li>
+                    <li>Seus ataques físicos empurram o alvo 1 quadro.</li>
+                </ul>
             </div>
-            <div class="card" style="border-color: var(--accent-pink);">
+            <div class="card" style="border-color: var(--brand-red);">
+                <div class="card-header">GENOMA DELTA</div>
+                <p>Mutação causada por radiação ou experimentos.</p>
+                <ul>
+                    <li>Altera o Tipo Elemental base e suas Fraquezas.</li>
+                    <li>Acesso a Protocolos (Moves) de um elemento impossível para a espécie.</li>
+                </ul>
+            </div>
+            <div class="card" style="border-color: var(--brand-red);">
                 <div class="card-header">FATOR GIGAMAX (LATENTE)</div>
                 <p>Uma vez/sessão dobra de tamanho e maximiza dano por 3 turnos, mas fica Exausto.</p>
             </div>
@@ -606,7 +587,7 @@
         <h2>5. DESVANTAGENS (Hindrances)</h2>
         <div class="grid-3">
             <div class="card">
-                <div class="card-header" style="color: var(--accent-pink);">COMPORTAMENTAIS</div>
+                <div class="card-header" style="color: var(--brand-red);">COMPORTAMENTAIS</div>
                 <dl class="trait-list">
                     <dt>Trauma de Cativeiro (Maior)</dt>
                     <dd>Pânico se ver Pokébolas/grades.</dd>
@@ -621,7 +602,7 @@
                 </dl>
             </div>
             <div class="card">
-                <div class="card-header" style="color: var(--accent-pink);">BIOLÓGICAS</div>
+                <div class="card-header" style="color: var(--brand-red);">BIOLÓGICAS</div>
                 <dl class="trait-list">
                     <dt>Metabolismo Hiperativo (Maior)</dt>
                     <dd>Custo de manutenção triplo.</dd>
@@ -634,7 +615,7 @@
                 </dl>
             </div>
             <div class="card">
-                <div class="card-header" style="color: var(--accent-pink);">TÁTICAS</div>
+                <div class="card-header" style="color: var(--brand-red);">TÁTICAS</div>
                 <dl class="trait-list">
                     <dt>Tamanho Colossal</dt>
                     <dd>+2 para ser acertado. Não entra em portas.</dd>
@@ -662,7 +643,7 @@
 
         <h3>6.2 Dano & Morte</h3>
         <div class="warning-alert">
-            <ul>
+            <ul style="width: 100%;">
                 <li><strong>Humanos:</strong> 3 Ferimentos = Incapacitado.</li>
                 <li><strong>Pokémon:</strong> 3 Ferimentos = Estado Crítico. Deve ser estabilizado em 3 rodadas ou morre permanentemente.</li>
             </ul>
