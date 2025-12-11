@@ -34,35 +34,40 @@
 
         .container { max-width: 1200px; margin: 0 auto; }
 
-        h1, h2, h3 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+        /* TIPOGRAFIA */
+        h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
         h1 { color: var(--accent-cyan); font-size: 2.5rem; text-shadow: 0 0 15px rgba(0, 240, 255, 0.3); border-bottom: 2px solid var(--accent-cyan); padding-bottom: 10px; }
         h2 { color: var(--accent-green); font-size: 1.8rem; margin-top: 3rem; border-left: 5px solid var(--accent-green); padding-left: 15px; background: linear-gradient(90deg, rgba(0,255,157,0.1) 0%, transparent 100%); }
         h3 { color: var(--accent-yellow); font-size: 1.2rem; margin-top: 1.5rem; border-bottom: 1px dashed var(--text-secondary); padding-bottom: 5px; }
 
-        .classification-badge { background: var(--accent-pink); color: #fff; padding: 5px 10px; font-weight: bold; font-size: 0.8rem; border-radius: 2px; margin-bottom: 20px; box-shadow: 0 0 10px var(--accent-pink); display: inline-block; }
-        
+        .classification-badge { display: inline-block; background: var(--accent-pink); color: #fff; padding: 5px 10px; font-weight: bold; font-size: 0.8rem; border-radius: 2px; margin-bottom: 20px; box-shadow: 0 0 10px var(--accent-pink); }
+        .lore-box { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--text-secondary); padding: 15px; margin: 15px 0; font-style: italic; color: var(--text-secondary); }
         .immersion-tip { border-left: 3px solid var(--accent-cyan); background: rgba(0, 240, 255, 0.05); padding: 15px; margin: 20px 0; }
         .immersion-tip strong { color: var(--accent-cyan); }
-        .lore-box { background: rgba(0, 0, 0, 0.3); border: 1px dashed var(--text-secondary); padding: 10px; margin: 10px 0; font-style: italic; color: var(--text-secondary); font-size: 0.9rem; }
         .warning-alert { background: rgba(255, 0, 85, 0.1); border: 1px solid var(--accent-pink); color: #ff99bb; padding: 15px; margin: 15px 0; display: flex; align-items: center; gap: 10px; }
 
+        /* GRID SYSTEM */
         .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 
         .card { background: var(--bg-card); border: var(--border-glass); padding: 20px; border-radius: 4px; transition: transform 0.2s, box-shadow 0.2s; }
         .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-glow); border-color: var(--accent-cyan); }
-        .card-header { color: var(--accent-cyan); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px; }
+        .card-header { color: var(--accent-cyan); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; }
 
+        /* TABELAS */
         .tech-table { width: 100%; border-collapse: collapse; margin: 20px 0; background: var(--bg-panel); }
         .tech-table th { background: rgba(0, 240, 255, 0.1); color: var(--accent-cyan); padding: 12px; text-align: left; border-bottom: 1px solid var(--accent-cyan); }
         .tech-table td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .tech-table tr:hover { background: rgba(255,255,255,0.05); }
 
+        /* LISTAS */
         ul { list-style: none; }
         li { margin-bottom: 8px; position: relative; padding-left: 20px; }
         li::before { content: "►"; color: var(--accent-cyan); position: absolute; left: 0; font-size: 0.8em; top: 2px; }
 
-        .trait-list dt { color: var(--accent-cyan); font-weight: bold; margin-top: 10px; }
-        .trait-list dd { margin-left: 20px; color: var(--text-secondary); font-size: 0.95rem; }
+        /* DEFINIÇÃO LISTAS (DL/DT/DD) */
+        .trait-list dt { color: var(--accent-cyan); font-weight: bold; margin-top: 15px; border-left: 3px solid var(--accent-cyan); padding-left: 10px; }
+        .trait-list dd { margin-left: 13px; padding-left: 10px; border-left: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); margin-bottom: 10px; font-size: 0.95rem; }
 
         .footer { margin-top: 50px; border-top: 1px solid var(--text-secondary); padding-top: 20px; text-align: center; color: var(--text-secondary); font-size: 0.8rem; }
     </style>
@@ -78,152 +83,216 @@
 
     <section>
         <h2>1. INTRODUÇÃO & AMBIENTAÇÃO</h2>
-        <div class="immersion-tip">
-            <strong>Dossiê de Ambientação: Neo-Kanto</strong><br>
-            Neo-Kanto não é a região verdejante de antigamente. Imagine uma megalópole vertical. Nos níveis superiores ("Skybox"), jardins solarpunk e tecnologia limpa abrigam a elite. Nos níveis inferiores ("The Sprawl"), a luz do sol é rara, neons iluminam becos chuvosos e gangues lutam por território.
-        </div>
         
         <h3>1.1 A Nova Ordem: S.Y.N.C.</h3>
-        <p>O mito do "Mestre Pokémon" morreu. [cite_start]O Governo Global baniu a produção de Dispositivos de Captura Esférica, considerando-os tortura digital[cite: 3].</p>
+        <p>O ano é 2077. Neo-Kanto é uma megalópole vertical que respira a estética Solarpunk e Cyberpunk. O mito do "Mestre Pokémon" morreu com a velha era. Há 20 anos, estudos neurológicos comprovaram que a tecnologia de compressão de matéria das Pokébolas causava danos irreparáveis ao lobo frontal dos Pokémon, suprimindo a vontade própria.</p>
         <ul>
-            <li><strong>S.Y.N.C.:</strong> Contrato biológico e digital via interface neural. [cite_start]Simbiose tática[cite: 4].</li>
-            [cite_start]<li><strong>Conexão > Coleção:</strong> Manter um Bio-Ativo custa caro e exige sanidade[cite: 5].</li>
+            <li><strong>O Banimento:</strong> O Governo Global baniu a produção e uso de Dispositivos de Captura Esférica, considerando-os tortura digital.</li>
+            <li><strong>S.Y.N.C. (Sincronização):</strong> A captura foi substituída por um contrato biológico e digital via interface neural. É uma simbiose: o humano provê tática, o Pokémon provê poder.</li>
+            <li><strong>Conexão > Coleção:</strong> Um Operativo raramente tem mais de 2 Bio-Ativos. Mantê-los custa caro (Créditos) e exige manutenção mental (Sanidade).</li>
         </ul>
 
-        <h3>1.2 A Ameaça Rocket</h3>
+        <h3>1.2 A Ameaça: A Cisma das Esferas</h3>
+        <p>Enquanto a sociedade migrou para o Link Neural, o submundo resistiu.</p>
         <div class="grid-2">
+            <div class="card">
+                <div class="card-header">O CARTEL ROCKET</div>
+                <p>Uma evolução paramilitar da antiga equipe que domina o mercado negro.</p>
+            </div>
             <div class="card" style="border-color: var(--accent-pink);">
-                <div class="card-header" style="color: var(--accent-pink);">SLAVE-BALLS</div>
-                [cite_start]<p>O Cartel Rocket usa esferas hackeadas que fritam inibidores de dor[cite: 7].</p>
+                <div class="card-header" style="color: var(--accent-pink);">SLAVE-BALLS (DARK BALLS)</div>
+                <p>Versões hackeadas das antigas esferas que fritam os inibidores de dor e medo do Pokémon.</p>
                 <div class="warning-alert">
-                    [cite_start]<strong>ALERTA:</strong> Inimigos possuem Vantagem "Berserker" (Lutam até a morte) e Desvantagem "Burrice Artificial" (Sem tática criativa)[cite: 8].
+                    Um Pokémon escravizado obedece cegamente e luta até a morte (Vantagem Berserker), mas carece de criatividade tática (Burrice Artificial).
                 </div>
             </div>
         </div>
+
+        <div class="immersion-tip">
+            <strong>Sua Missão:</strong> Os jogadores são "Libertadores". O objetivo é interceptar cargas de Pokébolas e destruir a tecnologia de escravidão. Quando você vence, destrói a bola para reabilitar a criatura.
+        </div>
     </section>
 
     <section>
-        <h2>2. O OPERATIVO</h2>
-        [cite_start]<p>Construa seu perfil profissional (Savage Worlds)[cite: 11].</p>
+        <h2>2. O OPERATIVO (Criação de Personagem)</h2>
+        <p>Não existem classes fixas. Você constrói um perfil profissional usando as regras de Savage Worlds.</p>
+        
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">ATRIBUTOS CHAVE</div>
+                <ul>
+                    <li><strong>Astúcia (Smarts):</strong> Conhecimento tático e operação do SymbioDex.</li>
+                    <li><strong>Espírito (Spirit):</strong> Força de vontade para manter o Link Neural estável sob pressão.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Arquétipos Sugeridos</h3>
         <div class="grid-3">
             <div class="card">
                 <div class="card-header">O HANDLER</div>
-                <p>Especialista em comportamento. Bônus em recuperação de Estresse.</p>
-                <div class="lore-box">Gancho: Psicólogo de monstros reabilitando vítimas.</div>
+                <p>Especialista em comportamento. Seus Pokémon recuperam Estresse mais rápido e obedecem a comandos complexos.</p>
+                <div class="lore-box">Gancho: Você era um psicólogo de monstros reabilitando vítimas dos Rockets.</div>
             </div>
             <div class="card">
                 <div class="card-header">O TECH-OP</div>
-                <p>Usa o SymbioDex para hackear. Controla drones e torretas.</p>
-                <div class="lore-box">Gancho: Engenheiro da Silph que vazou dados.</div>
+                <p>Usa o SymbioDex para hackear o ambiente enquanto o Pokémon o protege. Usa drones e torretas.</p>
+                <div class="lore-box">Gancho: Ex-engenheiro da Silph Co. que roubou protótipos para fazer o bem.</div>
             </div>
             <div class="card">
                 <div class="card-header">O VANGUARD</div>
-                <p>Luta armada. Usa o Pokémon como cobertura móvel.</p>
-                <div class="lore-box">Gancho: Ex-militar de operações especiais.</div>
+                <p>Luta armada ao lado do Pokémon, usando o monstro como cobertura móvel.</p>
+                <div class="lore-box">Gancho: Mercenário aposentado que jurou proteger seu único parceiro restante.</div>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>3. BIO-ATIVOS: REGRAS & CONVERSÃO</h2>
+        <h2>3. OS BIO-ATIVOS (Regras & Conversão)</h2>
         
-        <h3>3.1 Conversão de Dados</h3>
+        <h3>3.1 Conversão de Dados (Datadex -> Savage Worlds)</h3>
+        <p>Utilizamos os stats base da espécie (0-255) para definir os dados de RPG.</p>
         <table class="tech-table">
-            <thead><tr><th>Stat Base (Datadex)</th><th>Dado (SWADE)</th><th>Classificação</th></tr></thead>
+            <thead>
+                <tr><th>Valor do Stat (Datadex)</th><th>Dado (SWADE)</th><th>Classificação</th></tr>
+            </thead>
             <tbody>
-                [cite_start]<tr><td>00 - 45</td><td>d4</td><td>Civil / Frágil [cite: 18]</td></tr>
-                [cite_start]<tr><td>46 - 80</td><td>d6</td><td>Padrão / Competente [cite: 19]</td></tr>
-                [cite_start]<tr><td>81 - 110</td><td>d8</td><td>Atlético / Forte [cite: 20]</td></tr>
-                [cite_start]<tr><td>111 - 140</td><td>d10</td><td>Elite / Brutal [cite: 21]</td></tr>
-                [cite_start]<tr><td>141 - 170</td><td>d12</td><td>Ápice Biológico [cite: 22]</td></tr>
+                <tr><td>00 - 45</td><td>d4</td><td>Civil / Frágil</td></tr>
+                <tr><td>46 - 80</td><td>d6</td><td>Padrão / Competente</td></tr>
+                <tr><td>81 - 110</td><td>d8</td><td>Atlético / Forte</td></tr>
+                <tr><td>111 - 140</td><td>d10</td><td>Elite / Brutal</td></tr>
+                <tr><td>141 - 170</td><td>d12</td><td>Ápice Biológico</td></tr>
                 <tr><td>171 - 200</td><td>d12 + 1</td><td>Anomalia Genética</td></tr>
-                <tr><td>201 - 250+</td><td>d12 + 2/3</td><td>Divindade / Kaiju</td></tr>
+                <tr><td>201 - 230</td><td>d12 + 2</td><td>Catástrofe Natural</td></tr>
+                <tr><td>231 - 250+</td><td>d12 + 3</td><td>Divindade / Kaiju</td></tr>
             </tbody>
         </table>
 
         <div class="grid-2">
             <div class="card">
-                <div class="card-header">REGRA DE DEFESA (ARMADURA)</div>
-                [cite_start]<p>Defesa baseada no stat 'Defense' do Datadex[cite: 29].</p>
+                <div class="card-header">MAPEAMENTO DE ATRIBUTOS</div>
                 <ul>
-                    <li>Def < 50: <strong>+0</strong> (Pele Macia)</li>
-                    <li>Def 51-100: <strong>+2</strong> (Couro/Escama)</li>
-                    <li>Def 101-150: <strong>+4</strong> (Rocha/Metal)</li>
-                    <li>Def 151-200: <strong>+6</strong> (Blindagem Pesada)</li>
-                    <li>Def 201+: <strong>+8</strong> (Intransponível)</li>
+                    <li>HP Base -> <strong>Vigor</strong>.</li>
+                    <li>Attack -> <strong>Força</strong>.</li>
+                    <li>Speed -> <strong>Agilidade</strong>.</li>
+                    <li>Sp. Atk -> <strong>Espírito</strong> (Poder de canalização).</li>
+                    <li>Sp. Def -> <strong>Astúcia</strong> (Resistência mental).</li>
+                    <li>Defense -> <strong>Armadura Natural</strong> (Bônus na Resistência).</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-header">REGRA DE ARMADURA (DEFENSE)</div>
+                <ul>
+                    <li>Def < 50: <strong>+0 Armadura</strong>.</li>
+                    <li>Def 51-100: <strong>+2 Armadura</strong>.</li>
+                    <li>Def 101-150: <strong>+4 Armadura</strong>.</li>
+                    <li>Def 150+: <strong>+6 Armadura</strong>.</li>
                 </ul>
             </div>
         </div>
 
-        <h3>3.2 Ciclo de Evolução (Patamares)</h3>
-        <p>Evolução baseada em Bio-Data (BD). [cite_start]5 BD = 1 Avanço[cite: 34].</p>
+        <h3>3.2 O Ciclo de Evolução (Patamares Expandidos)</h3>
+        <p>A evolução é baseada em coleta de Bio-Data (BD). A cada 5 BD, o Pokémon ganha um Avanço.</p>
         <div class="grid-3">
-            <div class="card"><div class="card-header">🌱 NOVATO (Nvl 1-20)</div><p>Perícias máx d8. [cite_start]1 Protocolo Especial[cite: 35].</p></div>
-            <div class="card"><div class="card-header">⚡ EXPERIENTE (Nvl 21-40)</div><p>Vantagens de Combate (Tier 2). [cite_start]1ª Metamorfose[cite: 36].</p></div>
-            <div class="card"><div class="card-header">🎖️ VETERANO (Nvl 41-60)</div><p>Atributos sobem (d8->d10). [cite_start]Evolução Final[cite: 37].</p></div>
-            <div class="card"><div class="card-header">🦸 HEROICO (Nvl 61-80)</div><p>Anomalias (Tier 3). Bio-Energia +5.</p></div>
-            <div class="card"><div class="card-header">👑 LENDÁRIO (Nvl 81+)</div><p>Ultimates (Hyper Beam). [cite_start]Stats > d12[cite: 39].</p></div>
+            <div class="card">
+                <div class="card-header">🌱 1. POSTO NOVATO</div>
+                <p>Requisito: 0 a 3 Avanços (0 - 15 BD).</p>
+                <p>Equivalência: Nvl 1-20.</p>
+                <p>Limitações: Perícias limitadas a d8 (regra Savage). Conhece apenas 1 Protocolo Especial.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">⚡ 2. POSTO EXPERIENTE</div>
+                <p>Requisito: 4 a 7 Avanços (20 - 35 BD).</p>
+                <p>Equivalência: Nvl 21-40.</p>
+                <p>Benefícios: Desbloqueia Vantagens Táticas de Tier 2.</p>
+                <p>Metamorfose: Geralmente onde ocorre a primeira evolução física. Aumenta o Limite de Estresse.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">🎖️ 3. POSTO VETERANO</div>
+                <p>Requisito: 8 a 11 Avanços (40 - 55 BD).</p>
+                <p>Equivalência: Nvl 41-60.</p>
+                <p>Benefícios: Atributos Físicos podem subir um tipo de dado (d8->d10). Perícias podem chegar a d10.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">🦸 4. POSTO HEROICO</div>
+                <p>Requisito: 12 a 15 Avanços (60 - 75 BD).</p>
+                <p>Equivalência: Nvl 61-80.</p>
+                <p>Benefícios: Acesso a Anomalias (Tier 3). Aumenta Bio-Energia em +5. Perícias podem chegar a d12.</p>
+            </div>
+            <div class="card">
+                <div class="card-header">👑 5. POSTO LENDÁRIO</div>
+                <p>Requisito: 16+ Avanços (80+ BD).</p>
+                <p>Equivalência: Nvl 81+.</p>
+                <p>Benefícios: Acesso a Protocolos de Destruição em Massa (Hyper Beam, etc). Atributos podem superar d12.</p>
+            </div>
         </div>
     </section>
 
     <section>
         <h2>4. SISTEMA DE GÊNESE & VANTAGENS</h2>
         <div class="immersion-tip">
-            <strong>Orçamento Inicial:</strong> 3 Pontos de Gênese.
-            [cite_start]<br><strong>Limite:</strong> Max 5 Pontos (comprando desvantagens) [cite: 41-42].
+            <strong>Orçamento Inicial:</strong> 3 Pontos de Gênese. 
+            <strong>Limite Máximo:</strong> 5 Pontos totais.
+            <strong>Pontos Extras:</strong> Desvantagem Menor (+1), Desvantagem Maior (+2).
         </div>
 
         <h3>🔧 TIER 1: UTILITÁRIOS & CAMPO (Custo: 1 Ponto)</h3>
-        <p>Habilidades de suporte, exploração e uso fora de batalha.</p>
+        <p>Habilidades focadas em utilidade, exploração e suporte tático.</p>
         <div class="grid-3">
             <div class="card">
                 <div class="card-header">PROTOCOLOS DE CAMPO</div>
                 <dl class="trait-list">
                     <dt>Protocolo: SENTINELA (Prontidão)</dt>
-                    <dd>O Pokémon fica imóvel em um ponto. Ele não precisa dormir e tem +2 em Perceber. Se detectar algo, alerta o Operativo mentalmente a qualquer distância.</dd>
+                    <dd>O Pokémon fica imóvel em guarda em um local. Não precisa dormir e tem +2 em Perceber. Alerta o Operativo mentalmente a qualquer distância se algo ocorrer.</dd>
                     
                     <dt>Protocolo: RASTREADOR K-9</dt>
-                    <dd>+2 em Sobrevivência para rastrear pelo cheiro ou pegadas. Identifica químicos e explosivos.</dd>
+                    <dd>+2 em Sobrevivência para rastreio. Identifica químicos e explosivos pelo olfato.</dd>
                     
                     <dt>Protocolo: HOLOFOTE (Flash)</dt>
-                    <dd>Gera luz de 20m de raio (bioluminescência ou fogo). Cega alvos temporariamente se usado em combate (Teste de Agilidade).</dd>
+                    <dd>Gera luz de 20m. Pode cegar alvos em combate (Teste de Agilidade ou fica Distraído).</dd>
                     
                     <dt>Protocolo: BATERIA VIVA</dt>
-                    [cite_start]<dd>Usa a própria vitalidade (1 Ferimento) para recarregar totalmente a bateria de equipamentos eletrônicos ou abrir portas magnéticas[cite: 69].</dd>
-                </dl>
-            </div>
-            
-            <div class="card">
-                <div class="card-header">ADAPTAÇÃO BIOLÓGICA</div>
-                <dl class="trait-list">
-                    <dt>Visão Térmica/Noturna</dt>
-                    [cite_start]<dd>Ignora penalidades de iluminação e detecta inimigos invisíveis[cite: 61].</dd>
-                    
-                    <dt>Nadador Veloz / Escalador</dt>
-                    [cite_start]<dd>Move-se em deslocamento total na água ou paredes/tetos [cite: 62-63].</dd>
-                    
-                    <dt>Dentes de Vampiro</dt>
-                    [cite_start]<dd>Se causar um ferimento com mordida, o Pokémon recupera 1 nível de Fadiga[cite: 64].</dd>
-                    
-                    <dt>Fotossíntese Tática</dt>
-                    [cite_start]<dd>Sob luz solar, recupera 1 Bio-Energia por rodada e cura Fadiga rapidamente[cite: 67].</dd>
+                    <dd>Usa a própria vitalidade (1 Ferimento) para recarregar equipamentos eletrônicos ou abrir portas.</dd>
                 </dl>
             </div>
 
             <div class="card">
-                <div class="card-header">INTERAÇÃO</div>
+                <div class="card-header">ADAPTAÇÃO BIOLÓGICA</div>
                 <dl class="trait-list">
-                    <dt>Ameaça Sônica (Roar)</dt>
-                    <dd>Usa a perícia Intimidar em um Cone (Área). [cite_start]Inimigos abalados recuam[cite: 66].</dd>
+                    <dt>Visão Térmica/Noturna</dt>
+                    <dd>Ignora penalidades de iluminação e fumaça.</dd>
                     
+                    <dt>Nadador Veloz</dt>
+                    <dd>Dobra a movimentação na água.</dd>
+                    
+                    <dt>Escalador</dt>
+                    <dd>Anda em paredes e tetos com deslocamento normal.</dd>
+                    
+                    <dt>Dentes de Vampiro</dt>
+                    <dd>Recupera 1 nível de Fadiga se causar um ferimento com mordida.</dd>
+                    
+                    <dt>Fotossíntese Tática</dt>
+                    <dd>Sob luz solar, recupera 1 Bio-Energia por rodada e cura Fadiga.</dd>
+
+                    <dt>Absorção Elemental</dt>
+                    <dd>Se atingido pelo próprio elemento, cura 1d6 Bio-Energia em vez de sofrer dano.</dd>
+                </dl>
+            </div>
+
+            <div class="card">
+                <div class="card-header">INTERAÇÃO & SOCIAL</div>
+                <dl class="trait-list">
                     <dt>Link Empático</dt>
-                    [cite_start]<dd>Operativo e Pokémon compartilham a reserva de Bennies (Pontos de Sorte)[cite: 70].</dd>
+                    <dd>Compartilha Bennies com o Operativo.</dd>
                     
                     <dt>Comando Silencioso</dt>
-                    <dd>O Pokémon obedece a gestos de mão ou micro-sinais. Inimigos não ouvem seus comandos táticos.</dd>
+                    <dd>Obedece a micro-sinais. Inimigos não ouvem a estratégia.</dd>
                     
                     <dt>Carapaça Reativa</dt>
-                    [cite_start]<dd>Quem tocar no Pokémon sofre 2d4 de dano automático (espinhos/eletricidade)[cite: 65].</dd>
+                    <dd>Quem tocar no Pokémon sofre 2d4 de dano automático.</dd>
+                    
+                    <dt>Ameaça Sônica (Roar)</dt>
+                    <dd>Usa a perícia Intimidar em área (Cone).</dd>
                 </dl>
             </div>
         </div>
@@ -235,16 +304,19 @@
                 <div class="card-header">OFENSIVA</div>
                 <dl class="trait-list">
                     <dt>Instinto Predatório</dt>
-                    [cite_start]<dd>+2 de Dano fixo em todos os ataques naturais (Garras/Mordidas)[cite: 51].</dd>
-                    
-                    <dt>Mira Computadorizada</dt>
-                    [cite_start]<dd>Se não se mover, dobra o alcance de projéteis e ignora cobertura[cite: 54].</dd>
+                    <dd>+2 de Dano fixo em ataques naturais.</dd>
                     
                     <dt>Assassino Silencioso</dt>
-                    [cite_start]<dd>Se atacar um alvo surpreso, adiciona +1d6 ao dano total[cite: 56].</dd>
+                    <dd>+1d6 de dano em ataques surpresa.</dd>
+                    
+                    <dt>Mira Computadorizada</dt>
+                    <dd>Se imóvel, dobra alcance e ignora cobertura.</dd>
                     
                     <dt>Protocolo "Breacher"</dt>
-                    [cite_start]<dd>Causa +4 de Dano contra objetos estáticos (Portas, Paredes, Veículos)[cite: 57].</dd>
+                    <dd>+4 Dano contra objetos (portas/paredes).</dd>
+                    
+                    <dt>Técnico</dt>
+                    <dd>Golpes de baixo custo (1-2 PBE) causam dano dobrado.</dd>
                 </dl>
             </div>
 
@@ -252,215 +324,179 @@
                 <div class="card-header">DEFENSIVA</div>
                 <dl class="trait-list">
                     <dt>Pele de Adamantium</dt>
-                    <dd>O Pokémon ignora o dano extra de Acertos Críticos (Ampliações). [cite_start]Só recebe o dano base[cite: 50].</dd>
+                    <dd>Ignora dano extra de Críticos (Ampliações).</dd>
                     
                     <dt>Regeneração</dt>
-                    [cite_start]<dd>Pode fazer um teste de Vigor natural uma vez por cena para curar 1 Ferimento[cite: 52].</dd>
+                    <dd>Teste de Vigor para curar 1 Ferimento uma vez por cena.</dd>
                     
                     <dt>Protocolo "Guardian"</dt>
-                    [cite_start]<dd>Se estiver adjacente ao Operativo, ambos ganham +2 em Aparar (Defesa)[cite: 58].</dd>
+                    <dd>+2 Defesa se adjacente ao Operativo.</dd>
                     
                     <dt>Mente Colmeia</dt>
-                    [cite_start]<dd>Ganha +1 em Ataque e Defesa para cada aliado adjacente (Matilha)[cite: 55].</dd>
+                    <dd>Bônus de ataque/defesa por aliado adjacente.</dd>
                 </dl>
             </div>
-            
+
             <div class="card">
-                <div class="card-header">MOBILIDADE</div>
+                <div class="card-header">MOBILIDADE & UTILITÁRIO AVANÇADO</div>
                 <dl class="trait-list">
-                    <dt>Movimentação 3D (Voo/Levitação)</dt>
-                    [cite_start]<dd>Ignora terreno difícil, buracos e minas terrestres[cite: 53].</dd>
+                    <dt>Movimentação 3D</dt>
+                    <dd>Ignora terreno difícil e minas terrestres (Voo/Levitação).</dd>
                     
                     <dt>Montaria de Combate</dt>
-                    [cite_start]<dd>O Operativo pode montar no Pokémon e atirar sem sofrer penalidade de "Plataforma Instável"[cite: 59].</dd>
+                    <dd>Operativo monta e atira sem penalidade de movimento.</dd>
                     
-                    <dt>Teleporte de Curto Alcance</dt>
-                    <dd>Ao invés de correr, o Pokémon teleporta 6 quadros. Pode atravessar grades e janelas de vidro.</dd>
+                    <dt>Teleporte Tático</dt>
+                    <dd>Move-se 6 quadros instantaneamente, atravessando vidro/grades.</dd>
+                    
+                    <dt>Corpo Etéreo</dt>
+                    <dd>Imune a dano físico mundano. Vulnerável a Energia.</dd>
                 </dl>
             </div>
         </div>
 
         <h3>💎 TIER 3: ANOMALIAS (Custo: 3 Pontos)</h3>
-        <p>Raridades genéticas que definem a identidade do Pokémon.</p>
+        <p>Identidade única. Consome todo o orçamento inicial.</p>
         <div class="grid-2">
             <div class="card" style="border-color: var(--accent-pink);">
                 <div class="card-header">ANOMALIA CROMÁTICA (SHINY)</div>
-                <p>O Pokémon possui coloração única e sorte alterada.</p>
-                <ul>
-                    <li>+1 Benne (Ponto de Sorte) extra por sessão, exclusivo para ele.</li>
-                    <li>+2 em testes sociais visuais (Impressionar/Persuadir).</li>
-                    <li><strong>Status:</strong> Vale 5x mais no mercado. [cite_start]Alvo de roubo constante[cite: 45].</li>
-                </ul>
-            </div>
-            <div class="card" style="border-color: var(--accent-pink);">
-                <div class="card-header">LINHAGEM ALPHA</div>
-                <p>Um espécime gigante e dominante.</p>
-                <ul>
-                    <li>Tamanho +1 (Mais fácil de acertar).</li>
-                    <li><strong>Tanque:</strong> Ganha +1 Ferimento Máximo (Total 4 antes de cair).</li>
-                    [cite_start]<li>Seus ataques físicos empurram o alvo 1 quadro[cite: 47].</li>
-                </ul>
+                <p>+1 Benne (Sorte) exclusivo/sessão. +2 em testes sociais visuais. Vale 5x mais no mercado.</p>
             </div>
             <div class="card" style="border-color: var(--accent-pink);">
                 <div class="card-header">GENOMA DELTA</div>
-                <p>Mutação causada por radiação ou experimentos.</p>
-                <ul>
-                    <li>Altera o Tipo Elemental base e suas Fraquezas.</li>
-                    [cite_start]<li>Acesso a Protocolos (Moves) de um elemento impossível para a espécie[cite: 46].</li>
-                </ul>
+                <p>Altera Tipo e Fraquezas. Acesso a Protocolos de outro elemento.</p>
             </div>
             <div class="card" style="border-color: var(--accent-pink);">
-                <div class="card-header">FOSSILIZADO / ANCESTRAL</div>
-                <p>Recriado de DNA antigo.</p>
-                <ul>
-                    <li>Armadura Natural aumenta em +2.</li>
-                    <li>Imune a Medo e Intimidação.</li>
-                    <li><strong>Defeito:</strong> -2 em Agilidade (Lento).</li>
-                </ul>
+                <div class="card-header">LINHAGEM ALPHA</div>
+                <p>Tamanho +1. Ganha +1 Ferimento Máximo (Total 4). Ataques físicos empurram o alvo.</p>
+            </div>
+            <div class="card" style="border-color: var(--accent-pink);">
+                <div class="card-header">FATOR GIGAMAX (LATENTE)</div>
+                <p>Uma vez/sessão dobra de tamanho e maximiza dano por 3 turnos, mas fica Exausto.</p>
             </div>
         </div>
     </section>
 
     <section>
         <h2>5. DESVANTAGENS (Hindrances)</h2>
-        <p>Falhas dão profundidade e fornecem pontos extras para Vantagens.</p>
-
         <div class="grid-3">
             <div class="card">
-                <div class="card-header" style="color: var(--accent-pink);">COMPORTAMENTAL</div>
+                <div class="card-header" style="color: var(--accent-pink);">COMPORTAMENTAIS</div>
                 <dl class="trait-list">
                     <dt>Trauma de Cativeiro (Maior)</dt>
-                    [cite_start]<dd>Entra em Pânico (Shaken) se ver Pokébolas, jaulas ou laboratórios[cite: 71].</dd>
-                    
+                    <dd>Pânico se ver Pokébolas/grades.</dd>
                     <dt>Sede de Sangue (Menor)</dt>
-                    <dd>Ataca inimigos já caídos. [cite_start]Exige teste de Espírito para parar[cite: 72].</dd>
-                    
+                    <dd>Ataca inimigos caídos; exige teste para parar.</dd>
                     <dt>Desobediente (Maior)</dt>
-                    <dd>Só respeita força. [cite_start]Se o dono falhar em um teste, ele age sozinho[cite: 73].</dd>
-                    
+                    <dd>Perde respeito se o dono falhar. Age sozinho.</dd>
+                    <dt>Pacifista Relutante (Menor)</dt>
+                    <dd>-2 na Iniciativa.</dd>
                     <dt>Instinto Incontrolável</dt>
-                    [cite_start]<dd>Persegue presas pequenas (Rattatas, Pidgeys) ignorando stealth ou ordens[cite: 82].</dd>
-                    
-                    <dt>Vínculo Obsessivo</dt>
-                    <dd>Sofre -2 em tudo se estiver a mais de 5 metros do Operativo (Ansiedade de Separação).</dd>
+                    <dd>Persegue presas pequenas ignorando ordens.</dd>
                 </dl>
             </div>
-            
             <div class="card">
-                <div class="card-header" style="color: var(--accent-pink);">FISIOLÓGICO</div>
+                <div class="card-header" style="color: var(--accent-pink);">BIOLÓGICAS</div>
                 <dl class="trait-list">
                     <dt>Metabolismo Hiperativo (Maior)</dt>
-                    <dd>Custo de manutenção triplo. [cite_start]Se não comer após combate, ganha Fadiga[cite: 75].</dd>
-                    
+                    <dd>Custo de manutenção triplo.</dd>
                     <dt>Dependência Climática</dt>
-                    [cite_start]<dd>Sofre penalidades ou dano sob climas opostos (Ex: Peixe fora d'água, Planta no gelo)[cite: 76].</dd>
-                    
+                    <dd>Sofre sob sol/clima oposto.</dd>
                     <dt>Imunodeficiência</dt>
-                    <dd>-2 em testes de Vigor para resistir a Doenças e Venenos.</dd>
-                    
-                    <dt>Cego / Surdo</dt>
-                    <dd>-2 em testes de Perceber que dependam desse sentido. Imune a ataques visuais/sônicos.</dd>
-                    
+                    <dd>-2 Vigor contra venenos/doenças.</dd>
                     <dt>Sequela de Combate</dt>
-                    <dd>Membro fantasma ou cicatriz. [cite_start]-1 em Agilidade permanente[cite: 81].</dd>
+                    <dd>-1 Agilidade ou -2 Perceber (membro fantasma).</dd>
                 </dl>
             </div>
-
             <div class="card">
-                <div class="card-header" style="color: var(--accent-pink);">TÁTICO</div>
+                <div class="card-header" style="color: var(--accent-pink);">TÁTICAS</div>
                 <dl class="trait-list">
                     <dt>Tamanho Colossal</dt>
-                    <dd>+2 para ser acertado por inimigos. [cite_start]Não entra em portas comuns[cite: 77].</dd>
-                    
-                    <dt>Assinatura Térmica Alta</dt>
-                    <dd>O corpo brilha ou emite calor intenso. [cite_start]Impossível usar Furtividade no escuro[cite: 79].</dd>
-                    
-                    <dt>Ruptura de Voz</dt>
-                    <dd>Não controla o volume. [cite_start]Se tentar comunicar, alerta todo o prédio[cite: 80].</dd>
-                    
+                    <dd>+2 para ser acertado. Não entra em portas.</dd>
                     <dt>Bateria Viciada</dt>
-                    [cite_start]<dd>Recupera Bio-Energia na metade da velocidade normal[cite: 78].</dd>
-                    
-                    <dt>Pacifista Relutante</dt>
-                    <dd>-2 na Iniciativa. [cite_start]Hesita antes de ferir[cite: 74].</dd>
+                    <dd>Recupera Bio-Energia pela metade.</dd>
+                    <dt>Assinatura Térmica Alta</dt>
+                    <dd>Brilha no escuro. Furtividade impossível.</dd>
+                    <dt>Ruptura de Voz</dt>
+                    <dd>Não controla volume, alerta inimigos.</dd>
                 </dl>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>6. MECÂNICAS DE COMBATE</h2>
+        <h2>6. MECÂNICAS DE COMBATE & RECURSOS</h2>
         
-        <h3>6.1 Bio-Energia e Sobrevivência</h3>
-        <div class="grid-2">
-            <div class="card">
-                <div class="card-header">BIO-ENERGIA (PBE)</div>
-                <p>Combustível metabólico (Base 10-20 PP).</p>
-                <ul>
-                    [cite_start]<li><strong>Ataques Físicos:</strong> Custo 0[cite: 84].</li>
-                    [cite_start]<li><strong>Protocolos Especiais:</strong> Custam PBE[cite: 85].</li>
-                    [cite_start]<li><strong>Sobrecarga:</strong> Usar golpe sem PBE custa 1 nível de Fadiga[cite: 86].</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-header">LETALIDADE</div>
-                <ul>
-                    [cite_start]<li><strong>Humanos:</strong> 3 Ferimentos = Incapacitado[cite: 87].</li>
-                    [cite_start]<li><strong>Pokémon:</strong> 3 Ferimentos = Estado Crítico[cite: 88].</li>
-                    <li><strong>Morte:</strong> Se não estabilizado em 3 rodadas, morre.</li>
-                </ul>
-            </div>
-        </div>
-        
+        <h3>6.1 Bio-Energia (PBE)</h3>
+        <p>Pokémon usam energia metabólica (Base 10-20 PP).</p>
+        <ul>
+            <li><strong>Ataques Cinéticos:</strong> Custo 0.</li>
+            <li><strong>Protocolos Especiais:</strong> Custam PBE. Se zerar, perde acesso.</li>
+            <li><strong>Sobrecarga (Overcharge):</strong> Operativo força golpe sem PBE ao custo de 1 Nível de Fadiga automático no Pokémon.</li>
+        </ul>
+
+        <h3>6.2 Dano & Morte</h3>
         <div class="warning-alert">
-            [cite_start]<strong>RUPTURA DE LINK:</strong> Se o Estresse estourar (Dano excessivo ou Ordens Suicidas), o Pokémon entra em PÂNICO: Foge, Congela ou Ataca o dono[cite: 89].
+            <ul>
+                <li><strong>Humanos:</strong> 3 Ferimentos = Incapacitado.</li>
+                <li><strong>Pokémon:</strong> 3 Ferimentos = Estado Crítico. Deve ser estabilizado em 3 rodadas ou morre permanentemente.</li>
+            </ul>
         </div>
+
+        <h3>6.3 Estresse & Ruptura</h3>
+        <p><strong>Ruptura de Link:</strong> Se o estresse exceder o limite (por dano ou ordens ruins), o Pokémon entra em Pânico (Foge, Congela ou Ataca o dono).</p>
     </section>
 
     <section>
         <h2>7. LOGÍSTICA & EQUIPAMENTOS</h2>
-        <p>A economia é brutal. [cite_start]Custo de vida: 20 NC$ (Pequeno) a 200 NC$ (Colossal) por dia[cite: 90].</p>
+        
+        <h3>7.1 Economia (Neo-Créditos)</h3>
+        <p><strong>Custo de Vida:</strong> Pequeno (20 NC$), Médio (50 NC$), Colossal (200 NC$). Sem pagamento = Fadiga e Queda de Lealdade.</p>
+        <p><strong>Mercado Negro (Under-Dex):</strong> Vende TMs ilegais e drogas de combate.</p>
 
-        <h3>7.1 Gear de Pokémon (Implantes)</h3>
+        <h3>7.2 Gear de Pokémon (Implantes/Trajes)</h3>
         <table class="tech-table">
-            <thead><tr><th>Item</th><th>Efeito</th><th>Custo</th></tr></thead>
+            <thead>
+                <tr><th>Item</th><th>Efeito</th><th>Custo</th></tr>
+            </thead>
             <tbody>
-                [cite_start]<tr><td>Bio-Gel Injector</td><td>Implante de cura lenta (remove 1 Fadiga/hora) [cite: 92]</td><td>2000 NC$</td></tr>
-                <tr><td>Limitador Muscular</td><td>Exoesqueleto. [cite_start]+2 Dano, -2 Aparar [cite: 93]</td><td>1500 NC$</td></tr>
-                <tr><td>Escudo de Emergência</td><td>Campo de força descartável. [cite_start]Evita morte (1 uso) [cite: 94]</td><td>800 NC$</td></tr>
-                [cite_start]<tr><td>Armadura Reativa</td><td>Dano 2d4 em quem toca [cite: 95]</td><td>1200 NC$</td></tr>
-                [cite_start]<tr><td>Ocular Tática</td><td>Amplia margem de Crítico [cite: 96]</td><td>1800 NC$</td></tr>
+                <tr><td>Bio-Gel Injector</td><td>Implante de cura lenta (remove 1 Fadiga/hora).</td><td>2000 NC$</td></tr>
+                <tr><td>Limitador Muscular</td><td>Exoesqueleto. +2 Dano, -2 Aparar.</td><td>1500 NC$</td></tr>
+                <tr><td>Escudo de Emergência</td><td>Campo de força descartável. Evita morte.</td><td>800 NC$</td></tr>
+                <tr><td>Armadura Reativa</td><td>Dano 2d4 em quem toca.</td><td>1200 NC$</td></tr>
+                <tr><td>Ocular Tática</td><td>Amplia margem de Crítico.</td><td>1800 NC$</td></tr>
             </tbody>
         </table>
 
-        <h3>7.2 Ferramentas Táticas</h3>
+        <h3>7.3 Ferramentas do Operativo</h3>
         <div class="grid-2">
             <div class="card">
                 <div class="card-header">JAMMER DE ESFERAS</div>
-                <p>Bloqueia sinal de Pokébolas. [cite_start]Impede Rockets de recolherem Pokémon feridos ("Retornar")[cite: 97].</p>
+                <p>Impede Rockets de recolherem Pokémon feridos.</p>
             </div>
             <div class="card">
                 <div class="card-header">LIBERATOR TOOL</div>
-                <p>Hacker de Slave-Balls. Sucesso liberta o monstro. [cite_start]Falha Crítica causa "Morte Digital"[cite: 98].</p>
+                <p>Ferramenta hacker. Sucesso abre Slave-Ball; Falha Crítica deleta o Pokémon (morte digital).</p>
             </div>
         </div>
     </section>
 
     <section>
-        <h2>8. GUIA DO MESTRE</h2>
-        <div class="immersion-tip">
-            <strong>Regra de Sincronização:</strong> Não se joga uma bola. É um <strong>Desafio Social Estendido</strong>: 
-            1. [cite_start]Abordagem (Furtividade/Diplomacia) -> 2. Oferta (Recurso) -> 3. Pacto (Espírito vs Espírito)[cite: 105].
+        <h2>8. GUIA DO MESTRE & MISSÕES</h2>
+        
+        <h3>8.1 Ganchos de Aventura (1d6)</h3>
+        <div class="grid-3">
+            <div class="card">1. Resgate de Ativo: Recuperar Pokémon roubado.</div>
+            <div class="card">2. Sabotagem Corporativa: Hackear servidores da Silph.</div>
+            <div class="card">3. Escolta VIP: Proteger carga viva (Ovo raro).</div>
+            <div class="card">4. Investigação Noir: Tráfico de carne de Tauros.</div>
+            <div class="card">5. Contenção de Falha: Ditto assassino à solta.</div>
+            <div class="card">6. Zona de Guerra: Disputa territorial selvagem.</div>
         </div>
 
-        <h3>Ganchos de Missão (1d6)</h3>
-        <div class="grid-3">
-            <div class="card">1. [cite_start]RESGATE DE ATIVO<br><span style="font-size:0.8em; color:gray">Recuperar Pokémon roubado por gangue[cite: 99].</span></div>
-            <div class="card">2. [cite_start]SABOTAGEM<br><span style="font-size:0.8em; color:gray">Hackear servidores da Silph Co[cite: 100].</span></div>
-            <div class="card">3. [cite_start]ESCOLTA VIP<br><span style="font-size:0.8em; color:gray">Proteger Ovo raro na Zona Industrial[cite: 101].</span></div>
-            <div class="card">4. [cite_start]INVESTIGAÇÃO NOIR<br><span style="font-size:0.8em; color:gray">Rastrear tráfico de carne de Tauros[cite: 102].</span></div>
-            <div class="card">5. [cite_start]CONTENÇÃO<br><span style="font-size:0.8em; color:gray">Caçar Ditto assassino que imita humanos[cite: 103].</span></div>
-            <div class="card">6. [cite_start]ZONA DE GUERRA<br><span style="font-size:0.8em; color:gray">Disputa territorial selvagem[cite: 104].</span></div>
+        <h3>8.2 A Sincronização (Regra)</h3>
+        <div class="immersion-tip">
+            Não se joga uma bola. É um <strong>Desafio Social Estendido</strong>: Abordagem (Furtividade) -> Oferta (Recurso) -> Pacto (Espírito vs Espírito).
         </div>
     </section>
 
