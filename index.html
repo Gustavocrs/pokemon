@@ -28,18 +28,12 @@
             
             --radius: 8px;
             --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-
+            
             --mono: 'JetBrains Mono', monospace;
             --ui: 'Inter', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        /* SCROLLBAR CUSTOMIZADA (Tema Cyberpunk) */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-body); }
-        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--brand-primary); }
 
         body {
             background-color: var(--bg-body);
@@ -58,9 +52,10 @@
         /* HEADER */
         header {
             background: linear-gradient(180deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%);
-            padding: 60px 20px 40px 20px;
+            padding: 60px 20px;
             text-align: center;
             border-bottom: 1px solid var(--border-color);
+            margin-bottom: 0;
         }
 
         .badge {
@@ -95,7 +90,7 @@
             margin-top: 10px;
         }
 
-        /* NAV STICKY & CENTERED (CORREÇÃO DE LAYOUT) */
+        /* --- NAV DESKTOP (STICKY) --- */
         nav {
             position: sticky;
             top: 0;
@@ -105,30 +100,19 @@
             border-bottom: 1px solid var(--border-color);
             width: 100%;
             display: flex;
-            justify-content: center;
+            justify-content: center; 
         }
 
         .nav-content {
             width: 100%;
-            max-width: 1200px; /* Aumentado para caber mais itens */
+            max-width: 1100px;
             padding: 10px 20px;
             display: flex;
-            gap: 8px;
-            overflow-x: auto; /* Mantém scroll no mobile */
-            justify-content: flex-start;
-            align-items: center;
+            gap: 10px;
+            /* Wrap permite quebrar linha no desktop para não cortar */
+            flex-wrap: wrap; 
+            justify-content: center;
         }
-        
-        /* CORREÇÃO PARA DESKTOP: Wrap para não cortar */
-        @media (min-width: 1024px) {
-            .nav-content { 
-                justify-content: center; 
-                flex-wrap: wrap; /* Permite quebra de linha */
-                overflow-x: visible; /* Remove scroll no desktop */
-            }
-        }
-
-        .nav-content::-webkit-scrollbar { height: 4px; } /* Scroll fino se necessário */
 
         nav a {
             color: var(--text-muted);
@@ -144,17 +128,16 @@
             transition: all 0.2s;
             font-family: var(--mono);
         }
-        nav a:hover, nav a:active, nav a:focus {
+        nav a:hover, nav a:active {
             border-color: var(--brand-primary);
-            color: var(--brand-main);
-            background: rgba(239, 68, 68, 0.15);
-            transform: translateY(-1px);
+            color: var(--brand-primary);
+            background: rgba(239, 68, 68, 0.1);
         }
 
-        /* LAYOUT & SECTIONS */
+        /* --- LAYOUT & SECTIONS --- */
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-        section { margin-bottom: 5rem; scroll-margin-top: 140px; padding-top: 2rem; }
+        section { margin-bottom: 5rem; scroll-margin-top: 100px; padding-top: 2rem; }
 
         h2 {
             font-family: var(--mono);
@@ -177,7 +160,7 @@
             padding-left: 15px;
         }
 
-        /* COMPONENTES VISUAIS */
+        /* --- CARDS & BOXES --- */
         .lore-box {
             background: linear-gradient(90deg, rgba(6, 182, 212, 0.05) 0%, transparent 100%);
             border: 1px solid rgba(6, 182, 212, 0.2);
@@ -210,7 +193,7 @@
             border: var(--glass-border);
             border-radius: var(--radius);
             padding: 1.5rem;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.2s;
         }
         .card:hover { border-color: var(--brand-secondary); transform: translateY(-3px); }
 
@@ -226,6 +209,16 @@
             justify-content: space-between;
             align-items: center;
         }
+        
+        /* Classe auxiliar para subtítulos dentro de cards (Kickers) */
+        .kicker {
+            color: var(--brand-secondary);
+            font-family: var(--mono);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
 
         .card-badge {
             font-size: 0.7rem;
@@ -234,17 +227,8 @@
             border-radius: 4px;
             color: var(--text-muted);
         }
-        
-        .kicker {
-            color: var(--brand-secondary);
-            font-family: var(--mono);
-            font-weight: bold;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
 
-        /* TABLES */
+        /* --- TABLES --- */
         .table-wrapper {
             overflow-x: auto;
             border-radius: var(--radius);
@@ -276,7 +260,7 @@
             color: var(--text-muted);
         }
 
-        /* LISTS */
+        /* --- LISTS --- */
         .tech-list, .list-tech { list-style: none; padding: 0; }
         .tech-list li, .list-tech li {
             position: relative;
@@ -295,7 +279,7 @@
             line-height: 1rem;
         }
 
-        /* TRAIT LISTS */
+        /* --- TRAIT LISTS --- */
         .trait-list {
             display: grid;
             grid-template-columns: 1fr;
@@ -319,7 +303,7 @@
         }
 
         footer {
-            margin-top: 6rem;
+            margin-top: 4rem;
             text-align: center;
             font-family: var(--mono);
             font-size: 0.75rem;
@@ -328,83 +312,101 @@
             padding-top: 2rem;
         }
 
-        /* OFFCANVAS STYLES */
-        .open-nav-btn{
-            position:absolute;left:20px;top:20px;background:transparent;border:1px solid rgba(255,255,255,0.1);
-            color:var(--text-muted);padding:8px 12px;border-radius:8px;font-family:var(--mono);font-weight:800;cursor:pointer;
-            transition: all 0.2s; z-index: 200;
+        /* --- MENU FLUTUANTE & OFFCANVAS (MOBILE) --- */
+        .open-nav-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: rgba(24, 24, 27, 0.95);
+            border: 1px solid var(--brand-primary);
+            color: var(--brand-primary);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-family: var(--mono);
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            display: none; /* Escondido por padrão (Desktop) */
         }
-        .open-nav-btn:hover{border-color:var(--brand-primary);color:var(--brand-primary); background: rgba(239,68,68,0.1);}
-        
-        .offcanvas{position:fixed;inset:0;z-index:2000;display:none;align-items:flex-start;justify-content:center;background:rgba(0,0,0,0.9);backdrop-filter:blur(6px);padding:20px;overflow-y:auto;}
-        .offcanvas.open{display:flex;animation:fadeIn .2s ease-out}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
-        
-        .offcanvas .panel{
-            width:100%;max-width:900px;background:#18181b;border:1px solid #3f3f46;
-            border-radius:12px;padding:24px;box-shadow:0 20px 50px rgba(0,0,0,0.8);
-            display:grid; grid-template-columns: 1fr; gap: 2rem;
-        }
-        
-        @media(min-width: 768px){ .offcanvas .panel{ grid-template-columns: 2fr 1fr; } }
+        .open-nav-btn:hover { background: var(--brand-primary); color: #fff; }
 
-        .offcanvas .col-links{display:grid;gap:8px; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));}
-        
-        .offcanvas a.menu-link{
-            display:block;padding:10px 14px;border-radius:6px;text-decoration:none;
-            font-family:var(--mono);font-size: 0.85rem; color:var(--text-muted);
-            background:rgba(255,255,255,0.02);border:1px solid transparent;transition:all .15s;
+        .offcanvas {
+            position: fixed; inset: 0; z-index: 3000;
+            display: none; align-items: flex-start; justify-content: center;
+            background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+            padding: 20px; overflow: auto;
         }
-        .offcanvas a.menu-link:hover{background:rgba(6, 182, 212, 0.1); color:#22d3ee; border-color: rgba(6, 182, 212, 0.3); transform: translateX(5px);}
-        
-        .offcanvas .close-btn{position:absolute;right:20px;top:20px;background:transparent;border:0;color:var(--text-muted);font-size:24px;cursor:pointer}
-        .offcanvas .close-btn:hover { color: var(--brand-primary); }
+        .offcanvas.open { display: flex; animation: fadeIn .16s ease-out; }
+        @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
 
-        @media (max-width: 640px) {
+        .offcanvas .panel {
+            width: 100%; max-width: 600px;
+            background: #18181b; border: 1px solid #3f3f46;
+            border-radius: 12px; padding: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            margin-top: auto; margin-bottom: auto; /* Centraliza vertical */
+        }
+
+        .offcanvas .close-btn {
+            position: absolute; right: 20px; top: 20px;
+            background: transparent; border: 0;
+            color: var(--text-muted); font-size: 24px; cursor: pointer;
+        }
+
+        .offcanvas .col-links { display: grid; gap: 8px; }
+        .offcanvas a.menu-link {
+            display: block; padding: 12px 16px; border-radius: 8px;
+            text-decoration: none; font-family: var(--mono); font-weight: 700;
+            color: var(--text-main); background: rgba(255,255,255,0.03);
+            border: 1px solid transparent;
+        }
+        .offcanvas a.menu-link:active {
+            background: var(--brand-primary); color: white;
+        }
+
+        /* --- MEDIA QUERIES --- */
+        @media (max-width: 1023px) {
+            /* MOBILE: Esconde NAV superior, Mostra botão flutuante */
+            nav { display: none !important; }
+            .open-nav-btn { display: block; }
             h1 { font-size: 1.8rem; }
             .card-grid { grid-template-columns: 1fr; }
-            header { padding-top: 80px; } /* Espaço para o botão menu */
+        }
+
+        @media (min-width: 1024px) {
+            /* DESKTOP: NAV superior visível, Botão flutuante oculto */
+            .open-nav-btn { display: none; }
         }
     </style>
 </head>
 <body>
 
 <div class="offcanvas" aria-hidden="true" id="offcanvas">
-  <button class="close-btn" aria-label="Fechar menu">✕</button>
   <div class="panel" role="navigation" aria-label="Menu principal">
-    
-    <div class="col-main">
-        <h4 style="color:var(--brand-primary); font-family:var(--mono); margin-bottom:1rem; text-transform:uppercase;">Índice Operacional</h4>
-        <div class="col-links">
-            <a class="menu-link" href="#intro">01. Introdução</a>
-            <a class="menu-link" href="#operative">02. O Operativo</a>
-            <a class="menu-link" href="#bioactive">03. Bio-Ativos</a>
-            <a class="menu-link" href="#genesis">04. Gênese</a>
-            <a class="menu-link" href="#modules">05. TMs & HMs</a>
-            <a class="menu-link" href="#mega">06. Mega S.Y.N.C.</a>
-            <a class="menu-link" href="#hindrances">07. Desvantagens</a>
-            <a class="menu-link" href="#mechanics">08. Mecânicas</a>
-            <a class="menu-link" href="#logistics">09. Logística</a>
-            <a class="menu-link" href="#missions">10. Missões</a>
-            <a class="menu-link" href="#env">11. Ambientes</a>
-            <a class="menu-link" href="#factions">12. Facções</a>
-            <a class="menu-link" href="#npcs">13. NPCs</a>
-            <a class="menu-link" href="#create">14. Criação</a>
-            <a class="menu-link" href="#cases">15. Casos Reais</a>
-            <a class="menu-link" href="#economy">16. Economia</a>
-            <a class="menu-link" href="#progress">17. Progressão</a>
-            <a class="menu-link" href="#craft">18. Crafting</a>
-            <a class="menu-link" href="#gm">19. Guia do Mestre</a>
-        </div>
-    </div>
-
-    <div style="border-left: 1px solid var(--border-color); padding-left: 20px; display: flex; flex-direction: column; justify-content: center;">
-      <div style="font-family:var(--mono);font-weight:800;color:var(--brand-primary);margin-bottom:8px; font-size: 1.2rem;">PROJECT SYMBIOSIS</div>
-      <div style="color:var(--text-muted);font-size:0.9rem; line-height: 1.5;">
-        Manual operacional para campanhas em <strong>Neo-Kanto</strong>.
-        <br><br>
-        <em style="color: var(--brand-secondary)">"A captura acabou. A simbiose começou."</em>
-      </div>
+    <button class="close-btn" aria-label="Fechar menu">✕</button>
+    <div style="font-family:var(--mono);font-weight:800;color:var(--brand-primary);margin-bottom:15px; font-size:1.1rem;">ÍNDICE OPERACIONAL</div>
+    <div class="col-links">
+      <a class="menu-link" href="#intro">1. Introdução</a>
+      <a class="menu-link" href="#operative">2. O Operativo</a>
+      <a class="menu-link" href="#bioactive">3. Bio-Ativos</a>
+      <a class="menu-link" href="#genesis">4. Gênese</a>
+      <a class="menu-link" href="#modules">5. TMs & HMs</a>
+      <a class="menu-link" href="#mega">6. Mega Evolução</a>
+      <a class="menu-link" href="#hindrances">7. Desvantagens</a>
+      <a class="menu-link" href="#mechanics">8. Mecânicas</a>
+      <a class="menu-link" href="#logistics">9. Logística</a>
+      <a class="menu-link" href="#missions">10. Missões</a>
+      <a class="menu-link" href="#env">11. Ambientes</a>
+      <a class="menu-link" href="#factions">12. Facções</a>
+      <a class="menu-link" href="#npcs">13. NPCs</a>
+      <a class="menu-link" href="#create">14. Criação</a>
+      <a class="menu-link" href="#cases">15. Casos Reais</a>
+      <a class="menu-link" href="#economy">16. Economia</a>
+      <a class="menu-link" href="#progress">17. Progressão</a>
+      <a class="menu-link" href="#craft">18. Crafting</a>
+      <a class="menu-link" href="#gm">19. Guia do Mestre</a>
     </div>
   </div>
 </div>
@@ -425,7 +427,9 @@
             <a href="#genesis">4. Gênese</a>
             <a href="#modules">5. TMs/HMs</a>
             <a href="#mega">6. Mega</a>
+            <a href="#hindrances">7. Defeitos</a>
             <a href="#mechanics">8. Mecânicas</a>
+            <a href="#logistics">9. Logística</a>
             <a href="#missions">10. Missões</a>
             <a href="#create">14. Criação</a>
             <a href="#gm">19. Mestre</a>
@@ -467,6 +471,8 @@
             <div class="warning-box">
                 <strong>ALERTA TÁTICO:</strong> Um Pokémon escravizado obedece cegamente e luta até a morte (Vantagem Berserker), mas carece de criatividade tática (Burrice Artificial).
             </div>
+
+            <p><strong>Sua Missão:</strong> Os jogadores são "Libertadores". O objetivo é interceptar cargas de Pokébolas e destruir a tecnologia de escravidão. Quando você vence, destrói a bola para reabilitar a criatura.</p>
         </section>
 
         <section id="operative">
@@ -541,6 +547,42 @@
                         <li>Defense → <strong>Armadura Natural</strong></li>
                     </ul>
                 </div>
+                <div class="card">
+                    <h4>REGRA DE ARMADURA</h4>
+                    <ul class="tech-list">
+                        <li>Def < 50: <strong>+0</strong> (Pele Macia)</li>
+                        <li>Def 51-100: <strong>+2</strong> (Couro/Pelos)</li>
+                        <li>Def 101-150: <strong>+4</strong> (Rocha/Metal)</li>
+                        <li>Def 150+: <strong>+6</strong> (Blindagem Pesada)</li>
+                        <li>Def 200+: <strong>+8</strong> (Intransponível)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>3.2 Ciclo de Evolução (Patamares)</h3>
+            <p>Evolução via Bio-Data (BD). A cada 5 BD, o Pokémon ganha um Avanço.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4>1. NOVATO <span class="card-badge">Nvl 1-20</span></h4>
+                    <p class="trait-desc" style="margin:0; padding:0; border:none;">Frágil, depende de ordens. Perícias máx d8. Conhece apenas 1 Protocolo Especial.</p>
+                </div>
+                <div class="card">
+                    <h4>2. EXPERIENTE <span class="card-badge">Nvl 21-40</span></h4>
+                    <p class="trait-desc" style="margin:0; padding:0; border:none;">Desbloqueia Vantagens Táticas (Tier 2). Geralmente onde ocorre a 1ª Evolução Física.</p>
+                </div>
+                <div class="card">
+                    <h4>3. VETERANO <span class="card-badge">Nvl 41-60</span></h4>
+                    <p class="trait-desc" style="margin:0; padding:0; border:none;">Atributos Físicos podem subir (d8->d10). Perícias até d10. Evolução Final da maioria.</p>
+                </div>
+                <div class="card">
+                    <h4>4. HEROICO <span class="card-badge">Nvl 61-80</span></h4>
+                    <p class="trait-desc" style="margin:0; padding:0; border:none;">Acesso a Anomalias (Tier 3). Bio-Energia +5. Perícias até d12.</p>
+                </div>
+                <div class="card">
+                    <h4>5. LENDÁRIO <span class="card-badge">Nvl 81+</span></h4>
+                    <p class="trait-desc" style="margin:0; padding:0; border:none;">Acesso a Ultimates (Hyper Beam). Stats acima de d12. Lealdade Inabalável.</p>
+                </div>
             </div>
         </section>
 
@@ -556,86 +598,254 @@
                 <div class="card">
                     <h4 style="color: var(--brand-secondary);">PROTOCOLOS DE CAMPO</h4>
                     <div class="trait-list">
-                        <div class="trait-item"><div class="trait-term">Sentinela</div><div class="trait-desc">Não dorme, +2 Perceber.</div></div>
-                        <div class="trait-item"><div class="trait-term">Rastreador K-9</div><div class="trait-desc">+2 Rastreio pelo cheiro.</div></div>
-                        <div class="trait-item"><div class="trait-term">Holofote</div><div class="trait-desc">Iluminação 20m. Cega alvos.</div></div>
-                        <div class="trait-item"><div class="trait-term">Surfista</div><div class="trait-desc">Carrega 1 humano na água.</div></div>
-                        <div class="trait-item"><div class="trait-term">Escavador</div><div class="trait-desc">Cria túneis e trincheiras.</div></div>
+                        <div class="trait-item"><div class="trait-term">Sentinela (Prontidão)</div><div class="trait-desc">Não dorme, +2 Perceber imóvel. Alerta telepático.</div></div>
+                        <div class="trait-item"><div class="trait-term">Rastreador K-9</div><div class="trait-desc">+2 Rastreio pelo cheiro. Identifica químicos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Holofote (Flash)</div><div class="trait-desc">Luz de 20m. Cega alvos em combate (Agilidade).</div></div>
+                        <div class="trait-item"><div class="trait-term">Bateria Viva</div><div class="trait-desc">Usa 1 Ferimento para recarregar eletrônicos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Cortador (Cut)</div><div class="trait-desc">Corta obstáculos naturais e cercas leves.</div></div>
+                        <div class="trait-item"><div class="trait-term">Escavador (Dig)</div><div class="trait-desc">Cria túneis e trincheiras em solo macio.</div></div>
+                        <div class="trait-item"><div class="trait-term">Surfista</div><div class="trait-desc">Carrega 1 humano na água sem penalidade.</div></div>
+                        <div class="trait-item"><div class="trait-term">Teleporte de Carga</div><div class="trait-desc">Teleporta objetos pequenos (não vivos) a 10m.</div></div>
+                        <div class="trait-item"><div class="trait-term">Antena de Rádio</div><div class="trait-desc">Capta sinais de rádio/celular num raio de 1km.</div></div>
+                        <div class="trait-item"><div class="trait-term">Detector de Veneno</div><div class="trait-desc">Identifica toxinas no ar ou comida.</div></div>
+                        <div class="trait-item"><div class="trait-term">Tocha Humana</div><div class="trait-desc">Gera calor para evitar congelamento em área.</div></div>
+                        <div class="trait-item"><div class="trait-term">Criogenia</div><div class="trait-desc">Preserva alimentos ou corpos com gelo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Sonar (Echolocation)</div><div class="trait-desc">Mapeia cavernas escuras perfeitamente.</div></div>
+                        <div class="trait-item"><div class="trait-term">Curandeiro de Campo</div><div class="trait-desc">+2 em testes de Cura no Operativo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Guincho (Strength)</div><div class="trait-desc">Move objetos pesados (Força +2 para carga).</div></div>
                     </div>
                 </div>
+
                 <div class="card">
                     <h4 style="color: var(--brand-green);">ADAPTAÇÃO BIOLÓGICA</h4>
                     <div class="trait-list">
-                        <div class="trait-item"><div class="trait-term">Visão Térmica</div><div class="trait-desc">Ignora escuridão e fumaça.</div></div>
+                        <div class="trait-item"><div class="trait-term">Visão Térmica</div><div class="trait-desc">Ignora escuridão e fumaça. Vê invisíveis.</div></div>
                         <div class="trait-item"><div class="trait-term">Nadador Veloz</div><div class="trait-desc">Dobra movimentação na água.</div></div>
-                        <div class="trait-item"><div class="trait-term">Escalador</div><div class="trait-desc">Anda em paredes/tetos.</div></div>
-                        <div class="trait-item"><div class="trait-term">Guelras</div><div class="trait-desc">Respira embaixo d'água.</div></div>
+                        <div class="trait-item"><div class="trait-term">Escalador</div><div class="trait-desc">Anda em paredes/tetos (Spider Climb).</div></div>
+                        <div class="trait-item"><div class="trait-term">Dentes de Vampiro</div><div class="trait-desc">Recupera 1 Fadiga ao ferir com mordida.</div></div>
+                        <div class="trait-item"><div class="trait-term">Fotossíntese</div><div class="trait-desc">Sol cura Fadiga e 1 Bio-Energia/rodada.</div></div>
+                        <div class="trait-item"><div class="trait-term">Absorção Elemental</div><div class="trait-desc">Dano do próprio tipo cura Energia.</div></div>
+                        <div class="trait-item"><div class="trait-term">Pele de Amianto</div><div class="trait-desc">Imune a dano de Fogo/Calor ambiental.</div></div>
+                        <div class="trait-item"><div class="trait-term">Guelras</div><div class="trait-desc">Respira embaixo d'água indefinidamente.</div></div>
+                        <div class="trait-item"><div class="trait-term">Sangue Frio</div><div class="trait-desc">Invisível a sensores térmicos/infravermelho.</div></div>
+                        <div class="trait-item"><div class="trait-term">Metabolismo Lento</div><div class="trait-desc">Consome 1/2 da ração diária necessária.</div></div>
+                        <div class="trait-item"><div class="trait-term">Regeneração Menor</div><div class="trait-desc">Cura 1 Ferimento a cada dia de descanso.</div></div>
+                        <div class="trait-item"><div class="trait-term">Imunidade a Gás</div><div class="trait-desc">Não respira ou filtra toxinas do ar.</div></div>
+                        <div class="trait-item"><div class="trait-term">Pés Leves</div><div class="trait-desc">+2 em Furtividade (som). Não deixa pegadas.</div></div>
+                        <div class="trait-item"><div class="trait-term">Ventosas</div><div class="trait-desc">+2 para agarrar oponentes ou objetos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Isolamento Elétrico</div><div class="trait-desc">Imune a choque (não dano elétrico de ataque).</div></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4 style="color: var(--brand-rare);">SOCIAL & MENTAL</h4>
+                    <div class="trait-list">
+                        <div class="trait-item"><div class="trait-term">Link Empático</div><div class="trait-desc">Compartilha Bennies com o Operativo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Comando Silencioso</div><div class="trait-desc">Obedece micro-sinais imperceptíveis.</div></div>
+                        <div class="trait-item"><div class="trait-term">Carapaça Reativa</div><div class="trait-desc">Toque causa 2d4 dano (Intimidação Física).</div></div>
+                        <div class="trait-item"><div class="trait-term">Ameaça Sônica</div><div class="trait-desc">Usa Intimidar em Cone (Roar).</div></div>
+                        <div class="trait-item"><div class="trait-term">Feromônios</div><div class="trait-desc">+2 em Persuasão contra biológicos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Aparência Inofensiva</div><div class="trait-desc">Inimigos tendem a ignorá-lo no início.</div></div>
+                        <div class="trait-item"><div class="trait-term">Aura Calmante</div><div class="trait-desc">+2 para acalmar civis ou Pokémon selvagens.</div></div>
+                        <div class="trait-item"><div class="trait-term">Telepatia Básica</div><div class="trait-desc">Fala mentalmente com o dono (1km).</div></div>
+                        <div class="trait-item"><div class="trait-term">Mimetismo (Chatot)</div><div class="trait-desc">Imita vozes humanas e sons perfeitamente.</div></div>
+                        <div class="trait-item"><div class="trait-term">Postura Real</div><div class="trait-desc">+2 em status social/nobreza.</div></div>
+                        <div class="trait-item"><div class="trait-term">Olhar Paralisante</div><div class="trait-desc">Usa Intimidar com o Olhar (Alcance visual).</div></div>
+                        <div class="trait-item"><div class="trait-term">Detector de Mentiras</div><div class="trait-desc">Sente variação cardíaca (Insight).</div></div>
+                        <div class="trait-item"><div class="trait-term">Elo de Dor</div><div class="trait-desc">Sabe a direção/distância exata do dono.</div></div>
+                        <div class="trait-item"><div class="trait-term">Negociador</div><div class="trait-desc">Pode comprar itens com desconto (Persuasão).</div></div>
+                        <div class="trait-item"><div class="trait-term">Aura de Medo</div><div class="trait-desc">-2 em testes de Espírito de inimigos próximos.</div></div>
                     </div>
                 </div>
             </div>
-            
-            <h3 style="margin-top:2rem">⚔️ TIER 2 & 3 (Resumo)</h3>
-             <div class="card-grid">
+
+            <h3>⚔️ TIER 2: COMBATE (Custo: 2)</h3>
+            <div class="card-grid">
                 <div class="card">
-                    <h4>COMBATE (Custo: 2)</h4>
+                    <h4>OFENSIVA</h4>
                     <div class="trait-list">
-                         <div class="trait-item"><div class="trait-term">Instinto Predatório</div><div class="trait-desc">+2 Dano fixo.</div></div>
-                         <div class="trait-item"><div class="trait-term">Pele de Adamantium</div><div class="trait-desc">Ignora dano extra de Críticos.</div></div>
-                         <div class="trait-item"><div class="trait-term">Voo/Levitação</div><div class="trait-desc">Ignora terreno.</div></div>
+                        <div class="trait-item"><div class="trait-term">Instinto Predatório</div><div class="trait-desc">+2 Dano fixo em ataques naturais.</div></div>
+                        <div class="trait-item"><div class="trait-term">Assassino Silencioso</div><div class="trait-desc">+1d6 dano em ataques surpresa.</div></div>
+                        <div class="trait-item"><div class="trait-term">Mira Computadorizada</div><div class="trait-desc">Imóvel: dobra alcance, ignora cobertura.</div></div>
+                        <div class="trait-item"><div class="trait-term">Breacher</div><div class="trait-desc">+4 Dano contra objetos (portas/paredes).</div></div>
+                        <div class="trait-item"><div class="trait-term">Técnico</div><div class="trait-desc">Golpes de baixo custo (1-2 PBE) dobram dano.</div></div>
+                        <div class="trait-item"><div class="trait-term">Lutador Sujo</div><div class="trait-desc">+2 em Truques (Desarmar, Cegar).</div></div>
+                        <div class="trait-item"><div class="trait-term">Investida (Charge)</div><div class="trait-desc">+2 Dano se mover 4+ quadros antes.</div></div>
+                        <div class="trait-item"><div class="trait-term">Ataque Duplo</div><div class="trait-desc">Dois ataques com -2 (exige duas armas/garras).</div></div>
+                        <div class="trait-item"><div class="trait-term">Veneno de Contato</div><div class="trait-desc">Ataque físico exige Vigor ou Envenenado.</div></div>
+                        <div class="trait-item"><div class="trait-term">Perfurar Armadura</div><div class="trait-desc">Ignora 2 pontos de Armadura do alvo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Fúria (Berserk)</div><div class="trait-desc">+2 Ataque/Dano, -2 Defesa. (Opcional).</div></div>
+                        <div class="trait-item"><div class="trait-term">Atirador de Elite</div><div class="trait-desc">Reduz penalidade de cobertura em 2.</div></div>
+                        <div class="trait-item"><div class="trait-term">Contra-Ataque</div><div class="trait-desc">Ataque livre se inimigo falhar em bater.</div></div>
+                        <div class="trait-item"><div class="trait-term">Mestre Elemental</div><div class="trait-desc">+1 Dano em golpes do seu tipo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Finalizador</div><div class="trait-desc">+2 Ataque contra alvos Abalados.</div></div>
                     </div>
                 </div>
-                <div class="card" style="border-color: var(--brand-rare);">
-                    <h4>ANOMALIAS (Custo: 3)</h4>
+
+                <div class="card">
+                    <h4>DEFENSIVA & MOBILIDADE</h4>
                     <div class="trait-list">
-                        <div class="trait-item"><div class="trait-term">Cromático (Shiny)</div><div class="trait-desc">+1 Benne, Valor 5x.</div></div>
-                        <div class="trait-item"><div class="trait-term">Linhagem Alpha</div><div class="trait-desc">Tamanho +1, +1 Ferimento.</div></div>
-                        <div class="trait-item"><div class="trait-term">Fator Gigamax</div><div class="trait-desc">Dobra tamanho 1x/sessão.</div></div>
+                        <div class="trait-item"><div class="trait-term">Pele de Adamantium</div><div class="trait-desc">Ignora dano extra de Críticos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Regeneração</div><div class="trait-desc">Vigor cura 1 Ferimento (1x/cena).</div></div>
+                        <div class="trait-item"><div class="trait-term">Guardian</div><div class="trait-desc">+2 Defesa se adjacente ao Operativo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Mente Colmeia</div><div class="trait-desc">Bônus por aliado adjacente.</div></div>
+                        <div class="trait-item"><div class="trait-term">Esquiva Sobrenatural</div><div class="trait-desc">-1 para ser acertado à distância.</div></div>
+                        <div class="trait-item"><div class="trait-term">Resistência a Dor</div><div class="trait-desc">Ignora penalidade de 1 Ferimento.</div></div>
+                        <div class="trait-item"><div class="trait-term">Escudo Psíquico</div><div class="trait-desc">+2 Armadura contra ataques mentais.</div></div>
+                        <div class="trait-item"><div class="trait-term">Camuflagem Óptica</div><div class="trait-desc">+2 Furtividade parado (Predator).</div></div>
+                        <div class="trait-item"><div class="trait-term">Movimentação 3D</div><div class="trait-desc">Voo/Levitação. Ignora terreno.</div></div>
+                        <div class="trait-item"><div class="trait-term">Montaria de Combate</div><div class="trait-desc">Operativo atira montado sem penalidade.</div></div>
+                        <div class="trait-item"><div class="trait-term">Teleporte Tático</div><div class="trait-desc">Move 6m através de obstáculos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Corpo Etéreo</div><div class="trait-desc">Imune físico mundano. Vulnerável energia.</div></div>
+                        <div class="trait-item"><div class="trait-term">Escavar Combate</div><div class="trait-desc">Pode se mover sob a terra (Dig).</div></div>
+                        <div class="trait-item"><div class="trait-term">Salto Gigante</div><div class="trait-desc">Salta 4m vertical / 8m horizontal.</div></div>
+                        <div class="trait-item"><div class="trait-term">Inabalável</div><div class="trait-desc">Gasta 1 Benne para rolar Vigor se Incapacitado.</div></div>
                     </div>
+                </div>
+            </div>
+
+            <h3>💎 TIER 3: ANOMALIAS (Custo: 3)</h3>
+            <div class="card-grid">
+                <div class="card" style="border-color: var(--brand-rare);">
+                    <h4>ANOMALIA CROMÁTICA (SHINY)</h4>
+                    <ul class="tech-list">
+                        <li>+1 Benne (Sorte) exclusivo/sessão.</li>
+                        <li>+2 em testes sociais visuais.</li>
+                        <li><strong>Status:</strong> Vale 5x mais. Alvo de roubo.</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color: var(--brand-rare);">
+                    <h4>LINHAGEM ALPHA</h4>
+                    <ul class="tech-list">
+                        <li>Tamanho +1.</li>
+                        <li>Ganha +1 Ferimento Máximo (Total 4).</li>
+                        <li>Ataques físicos empurram o alvo.</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color: var(--brand-rare);">
+                    <h4>GENOMA DELTA</h4>
+                    <ul class="tech-list">
+                        <li>Altera Tipo Elemental e Fraquezas.</li>
+                        <li>Acesso a Protocolos impossíveis para a espécie.</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color: var(--brand-rare);">
+                    <h4>FATOR GIGAMAX (LATENTE)</h4>
+                    <ul class="tech-list">
+                        <li>1x/sessão: Dobra de tamanho por 3 turnos.</li>
+                        <li>Maximiza dano dos dados. Fica Exausto após uso.</li>
+                    </ul>
+                </div>
+                 <div class="card" style="border-color: var(--brand-rare);">
+                    <h4>FOSSILIZADO / ANCESTRAL</h4>
+                    <ul class="tech-list">
+                        <li>Armadura Natural +2. Imune a Medo.</li>
+                        <li>Defeito: -2 Agilidade (Lento e pesado).</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <section id="modules">
             <h2>5. Protocolos Modulares (TMs & HMs)</h2>
+            <p>Softwares de combate adquiridos com Pontos de Evolução.</p>
+            
             <div class="card-grid">
                 <div class="card">
-                    <h4>TM (TECHNICAL MODULE) <span class="card-badge">1 Ponto</span></h4>
+                    <h4>TM (TECHNICAL MODULE) <span class="card-badge">Custo: 1 Ponto</span></h4>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem;">Movimentos táticos específicos.</p>
                     <ul class="tech-list">
-                        <li><strong>Protect:</strong> Defesa Total (+4 Aparar).</li>
-                        <li><strong>Thunder Wave:</strong> Paralisa (Distraído/Vulnerável).</li>
-                        <li><strong>Toxic:</strong> Dano progressivo por rodada.</li>
+                        <li><strong>Protect:</strong> Defesa Total com +4 em Aparar.</li>
+                        <li><strong>Substitute:</strong> Cria clone com 1 Ferimento (Custa 2 PP).</li>
+                        <li><strong>Toxic:</strong> Causa dano progressivo (Vigor nega).</li>
+                        <li><strong>Thunder Wave:</strong> Paralisa (Alvo fica Distraído e Vulnerável).</li>
+                        <li><strong>U-Turn:</strong> Ataca e se move (foge) no mesmo turno.</li>
+                        <li><strong>Roost:</strong> Pousa para curar 1 Ferimento (Perde Imunidade Terra).</li>
+                        <li><strong>Sunny Day/Rain Dance:</strong> Muda o clima e vantagens elementais.</li>
                     </ul>
                 </div>
                 <div class="card" style="border-color: var(--brand-warning);">
-                    <h4 style="color:var(--brand-warning);">HM (HIDDEN MACHINE) <span class="card-badge">2 Pontos</span></h4>
+                    <h4 style="color:var(--brand-warning);">HM (HIDDEN MACHINE) <span class="card-badge">Custo: 2 Pontos</span></h4>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1rem;">Habilidades de Elite e Campo.</p>
                     <ul class="tech-list">
-                        <li><strong>HM01 Cut:</strong> Dano +4 e corta aço.</li>
-                        <li><strong>HM02 Fly:</strong> Voo Tático e Viagem Rápida.</li>
-                        <li><strong>HM03 Surf:</strong> Viagem aquática em grupo.</li>
+                        <li><strong>HM01 Cut:</strong> Dano Físico +4 e corta obstáculos de aço.</li>
+                        <li><strong>HM02 Fly:</strong> Voo Tático e Teleporte entre cidades conhecidas.</li>
+                        <li><strong>HM03 Surf:</strong> Cria onda gigante e permite viagem aquática em grupo.</li>
+                        <li><strong>HM04 Strength:</strong> Força sobe 2 dados para empurrar cargas pesadas.</li>
+                        <li><strong>HM05 Flash:</strong> Cegueira em área massiva (Explosão Grande).</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="mega">
-            <h2>6. Mega S.Y.N.C.</h2>
+            <h2>6. Mega S.Y.N.C. (Mega Evolução)</h2>
             <div class="lore-box" style="border-color:var(--brand-mega);">
-                <strong>Ressonância Genética:</strong> Transformação temporária (5 rodadas). Requer Rank Veterano, Keystone e Mega Stone.
+                <strong>Ressonância Genética:</strong> Uma transformação temporária que quebra os limites biológicos. Requer Rank Veterano ou superior.
             </div>
-            <div class="card" style="border-color: var(--brand-mega);">
-                <h4 style="color:var(--brand-mega);">EFEITOS</h4>
-                <p style="color:var(--text-muted)">Todos atributos físicos sobem 1 dado. Imune a Medo. Fica Exausto após o uso.</p>
+            
+            <div class="card-grid">
+                <div class="card" style="border-color: var(--brand-mega);">
+                    <h4 style="color:var(--brand-mega);">REQUISITOS</h4>
+                    <ul class="tech-list">
+                        <li><strong>Keystone (Operativo):</strong> Bracelete neural (Custo: 5000 NC$).</li>
+                        <li><strong>Mega Stone (Pokémon):</strong> Cristal raro (Custo: 10000 NC$).</li>
+                        <li><strong>Vínculo:</strong> Lealdade acima de 80%.</li>
+                    </ul>
+                </div>
+                <div class="card" style="border-color: var(--brand-mega);">
+                    <h4 style="color:var(--brand-mega);">EFEITOS (Duração: 5 Rodadas)</h4>
+                    <ul class="tech-list">
+                        <li>Todos os Atributos Físicos sobem 1 tipo de dado.</li>
+                        <li>Ganha uma Vantagem de Combate extra.</li>
+                        <li>Imune a Medo e Controle Mental.</li>
+                        <li><strong>Pós-Uso:</strong> Pokémon fica Exausto (2 Níveis de Fadiga).</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
         <section id="hindrances">
-            <h2>7. Desvantagens</h2>
+            <h2>7. Desvantagens (Hindrances)</h2>
             <div class="card-grid">
                 <div class="card">
+                    <h4 style="color: var(--text-accent);">COMPORTAMENTAIS</h4>
                     <div class="trait-list">
-                        <div class="trait-item"><div class="trait-term">Trauma (Maior)</div><div class="trait-desc">Pânico com Pokébolas.</div></div>
-                        <div class="trait-item"><div class="trait-term">Desobediente (Maior)</div><div class="trait-desc">Age sozinho se dono falhar.</div></div>
-                        <div class="trait-item"><div class="trait-term">Vulnerabilidade</div><div class="trait-desc">+4 dano de elemento oposto.</div></div>
+                        <div class="trait-item"><div class="trait-term">Trauma de Cativeiro (Maior)</div><div class="trait-desc">Pânico ao ver Pokébolas/grades.</div></div>
+                        <div class="trait-item"><div class="trait-term">Sede de Sangue (Menor)</div><div class="trait-desc">Ataca inimigos caídos. Teste para parar.</div></div>
+                        <div class="trait-item"><div class="trait-term">Desobediente (Maior)</div><div class="trait-desc">Perde respeito se dono falhar. Age sozinho.</div></div>
+                        <div class="trait-item"><div class="trait-term">Pacifista Relutante (Menor)</div><div class="trait-desc">-2 na Iniciativa.</div></div>
+                        <div class="trait-item"><div class="trait-term">Instinto Incontrolável</div><div class="trait-desc">Persegue presas pequenas ignorando ordens.</div></div>
+                        <div class="trait-item"><div class="trait-term">Vínculo Obsessivo</div><div class="trait-desc">-2 em tudo se longe do Operativo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Fobia (Fogo/Água/etc)</div><div class="trait-desc">-2 em tudo na presença do gatilho.</div></div>
+                        <div class="trait-item"><div class="trait-term">Arrogante</div><div class="trait-desc">Provoca inimigos mais fortes. Não recua.</div></div>
+                        <div class="trait-item"><div class="trait-term">Curioso</div><div class="trait-desc">Investiga tudo, cai em armadilhas fácil.</div></div>
+                        <div class="trait-item"><div class="trait-term">Leal Demais</div><div class="trait-desc">Nunca abandona o Operativo, mesmo suicida.</div></div>
+                        <div class="trait-item"><div class="trait-term">Preguiçoso (Slaking)</div><div class="trait-desc">Age rodada sim, rodada não (Ganhe 3pts).</div></div>
+                        <div class="trait-item"><div class="trait-term">Guloso</div><div class="trait-desc">Pode se distrair com comida em combate.</div></div>
+                        <div class="trait-item"><div class="trait-term">Covarde</div><div class="trait-desc">+2 para testes de Medo. Foge se ferido.</div></div>
+                        <div class="trait-item"><div class="trait-term">Barulhento</div><div class="trait-desc">Não consegue fazer furtividade.</div></div>
+                        <div class="trait-item"><div class="trait-term">Destrutivo</div><div class="trait-desc">Quebra objetos do cenário sem querer.</div></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--text-accent);">FISIOLÓGICAS & TÁTICAS</h4>
+                    <div class="trait-list">
+                        <div class="trait-item"><div class="trait-term">Metabolismo Hiperativo (Maior)</div><div class="trait-desc">Custo de manutenção triplo.</div></div>
+                        <div class="trait-item"><div class="trait-term">Dependência Climática</div><div class="trait-desc">Sofre sob sol/clima oposto.</div></div>
+                        <div class="trait-item"><div class="trait-term">Imunodeficiência</div><div class="trait-desc">-2 Vigor contra venenos/doenças.</div></div>
+                        <div class="trait-item"><div class="trait-term">Sequela de Combate</div><div class="trait-desc">-1 Agilidade ou -2 Perceber (membro fantasma).</div></div>
+                        <div class="trait-item"><div class="trait-term">Cego / Surdo</div><div class="trait-desc">-2 em Perceber. Imune a ataques visuais/sônicos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Tamanho Colossal</div><div class="trait-desc">+2 para ser acertado. Não entra em portas.</div></div>
+                        <div class="trait-item"><div class="trait-term">Bateria Viciada</div><div class="trait-desc">Recupera Bio-Energia pela metade.</div></div>
+                        <div class="trait-item"><div class="trait-term">Assinatura Térmica Alta</div><div class="trait-desc">Brilha no escuro. Furtividade impossível.</div></div>
+                        <div class="trait-item"><div class="trait-term">Ruptura de Voz</div><div class="trait-desc">Não controla volume, alerta inimigos.</div></div>
+                        <div class="trait-item"><div class="trait-term">Pele Fina</div><div class="trait-desc">-1 na Resistência.</div></div>
+                        <div class="trait-item"><div class="trait-term">Lento</div><div class="trait-desc">-2 na Movimentação. d4 em corrida.</div></div>
+                        <div class="trait-item"><div class="trait-term">Frágil</div><div class="trait-desc">-1 na Resistência a Dano.</div></div>
+                        <div class="trait-item"><div class="trait-term">Míope</div><div class="trait-desc">-2 em ataques à distância.</div></div>
+                        <div class="trait-item"><div class="trait-term">Vulnerabilidade Elem.</div><div class="trait-desc">Recebe +4 de dano de um elemento específico.</div></div>
+                        <div class="trait-item"><div class="trait-term">Sintoma de Abstinência</div><div class="trait-desc">Viciado em X-Attack. Tremedeira sem a droga.</div></div>
                     </div>
                 </div>
             </div>
@@ -643,37 +853,71 @@
 
         <section id="mechanics">
             <h2>8. Mecânicas & Combate</h2>
+            
+            <h3>8.1 Bio-Energia (PBE)</h3>
+            <p>Pokémon usam energia metabólica (Base 10-20 PP).</p>
+            <ul class="tech-list">
+                <li><strong>Ataques Cinéticos:</strong> Custo 0.</li>
+                <li><strong>Protocolos Especiais:</strong> Custam PBE. Se zerar, perde acesso.</li>
+                <li><strong>Sobrecarga:</strong> Usar golpe sem PBE custa 1 nível de Fadiga.</li>
+            </ul>
+
             <div class="card-grid">
                 <div class="card">
-                    <h4>BIO-ENERGIA (PP)</h4>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">Golpes Especiais custam PP. Se zerar, perde o golpe. Usar sem PP causa Fadiga.</p>
+                    <h4>LETALIDADE</h4>
+                    <ul class="tech-list">
+                        <li><strong>Humanos:</strong> 3 Ferimentos = Incapacitado.</li>
+                        <li><strong>Pokémon:</strong> 3 Ferimentos = Estado Crítico. Deve ser estabilizado em 3 rodadas ou morre permanentemente.</li>
+                    </ul>
                 </div>
                 <div class="card">
-                    <h4>LETALIDADE</h4>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">
-                    <strong>Humanos:</strong> 3 Ferimentos = Incapacitado.<br>
-                    <strong>Pokémon:</strong> 3 Ferimentos = Estado Crítico (Morre em 3 rodadas sem ajuda).
-                    </p>
+                    <h4>RUPTURA DE LINK</h4>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">Se o estresse exceder o limite (por dano ou ordens ruins), o Pokémon entra em Pânico: Foge, Congela ou Ataca o dono.</p>
                 </div>
             </div>
         </section>
 
         <section id="logistics">
             <h2>9. Logística & Equipamentos</h2>
+            <div class="lore-box">
+                <strong>Economia:</strong> Custo de Vida diário varia de 20 NC$ (Pequeno) a 200 NC$ (Colossal). Sem pagamento = Fadiga e Queda de Lealdade.
+            </div>
+
+            <h3>9.1 Gear de Pokémon (Held Items)</h3>
             <div class="table-wrapper">
                 <table>
                     <thead><tr><th>Item</th><th>Efeito</th><th>Custo</th></tr></thead>
                     <tbody>
-                        <tr><td>Bio-Gel (Leftovers)</td><td>Remove 1 Fadiga/hora.</td><td>2000 NC$</td></tr>
-                        <tr><td>Focus Sash</td><td>Evita morte (1 uso).</td><td>800 NC$</td></tr>
-                        <tr><td>Rocky Helmet</td><td>Dano 2d4 ao toque.</td><td>1200 NC$</td></tr>
+                        <tr><td>Bio-Gel (Leftovers)</td><td>Cura lenta (remove 1 Fadiga/hora).</td><td>2000 NC$</td></tr>
+                        <tr><td>Limiter (Choice Band)</td><td>+2 Dano, -2 Aparar (Exoesqueleto).</td><td>1500 NC$</td></tr>
+                        <tr><td>Focus Sash</td><td>Campo de força descartável (Evita morte).</td><td>800 NC$</td></tr>
+                        <tr><td>Rocky Helmet</td><td>Dano 2d4 em quem toca.</td><td>1200 NC$</td></tr>
+                        <tr><td>Scope Lens</td><td>Amplia margem de Crítico em 1.</td><td>1800 NC$</td></tr>
+                        <tr><td>Eviolite</td><td>+1 Resistência se não evoluído.</td><td>2500 NC$</td></tr>
+                        <tr><td>Assault Vest</td><td>+2 Armadura contra Especial, não usa Status.</td><td>2000 NC$</td></tr>
+                        <tr><td>Life Orb</td><td>+1d6 Dano, sofre 1 Fadiga após ataque.</td><td>2200 NC$</td></tr>
+                        <tr><td>Air Balloon</td><td>Flutua (Imune Terra) até ser atingido.</td><td>500 NC$</td></tr>
+                        <tr><td>Quick Claw</td><td>+2 Iniciativa (Cartas).</td><td>1000 NC$</td></tr>
+                        <tr><td>Mental Herb</td><td>Remove status mental (1 uso).</td><td>300 NC$</td></tr>
                     </tbody>
                 </table>
+            </div>
+
+            <h3>9.2 Ferramentas do Operativo</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>JAMMER DE ESFERAS</h4>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">Impede Rockets de recolherem Pokémon feridos.</p>
+                </div>
+                <div class="card">
+                    <h4>LIBERATOR TOOL</h4>
+                    <p style="font-size:0.9rem; color:var(--text-muted);">Hacker de Slave-Balls. Sucesso liberta. Falha Crítica deleta (morte).</p>
+                </div>
             </div>
         </section>
 
         <section id="missions">
-          <h2>10. Regras para Missões</h2>
+          <h2>10. Regras para Missões (estrutura)</h2>
           <div class="card">
             <div class="kicker">Estrutura Básica</div>
             <ol style="color:var(--text-muted);padding-left:18px;margin-top:8px">
@@ -683,9 +927,9 @@
               <li><strong>Extracção:</strong> Evacuação e consequências (custo social/reputação).</li>
             </ol>
           </div>
-          <div class="card-grid" style="margin-top:1.5rem">
+          <div class="card-grid" style="margin-top:10px">
             <div class="card"><div class="kicker">Tipos de Missão</div><ul class="list-tech"><li>Resgate</li><li>Sabotagem</li><li>Escolta</li><li>Investigação</li></ul></div>
-            <div class="card"><div class="kicker">Recompensas & Riscos</div><p style="color:var(--text-muted); font-size:0.9rem">Recompensas variam de créditos a mods ilegais; alto risco aumenta notoriedade com facções.</p></div>
+            <div class="card"><div class="kicker">Recompensas & Riscos</div><p style="color:var(--text-muted)">Recompensas variam de créditos a mods ilegais; alto risco aumenta notoriedade com facções.</p></div>
           </div>
         </section>
 
@@ -693,76 +937,75 @@
           <h2>11. Ambientes & Efeitos Climáticos</h2>
           <div class="card"><div class="kicker">Tipos de Terreno</div>
             <ul class="list-tech">
-              <li><strong>Urbano denso:</strong> cobertura alta, ruído eletrônico (penalidade em stealth por sinais).</li>
-              <li><strong>Skybox:</strong> visibilidade alta, regras de gravidade reduzida.</li>
-              <li><strong>Sprawl subterrâneo:</strong> sinal fraco, vantagem para emboscadas.</li>
+              <li>Urbano denso: cobertura alta, ruído eletrônico (penalidade em stealth por sinais).</li>
+              <li>Skybox: visibilidade alta, regras de gravidade reduzida (suporte aéreo).</li>
+              <li>Sprawl subterrâneo: sinal fraco, vantagem para furtividade e emboscadas.</li>
+              <li>Laboratórios: campos eletromagnéticos que atrapalham SymbioDex.</li>
             </ul>
           </div>
-          <div class="card" style="margin-top:1.5rem"><div class="kicker">Climas & Efeitos</div>
+          <div class="card" style="margin-top:10px"><div class="kicker">Climas & Efeitos</div>
             <ul class="list-tech">
-              <li><strong>Chuva Ácida:</strong> -1 resistência a bio-ativos expostos.</li>
-              <li><strong>Tempestade Elétrica:</strong> chance de sobrecarga em implantes (teste Vigor).</li>
-              <li><strong>Sol Intenso:</strong> Fotossíntese regenera +1 PP/rodada.</li>
+              <li>Chuva Ácida: -1 resistência a bio-ativos não resistentes</li>
+              <li>Tempestade Elétrica: chance de sobrecarga em implantes (teste Vigor)</li>
+              <li>Nevoeiro Denso: reduz alcance visual à metade</li>
+              <li>Sol Intenso: Fotossíntese regenera +1 PBE/rodada (se aplicável)</li>
             </ul>
           </div>
         </section>
 
         <section id="factions">
           <h2>12. Facções de Neo-Kanto</h2>
-          <div class="card-grid">
-            <div class="card"><div class="kicker">S.Y.N.C. (Governança)</div><p style="font-size:0.9rem; color:var(--text-muted)">Instituição reguladora que fiscaliza o uso de bio-tecnologia.</p></div>
-            <div class="card"><div class="kicker">Cartel Rocket</div><p style="font-size:0.9rem; color:var(--text-muted)">Operações ilegais, slave-balls e mercados negros.</p></div>
-            <div class="card"><div class="kicker">Silph Corporation</div><p style="font-size:0.9rem; color:var(--text-muted)">Corp gigante. Fonte de tecnologia e quests.</p></div>
-            <div class="card"><div class="kicker">Clãs de Rua</div><p style="font-size:0.9rem; color:var(--text-muted)">Controle de bairros; úteis como informantes.</p></div>
+          <div class="card-grid" style="margin-top:10px">
+            <div class="card"><div class="kicker">S.Y.N.C. (Governança)</div><p>Instituição reguladora que fiscaliza o uso de bio-tecnologia. Tem recursos e leis próprias.</p></div>
+            <div class="card"><div class="kicker">Cartel Rocket</div><p>Operações ilegais, slave-balls e mercados negros.</p></div>
+            <div class="card"><div class="kicker">Silph Corporation</div><p>Corp gigante com braços legais e clandestinos. Fonte de tecnologia e quests.</p></div>
+            <div class="card"><div class="kicker">Clãs de Rua</div><p>Pequenas facções que controlam bairros; úteis como informantes ou inimigos.</p></div>
           </div>
         </section>
 
         <section id="npcs">
-          <h2>13. NPCs & Protocolos</h2>
+          <h2>13. NPCs & Protocolos de Interação</h2>
           <div class="card"><div class="kicker">Modelos Rápidos</div>
             <ul class="list-tech">
-              <li><strong>Informante:</strong> Persuasão d6 — Custo: 50 NC$</li>
-              <li><strong>Agente S.Y.N.C.:</strong> Investigação d8 — Autoridade legal</li>
-              <li><strong>Capitão Rocket:</strong> Intimidar d10 — Segurança armada</li>
+              <li><strong>Informante de Rua:</strong> Skill: Persuasão d6 — valor: 50 NC$</li>
+              <li><strong>Agente S.Y.N.C.:</strong> Skill: Investigação d8 — pode emitir ordens legais</li>
+              <li><strong>Capitão do Cartel:</strong> Skill: Intimidar d10 — força bruta + segurança armada</li>
             </ul>
           </div>
+          <div class="card" style="margin-top:10px"><div class="kicker">Protocolos de Reação</div><p style="color:var(--text-muted)">NPCs reagem a notoriedade, alinhamento e escolhas do Operativo. Bons usos: filtros de reputação, missões alternativas e barganhas.</p></div>
         </section>
 
         <section id="create">
-          <h2>14. Criando Seu Operativo</h2>
+          <h2>14. Criando Seu Operativo — Passo a Passo</h2>
           <div class="card">
-            <div class="kicker">Passo a Passo</div>
-            <ol style="color:var(--text-muted);padding-left:18px; margin-top:10px;">
+            <ol style="color:var(--text-muted);padding-left:18px">
               <li><strong>Escolha um arquétipo</strong> (Handler / Tech-Op / Vanguard)</li>
-              <li><strong>Distribua pontos</strong>: Atributos primários / secundários</li>
+              <li><strong>Distribua pontos</strong>: Atributos primários/ secundários</li>
               <li><strong>Vantagens iniciais</strong>: 3 pontos (Tiers)</li>
               <li><strong>Selecione Bio-Ativo</strong>: primeiro companheiro (ex.: urbano comum)</li>
               <li><strong>Equipamento obrigatório</strong>: Jammer / Liberator Tool (mínimo)</li>
               <li><strong>Vínculo inicial</strong>: defina % de lealdade e trauma</li>
+              <li><strong>Contrato de missão</strong>: defina objetivo e recompensa</li>
             </ol>
           </div>
         </section>
 
         <section id="cases">
-          <h2>15. Casos Reais (Exemplos)</h2>
-          <div class="card-grid">
-            <div class="card"><div class="kicker">Resgate Noturno</div><p style="color:var(--text-muted); font-size:0.9rem">Briefing: Carga roubada em armazém. Abordagem: infiltração + jammer. Resultado: libertar criatura e destruir Slave-Balls.</p></div>
-            <div class="card"><div class="kicker">Sabotagem de Linha</div><p style="color:var(--text-muted); font-size:0.9rem">Objetivo: destruir laboratório de mod. Requer: Tech-Op + drone EMP + backup para extração.</p></div>
-          </div>
+          <h2>15. Casos Reais de Operações (Exemplos)</h2>
+          <div class="card"><div class="kicker">Exemplo: Resgate Noturno</div><p style="color:var(--text-muted)">Briefing: Carga roubada em armazém subterrâneo. Abordagem: infiltração + jammer. Resultado ideal: libertar criatura, destruir Slave-Balls e escapar sem alarme.</p></div>
+          <div class="card" style="margin-top:8px"><div class="kicker">Exemplo: Sabotagem de Linha</div><p style="color:var(--text-muted)">Objetivo: destruir um laboratório de mod. Requer: Tech-Op + drone EMP + backup para extração.</p></div>
         </section>
 
         <section id="economy">
           <h2>16. Economia & Mercado Negro</h2>
-          <div class="table-wrapper">
-            <table>
-                <thead><tr><th>Item</th><th>Tipo</th><th>Preço Médio</th></tr></thead>
-                <tbody>
-                <tr><td>Keystone</td><td>Raro</td><td>5.000 NC$</td></tr>
-                <tr><td>Mega Stone</td><td>Épico</td><td>10.000 NC$</td></tr>
-                <tr><td>Mods Ilícitos</td><td>Varia</td><td>2k – 8k NC$</td></tr>
-                </tbody>
-            </table>
+          <div class="card"><div class="kicker">Tabela Rápida</div>
+            <table style="margin-top:8px"><thead><tr><th>Item</th><th>Tier</th><th>Preço Médio</th></tr></thead><tbody>
+            <tr><td>Keystone</td><td>Raro</td><td>5.000 NC$</td></tr>
+            <tr><td>Mega Stone</td><td>Épico</td><td>10.000 NC$</td></tr>
+            <tr><td>Mods Ilícitos</td><td>Varia</td><td>2.000–8.000 NC$</td></tr>
+            </tbody></table>
           </div>
+          <div class="card" style="margin-top:8px"><div class="kicker">Barganha</div><p style="color:var(--text-muted)">Os jogadores podem reduzir custos com testes de Persuasão/Trade e usando contatos (facções). Mercadorias ilegais trazem risco de perseguição.</p></div>
         </section>
 
         <section id="progress">
@@ -771,32 +1014,37 @@
             <ul class="list-tech">
               <li>Patentes: Novato → Veterano → Oficial → Executor</li>
               <li>Desbloqueio de equipamentos por patente</li>
+              <li>Árvore de Protocolos: selecionar ramificações (suporte / ofensivo / stealth)</li>
             </ul>
           </div>
-          <div class="card" style="margin-top:1.5rem"><div class="kicker">Bio-Ativos</div><p style="color:var(--text-muted)">Evolução via Bio-Data (BD). A cada 5 BD, um avanço; pontos de evolução compram TMs/HMs.</p></div>
+          <div class="card" style="margin-top:8px"><div class="kicker">Bio-Ativos</div><p style="color:var(--text-muted)">Evolução via Bio-Data (BD). A cada 5 BD, um avanço; pontos de evolução compram TMs/HMs.</p></div>
         </section>
 
         <section id="craft">
-          <h2>18. Craft & Mods Cibernéticos</h2>
-          <div class="card"><p style="color:var(--text-muted)">Operativos podem fabricar mods (implantes, boosters). Requer receitas, componentes e testes de Engenharia/Química. Peças ilegais são baratas, mas arriscadas.</p></div>
+          <h2>18. Sistema de Craft / Mods Cibernéticos</h2>
+          <div class="card"><div class="kicker">Visão Geral</div><p style="color:var(--text-muted)">Operativos e laboratórios podem fabricar mods (implantes, boosters, peças de Mega). Requer receitas, componentes e testes de Engenharia/Química.</p></div>
+          <div class="card-grid" style="margin-top:10px">
+            <div class="card"><div class="kicker">Exemplo: Filtro Neural</div><p>Reduz chance de ruído em implantes (-1 falha em testes de Sincronização)</p></div>
+            <div class="card"><div class="kicker">Mercado Negro</div><p>Peças ilegais são baratas, mas elevam risco de sanções e vandalismo de facções rivais.</p></div>
+          </div>
         </section>
 
         <section id="gm">
             <h2>19. Guia do Mestre</h2>
             
-            <div class="lore-box">
+            <div class="immersion-tip">
                 <strong>Regra de Sincronização:</strong> Não se joga uma bola. É um <strong>Desafio Social Estendido</strong>: 
                 1. Abordagem (Furtividade/Diplomacia) -> 2. Oferta (Recurso) -> 3. Pacto (Espírito vs Espírito).
             </div>
 
-            <div class="kicker" style="margin-top:2rem">Ganchos de Missão (1d6)</div>
+            <h3>Ganchos de Missão (1d6)</h3>
             <div class="card-grid">
                 <div class="card"><h4>1. RESGATE</h4><span style="font-size:0.8rem; color:var(--text-muted)">Recuperar Pokémon roubado.</span></div>
                 <div class="card"><h4>2. SABOTAGEM</h4><span style="font-size:0.8rem; color:var(--text-muted)">Hackear servidores da Silph.</span></div>
                 <div class="card"><h4>3. ESCOLTA VIP</h4><span style="font-size:0.8rem; color:var(--text-muted)">Proteger Ovo raro.</span></div>
-                <div class="card"><h4>4. INVESTIGAÇÃO</h4><span style="font-size:0.8rem; color:var(--text-muted)">Tráfico de carne.</span></div>
+                <div class="card"><h4>4. INVESTIGAÇÃO</h4><span style="font-size:0.8rem; color:var(--text-muted)">Tráfico de carne de Tauros.</span></div>
                 <div class="card"><h4>5. CONTENÇÃO</h4><span style="font-size:0.8rem; color:var(--text-muted)">Caçar Ditto assassino.</span></div>
-                <div class="card"><h4>6. GUERRA</h4><span style="font-size:0.8rem; color:var(--text-muted)">Disputa territorial.</span></div>
+                <div class="card"><h4>6. GUERRA</h4><span style="font-size:0.8rem; color:var(--text-muted)">Disputa territorial selvagem.</span></div>
             </div>
         </section>
 
@@ -840,12 +1088,14 @@
   }
   menuLinks.forEach(a=>{
     a.addEventListener('click', function(e){
-      // Fecha o menu primeiro, depois scrolla
+      e.preventDefault();
+      const href = this.getAttribute('href');
       closeOff();
-      // Pequeno delay para permitir o fechamento visual
       setTimeout(()=>{
-        // Navegação nativa cuidará do scroll pelo ID no href
-      }, 50);
+        const el = document.querySelector(href);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        history.replaceState(null, '', href);
+      }, 180);
     });
   });
 
@@ -855,4 +1105,5 @@
 
 })();
 </script>
+
 </html>
