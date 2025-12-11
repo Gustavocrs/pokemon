@@ -51,7 +51,7 @@
             padding: 60px 20px;
             text-align: center;
             border-bottom: 1px solid var(--border-color);
-            margin-bottom: 0; /* Nav cola aqui */
+            margin-bottom: 0;
         }
 
         .badge {
@@ -95,17 +95,26 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             width: 100%;
+            display: flex;
+            justify-content: center; /* Centraliza o container interno */
         }
 
         .nav-content {
-            max-width: 1000px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 1000px; /* Mesma largura do container principal */
             padding: 10px 20px;
             display: flex;
             gap: 10px;
             overflow-x: auto;
             scrollbar-width: none;
+            justify-content: flex-start; /* Itens fluem da esquerda em mobile */
         }
+        
+        /* Em desktop, centraliza itens se houver espaço */
+        @media (min-width: 1024px) {
+            .nav-content { justify-content: center; }
+        }
+
         .nav-content::-webkit-scrollbar { display: none; }
 
         nav a {
@@ -315,11 +324,12 @@
             <a href="#operative">2. Operativo</a>
             <a href="#bioactive">3. Bio-Ativos</a>
             <a href="#genesis">4. Gênese</a>
-            <a href="#modules">5. TMs & HMs</a>
+            <a href="#modules">5. TMs/HMs</a>
             <a href="#mega">6. Mega</a>
             <a href="#hindrances">7. Defeitos</a>
-            <a href="#logistics">8. Logística</a>
-            <a href="#gm">9. Mestre</a>
+            <a href="#mechanics">8. Mecânicas</a>
+            <a href="#logistics">9. Logística</a>
+            <a href="#gm">10. Mestre</a>
         </div>
     </nav>
 
