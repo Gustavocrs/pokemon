@@ -9,23 +9,23 @@
 
 ## 🌐 Visão Geral
 
-**Project Symbiosis** é uma reimaginação tática, adulta e futurista do universo de captura de monstros. Ambientado em **Neo-Kanto no ano de 2077**, o jogo abandona a fantasia infantil de "temos que pegar" para focar em ética, tática militar e sobrevivência econômica.
+**Project Symbiosis** é uma reimaginação tática, adulta e futurista do universo de captura de monstros. Ambientado em **Neo-Kanto no ano de 2077**, o jogo abandona a fantasia infantil para focar em ética, tática militar e sobrevivência econômica.
 
-[cite_start]Neste mundo, a tecnologia de **Pokébolas foi banida** por ser considerada tortura digital[cite: 96, 204]. Os jogadores assumem o papel de **Operativos** que utilizam o sistema **S.Y.N.C.** (Synchronized Neural Connection) para formar parcerias biológicas com criaturas, agora chamadas de **Bio-Ativos**.
+Neste mundo, a tecnologia de **Pokébolas foi banida** por ser considerada tortura digital. Os jogadores assumem o papel de **Operativos** que utilizam o sistema **S.Y.N.C.** (Synchronized Neural Connection) para formar parcerias biológicas com criaturas, agora chamadas de **Bio-Ativos**.
 
 ### A Filosofia
-* [cite_start]**Conexão acima de Coleção:** Ter um Pokémon é uma responsabilidade logística e financeira imensa[cite: 102].
-* **Autopreservação:** A IA dos Bio-Ativos é realista. [cite_start]Se ordenados a cometer suicídio tático, o Link Neural se rompe e eles fogem[cite: 104].
-* [cite_start]**O Inimigo Real:** O Cartel Rocket utiliza "Slave-Balls" ilegais que fritam os inibidores de dor das criaturas, criando máquinas de matar sem consciência [cite: 208-209].
+* **Conexão acima de Coleção:** Ter um Bio-Ativo é uma responsabilidade logística e financeira. Manter um Pokémon custa créditos e sanidade.
+* **Autopreservação:** A IA dos Bio-Ativos é realista. Se ordenados a cometer suicídio tático, o Link Neural se rompe e eles fogem.
+* **O Inimigo Real:** O Cartel Rocket utiliza "Slave-Balls" ilegais que fritam os inibidores de dor das criaturas, criando máquinas de matar sem consciência.
 
 ---
 
 ## ⚙️ Mecânicas Principais (Adaptação SWADE)
 
-O sistema utiliza o motor **Savage Worlds Adventure Edition** com modificações pesadas para simular a letalidade e a tática do cenário.
+O sistema utiliza o motor **Savage Worlds Adventure Edition** com modificações para simular a letalidade e a tática do cenário.
 
 ### 1. Conversão de Dados (Data-to-Dice)
-[cite_start]Utilizamos os stats base da espécie (0-255) para definir os dados de RPG[cite: 111].
+Utilizamos os stats base da espécie (0-255) para definir os dados de RPG.
 
 | Valor do Stat | Dado (SWADE) | Classificação |
 | :--- | :--- | :--- |
@@ -36,31 +36,32 @@ O sistema utiliza o motor **Savage Worlds Adventure Edition** com modificações
 | **141 - 170** | `d12` | Ápice Biológico |
 | **171+** | `d12 + X` | Anomalia / Lendário |
 
-* [cite_start]**Defesa (Defense):** Convertida em Armadura Natural (`+0` a `+6`) somada à Resistência [cite: 120-121].
+* **Defesa (Defense):** Convertida em Armadura Natural (`+0` a `+6`) somada à Resistência.
 
 ### 2. Ciclo de Evolução (Bio-Data)
-Não existe XP tradicional. [cite_start]A evolução é baseada na coleta de **Bio-Data (BD)** [cite: 10-11].
-* [cite_start]**Avanço:** A cada **5 BD**, o Bio-Ativo ganha um upgrade (Perícia, Vantagem ou Atributo)[cite: 13].
-* [cite_start]**Patamares:** De **Novato** (Nvl 1-20) a **Lendário** (Nvl 81+), desbloqueando capacidades físicas e ultimates [cite: 122-124].
+Não existe XP tradicional. A evolução é baseada na coleta de **Bio-Data (BD)**.
+* **Avanço:** A cada **5 BD**, o Bio-Ativo ganha um upgrade (Perícia, Vantagem ou Atributo).
+* **Patamares:** De **Novato** (Nvl 1-20) a **Lendário** (Nvl 61+), desbloqueando capacidades físicas e ultimates.
 
 ### 3. Sistema de Gênese
-[cite_start]Na criação, o jogador recebe um orçamento de **3 Pontos de Gênese** para customizar seu Bio-Ativo inicial[cite: 237].
-* [cite_start]**Anomalias (Custo 3):** Shiny (Vantagem Social/Sorte), Alpha (Tanque/Tamanho), Delta (Mudança de Tipo) [cite: 242-246].
-* [cite_start]**Combate (Custo 2):** Pele de Adamantium, Instinto Predatório, Mira Computadorizada [cite: 251-255].
-* [cite_start]**Utilitários (Custo 1):** Visão Térmica, Escalador, Carapaça Reativa [cite: 257-260].
+Na criação, o jogador recebe um orçamento de **3 Pontos de Gênese** para customizar seu Bio-Ativo inicial.
+* **Anomalias (Custo 3):** Shiny (Vantagem Social/Sorte), Alpha (Tanque/Tamanho), Delta (Mudança de Tipo).
+* **Combate (Custo 2):** Pele de Adamantium, Instinto Predatório, Mira Computadorizada.
+* **Utilitários (Custo 1):** Visão Térmica, Escalador, Carapaça Reativa.
 
 ---
 
 ## 🗺️ O Mundo de Neo-Kanto
 
 * **Setor Central (Saffron):** Onde a elite vive sob proteção da **Silph Co.** e seus drones de segurança.
-* [cite_start]**Zona Industrial (Lavender):** Cemitérios de lixo eletrônico e fábricas, lar de tipos Elétricos e Fantasmas [cite: 79-80].
-* [cite_start]**Orla Tóxica (Vermilion):** Porto controlado por contrabandistas onde chegam as cargas de Slave-Balls [cite: 80-81].
+* **Zona Industrial (Lavender):** Cemitérios de lixo eletrônico e fábricas, lar de tipos Elétricos e Fantasmas.
+* **Orla Tóxica (Vermilion):** Porto controlado por contrabandistas onde chegam as cargas de Slave-Balls.
 
 ### Facções
 1.  **Operativos Livres (Jogadores):** Focados em libertação e sobrevivência.
-2.  [cite_start]**Cartel Rocket:** Traficantes paramilitares que usam escravidão tecnológica[cite: 207].
-3.  [cite_start]**Silph Co.:** Monopólio corporativo de biogenética e tecnologia S.Y.N.C.[cite: 83].
+2.  **Cartel Rocket:** Traficantes paramilitares que usam escravidão tecnológica e armaduras pesadas.
+3.  **Silph Co.:** Monopólio corporativo de biogenética e tecnologia S.Y.N.C.
+4.  **Frente de Libertação Natural (FLN):** Ecoterroristas radicais que querem o fim de qualquer interação humano-pokémon.
 
 ---
 
@@ -81,11 +82,11 @@ Não existe XP tradicional. [cite_start]A evolução é baseada na coleta de **B
 
 1.  **Requisitos:** Livro básico *Savage Worlds Edição Aventura*.
 2.  **Criação:**
-    * [cite_start]Defina seu arquétipo de Operativo (Handler, Tech-Op, Vanguard) [cite: 108-110].
+    * Defina seu arquétipo de Operativo (Handler, Tech-Op, Vanguard).
     * Escolha uma espécie base e aplique os **Pontos de Gênese**.
 3.  **Logística:**
-    * [cite_start]Calcule o custo diário de manutenção do seu time (20 NC$ - 200 NC$)[cite: 60].
-    * [cite_start]Equipe seus Bio-Ativos com Implantes (ex: *Bio-Gel Injector*)[cite: 67].
+    * Calcule o custo diário de manutenção do seu time (20 NC$ - 200 NC$).
+    * Equipe seus Bio-Ativos com Implantes (ex: *Bio-Gel Injector*).
 
 ---
 
