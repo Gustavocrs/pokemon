@@ -187,9 +187,10 @@
             color: #a5f3fc;
         }
         
-        /* Ajuste do strong dentro de box específica para manter o highlight apenas se desejado, 
-           mas no geral vai herdar a cor do box */
-        .lore-box strong { color: var(--brand-secondary); display: block; margin-bottom: 5px; font-family:var(--mono); text-transform:uppercase; font-size:0.8rem; }
+        /* Ajuste do strong dentro de box específica para manter o highlight apenas se desejado */
+        .lore-box strong { color: var(--brand-secondary); display: inline; font-family:var(--mono); text-transform:uppercase; font-size:0.8rem; }
+        /* Corrige o título da lore box para ficar em bloco se precisar, mas no texto corrido fica inline */
+        .lore-box .title { display: block; margin-bottom: 0.5rem; }
 
         .warning-box {
             background: linear-gradient(90deg, rgba(239, 68, 68, 0.05) 0%, transparent 100%);
@@ -447,25 +448,25 @@
 
     <nav>
         <div class="nav-content">
-            <a href="#intro">1. Intro</a>
-            <a href="#create">2. Criação</a>
-            <a href="#operative">3. Operativo</a>
-            <a href="#bioactive">4. Bio-Ativos</a>
-            <a href="#genesis">5. Gênese</a>
-            <a href="#modules">6. TMs</a>
-            <a href="#mega">7. Mega</a>
-            <a href="#hindrances">8. Defeitos</a>
-            <a href="#mechanics">9. Regras</a>
-            <a href="#logistics">10. Gear</a>
-            <a href="#missions">11. Missões</a>
-            <a href="#env">12. Clima</a>
-            <a href="#factions">13. Facções</a>
-            <a href="#npcs">14. NPCs</a>
-            <a href="#cases">15. Casos</a>
-            <a href="#economy">16. Mercado</a>
-            <a href="#progress">17. Evol</a>
-            <a href="#craft">18. Craft</a>
-            <a href="#gm">19. Mestre</a>
+            <a href="#intro">1. INTRO</a>
+            <a href="#create">2. CRIAÇÃO</a>
+            <a href="#operative">3. OPERATIVO</a>
+            <a href="#bioactive">4. BIO-ATIVOS</a>
+            <a href="#genesis">5. GÊNESE</a>
+            <a href="#modules">6. TMS</a>
+            <a href="#mega">7. MEGA</a>
+            <a href="#hindrances">8. DEFEITOS</a>
+            <a href="#mechanics">9. REGRAS</a>
+            <a href="#logistics">10. GEAR</a>
+            <a href="#missions">11. MISSÕES</a>
+            <a href="#env">12. CLIMA</a>
+            <a href="#factions">13. FACÇÕES</a>
+            <a href="#npcs">14. NPCS</a>
+            <a href="#cases">15. CASOS</a>
+            <a href="#economy">16. MERCADO</a>
+            <a href="#progress">17. EVOL</a>
+            <a href="#craft">18. CRAFT</a>
+            <a href="#gm">19. MESTRE</a>
         </div>
     </nav>
 
@@ -475,7 +476,7 @@
             <h2>1. Introdução & Ambientação</h2>
             
             <div class="lore-box">
-                <strong>Dossiê de Ambientação: Neo-Kanto</strong>
+                <strong class="title">Dossiê de Ambientação: Neo-Kanto</strong>
                 Neo-Kanto não é a região verdejante de antigamente. Imagine uma megalópole vertical. Nos níveis superiores ("Skybox"), jardins solarpunk e tecnologia limpa abrigam a elite. Nos níveis inferiores ("The Sprawl"), a luz do sol é rara, neons iluminam becos chuvosos e gangues lutam por território. É um mundo de contraste extremo entre a utopia tecnológica e a distopia urbana.
             </div>
 
@@ -665,8 +666,7 @@
         <section id="genesis">
             <h2>5. Sistema de Gênese & Vantagens</h2>
             <div class="lore-box">
-                <strong>Custo de Criação:</strong> Você tem <strong>3 PONTOS</strong> iniciais. Max 5 (com defeitos).<br>
-                Desvantagem Menor (+1), Desvantagem Maior (+2).
+                <strong class="title">Custo de Criação:</strong> Você tem <strong>3 PONTOS</strong> iniciais. Max 5 (com defeitos). Desvantagem Menor (+1), Desvantagem Maior (+2).
             </div>
 
             <h3>🔧 TIER 1: UTILITÁRIOS & CAMPO (Custo: 1)</h3>
@@ -1102,6 +1102,7 @@
         <section id="env">
           <h2>12. Clima & Efeitos Ambientais</h2>
           <div class="lore-box">
+              <strong class="title">Clima Instável</strong>
               O clima em Neo-Kanto é artificialmente instável devido à poluição e domos climáticos quebrados.
           </div>
           <div class="card-grid">
@@ -1243,7 +1244,8 @@
 
         <section id="economy">
           <h2>16. Mercado Negro</h2>
-          <div class="lore-box" style="border-color:var(--brand-primary);">
+          <div class="lore-box">
+              <strong class="title">Contrabando</strong>
               Itens proibidos pela S.Y.N.C. mas essenciais para Operativos. Posse pode levar à prisão.
           </div>
           <div class="table-wrapper">
@@ -1275,7 +1277,12 @@
         <section id="craft">
           <h2>18. Crafting & Mods</h2>
           <div class="lore-box">
-              Fabricação exige <strong>Receita (Blueprint)</strong>, <strong>Componentes</strong> e um teste de <strong>Ciência/Reparos</strong>.
+              <strong class="title">Fabricação exige</strong>
+              <div style="font-family:var(--mono);">
+                  <span style="color:var(--brand-secondary)">RECEITA (BLUEPRINT)</span> + 
+                  <span style="color:var(--brand-secondary)">COMPONENTES</span> + 
+                  <span style="color:var(--brand-secondary)">TESTE DE CIÊNCIA/REPAROS</span>
+              </div>
           </div>
           
           <div class="card-grid">
@@ -1347,7 +1354,6 @@
     document.body.style.overflow = '';
   }
 
-  // FIX: Lógica de Toggle para abrir/fechar com o mesmo botão
   if(openBtn) {
     openBtn.addEventListener('click', function(e){
         e.stopPropagation(); // Impede propagação para não fechar imediatamente
