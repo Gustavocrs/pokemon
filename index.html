@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT SYMBIOSIS // DATADEX v.2077</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-panel: #1e293b;
+            --text-main: #94a3b8;
+            --text-light: #e2e8f0;
+            --accent-cyan: #06b6d4;
+            --accent-danger: #ef4444;
+            --accent-warn: #f59e0b;
+            --accent-rare: #a855f7; /* For Shinies/Anomalies */
+            --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Courier New', monospace; /* Tech feel */
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header Tático */
+        header {
+            border-bottom: 2px solid var(--accent-cyan);
+            margin-bottom: 3rem;
+            padding-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        h1 {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+
+        .classification {
+            color: var(--accent-danger);
+            font-weight: bold;
+            border: 1px solid var(--accent-danger);
+            padding: 0.2rem 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        /* Seções e Cards */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            color: var(--accent-cyan);
+            border-left: 4px solid var(--accent-cyan);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            color: var(--text-light);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: var(--glass-border);
+            padding: 1.5rem;
+            border-radius: 8px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+        }
+
+        .card-title {
+            color: var(--text-light);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cost-badge {
+            background: var(--bg-dark);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: var(--accent-warn);
+        }
+
+        .tier-3 .cost-badge { color: var(--accent-rare); border: 1px solid var(--accent-rare); }
+        .tier-2 .cost-badge { color: var(--accent-danger); }
+        
+        /* Tabelas Futuristas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: var(--bg-panel);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: var(--glass-border);
+        }
+
+        th {
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Listas e Notas */
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        li::before {
+            content: ">";
+            color: var(--accent-cyan);
+            position: absolute;
+            left: 0;
+        }
+
+        .warning-box {
+            border: 1px solid var(--accent-danger);
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent-danger);
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 5rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #475569;
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div>
+            <h1>Project Symbiosis</h1>
+            <p>MANUAL DE OPERAÇÕES v.2077 // NEO-KANTO</p>
+        </div>
+        <div class="classification">TOP SECRET // EYES ONLY</div>
+    </header>
+
+    <section id="intro">
+        <h2>1. Status do Mundo</h2>
+        <p>A era da inocência acabou. A tecnologia de teletransporte de matéria (Pokébolas) foi banida por convenções éticas internacionais, consideradas tortura digital. Nós não somos treinadores; somos <strong>Operativos</strong>.</p>
+        
+        <div class="warning-box">
+            ⚠ ALERTA DE AMEAÇA: O Cartel Rocket utiliza "Slave-Balls" ilegais que fritam os inibidores de dor dos Pokémon. Engajamento requer cautela extrema.
+        </div>
+    </section>
+
+    <section id="conversion">
+        <h2>2. Conversão de Bio-Ativos</h2>
+        <p>Algoritmo de tradução de Datadex (0-255) para Sistema Savage (Dados).</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Stat (Base)</th>
+                    <th>Dado (SWADE)</th>
+                    <th>Classificação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>00 - 45</td>
+                    <td>d4</td>
+                    <td>Civil / Frágil</td>
+                </tr>
+                <tr>
+                    <td>46 - 80</td>
+                    <td>d6</td>
+                    <td>Padrão / Competente</td>
+                </tr>
+                <tr>
+                    <td>81 - 110</td>
+                    <td>d8</td>
+                    <td>Atlético / Forte</td>
+                </tr>
+                <tr>
+                    <td>111 - 140</td>
+                    <td>d10</td>
+                    <td>Elite / Brutal</td>
+                </tr>
+                <tr>
+                    <td>141+</td>
+                    <td>d12 / d12+</td>
+                    <td>Ápice Biológico</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="genesis">
+        <h2>3. Sistema de Gênese (Vantagens)</h2>
+        <p>Orçamento Inicial: <strong>3 Pontos</strong>. Max: 5 Pontos.</p>
+
+        <h3>💎 Tier 3: Anomalias (Custo: 3)</h3>
+        <div class="card-grid">
+            <div class="card tier-3">
+                <div class="card-title">ANOMALIA CROMÁTICA (SHINY) <span class="cost-badge">3 PTS</span></div>
+                <p>+1 Benne exclusivo/sessão. +2 em testes sociais. Valor de mercado 5x maior. Alvo prioritário de ladrões.</p>
+            </div>
+            <div class="card tier-3">
+                <div class="card-title">LINHAGEM ALPHA <span class="cost-badge">3 PTS</span></div>
+                <p>Tamanho +1. Ganha +1 Ferimento Máximo (Total 4). Seus ataques empurram o alvo.</p>
+            </div>
+            <div class="card tier-3">
+                <div class="card-title">GENOMA DELTA <span class="cost-badge">3 PTS</span></div>
+                <p>Altera Tipo elemental e fraquezas. Acesso a Protocolos de outro elemento impossível para a espécie.</p>
+            </div>
+        </div>
+
+        <h3>⚔️ Tier 2: Combate (Custo: 2)</h3>
+        <div class="card-grid">
+            <div class="card tier-2">
+                <div class="card-title">PELE DE ADAMANTIUM <span class="cost-badge">2 PTS</span></div>
+                <p>Ignora dano extra de Acertos Críticos. Só recebe o dano base.</p>
+            </div>
+            <div class="card tier-2">
+                <div class="card-title">INSTINTO PREDATÓRIO <span class="cost-badge">2 PTS</span></div>
+                <p>+2 de Dano fixo em todos os ataques naturais (Mordidas/Garras).</p>
+            </div>
+            <div class="card tier-2">
+                <div class="card-title">MIRA COMPUTADORIZADA <span class="cost-badge">2 PTS</span></div>
+                <p>Se imóvel, dobra o alcance de projéteis e ignora penalidades de cobertura.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="evolution">
+        <h2>4. Ciclo de Evolução</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Posto</th>
+                    <th>Bio-Data (XP)</th>
+                    <th>Benefício Principal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NOVATO</td>
+                    <td>0 - 15</td>
+                    <td>Acesso a Perícias Básicas (Max d8).</td>
+                </tr>
+                <tr>
+                    <td>EXPERIENTE</td>
+                    <td>20 - 35</td>
+                    <td>Vantagens de Combate + Metamorfose Física I.</td>
+                </tr>
+                <tr>
+                    <td>VETERANO</td>
+                    <td>40 - 55</td>
+                    <td>Atributos Físicos sobem (d8->d10). Evolução Final.</td>
+                </tr>
+                <tr>
+                    <td>HEROICO</td>
+                    <td>60 - 75</td>
+                    <td>Acesso a Anomalias + Upgrade de Bio-Energia.</td>
+                </tr>
+                <tr>
+                    <td>LENDÁRIO</td>
+                    <td>80+</td>
+                    <td>Ultimate Moves desbloqueados. Stats acima de d12.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        SYS.ADMIN: SILPH CO. DATABASE // UNAUTHORIZED ACCESS IS A CRIME.<br>
+        2077 © PROJECT SYMBIOSIS
+    </footer>
+</div>
+
+</body>
+</html>
