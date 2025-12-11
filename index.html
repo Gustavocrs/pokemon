@@ -55,8 +55,6 @@
                 url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM22 11h4c2.53 0 4.963.878 6.904 2.334L30 16.207l-2.904-2.873C25.163 11.878 22.73 11 20.2 11H22zm-8.47 1.414l2.828 2.829A11.96 11.96 0 0 0 20.2 13H4c-2.53 0-4.963-.878-6.904-2.334L0 7.793l2.904 2.873A13.96 13.96 0 0 1 4 13h9.53zM22 0h-2.2l-2.873 2.904C15.463 4.878 13.03 5.756 10.5 5.756H22V0zm-9.53 3H4c-2.53 0-4.963-.878-6.904-2.334L-5.8 3.53 0 9.33V3h12.47zM0 0v2.2l2.904 2.873C4.837 3.622 7.27 2.744 9.8 2.744H0V0zm60 22h-4c-2.53 0-4.963-.878-6.904-2.334L46.2 16.793l2.904 2.873C51.037 21.122 53.47 22 56 22h4zm8.47-1.414l-2.828-2.829A11.96 11.96 0 0 0 55.8 20H60V0h-2.2l-2.873 2.904C53.463 4.878 51.03 5.756 48.5 5.756H60v14.83zM0 32h2.2l2.873-2.904c1.463-1.972 3.896-2.85 6.426-2.85H0v5.754zM0 60v-2.2l2.904-2.873c1.933-1.456 4.366-2.334 6.896-2.334H0v5.15zM22 32h-2.2l-2.873-2.904c-1.463-1.972-3.896-2.85-6.426-2.85H22v5.754zm9.53-3H20.2c2.53 0 4.963.878 6.904 2.334L30 34.207l2.904-2.873A13.96 13.96 0 0 1 30.2 29H31.53zM60 32h-2.2l-2.873-2.904c-1.463-1.972-3.896-2.85-6.426-2.85H60v5.754zM38 32h2.2l2.873-2.904c1.463-1.972 3.896-2.85 6.426-2.85H38v5.754zM60 60v-2.2l-2.904-2.873c-1.933-1.456-4.366-2.334-6.896-2.334H60v5.15zM38 60v-2.2l-2.904-2.873c-1.933-1.456-4.366-2.334-6.896-2.334H38v5.15z' fill='%233f3f46' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
-        /* --- CORREÇÃO DO STRONG --- */
-        /* O strong agora herda a cor do elemento pai, evitando cores estranhas */
         strong, b { font-weight: 700; color: inherit; }
         
         /* HEADER */
@@ -186,10 +184,7 @@
             font-size: 0.95rem;
             color: #a5f3fc;
         }
-        
-        /* Ajuste do strong dentro de box específica para manter o highlight apenas se desejado */
         .lore-box strong { color: var(--brand-secondary); display: inline; font-family:var(--mono); text-transform:uppercase; font-size:0.8rem; }
-        /* Corrige o título da lore box para ficar em bloco se precisar, mas no texto corrido fica inline */
         .lore-box .title { display: block; margin-bottom: 0.5rem; }
 
         .warning-box {
@@ -409,24 +404,25 @@
     <div style="font-family:var(--mono);font-weight:800;color:var(--brand-primary);margin-bottom:15px; font-size:1.1rem;">ÍNDICE OPERACIONAL</div>
     <div class="col-links">
       <a class="menu-link" href="#intro">1. Introdução</a>
-      <a class="menu-link" href="#create">2. Criação</a>
-      <a class="menu-link" href="#operative">3. O Operativo</a>
-      <a class="menu-link" href="#bioactive">4. Bio-Ativos</a>
-      <a class="menu-link" href="#genesis">5. Gênese</a>
-      <a class="menu-link" href="#modules">6. TMs & HMs</a>
-      <a class="menu-link" href="#mega">7. Mega Evolução</a>
-      <a class="menu-link" href="#hindrances">8. Desvantagens</a>
-      <a class="menu-link" href="#mechanics">9. Mecânicas & Combate</a>
-      <a class="menu-link" href="#logistics">10. Logística</a>
-      <a class="menu-link" href="#missions">11. Regras de Missões</a>
-      <a class="menu-link" href="#env">12. Clima & Ambiente</a>
-      <a class="menu-link" href="#factions">13. Facções Detalhadas</a>
-      <a class="menu-link" href="#npcs">14. NPCs</a>
-      <a class="menu-link" href="#cases">15. Casos Reais</a>
-      <a class="menu-link" href="#economy">16. Mercado Negro</a>
-      <a class="menu-link" href="#progress">17. Progressão</a>
-      <a class="menu-link" href="#craft">18. Crafting & Mods</a>
-      <a class="menu-link" href="#gm">19. Guia do Mestre</a>
+      <a class="menu-link" href="#sync">2. A Regra de Sincronização</a>
+      <a class="menu-link" href="#create">3. Criação de Personagem</a>
+      <a class="menu-link" href="#operative">4. O Operativo</a>
+      <a class="menu-link" href="#bioactive">5. Bio-Ativos</a>
+      <a class="menu-link" href="#genesis">6. Gênese (Traits)</a>
+      <a class="menu-link" href="#modules">7. TMs & HMs</a>
+      <a class="menu-link" href="#mega">8. Mega Evolução</a>
+      <a class="menu-link" href="#hindrances">9. Desvantagens</a>
+      <a class="menu-link" href="#mechanics">10. Mecânicas & Combate</a>
+      <a class="menu-link" href="#logistics">11. Logística</a>
+      <a class="menu-link" href="#missions">12. Regras de Missões</a>
+      <a class="menu-link" href="#env">13. Clima & Ambiente</a>
+      <a class="menu-link" href="#factions">14. Facções Detalhadas</a>
+      <a class="menu-link" href="#npcs">15. NPCs</a>
+      <a class="menu-link" href="#cases">16. Casos Reais</a>
+      <a class="menu-link" href="#economy">17. Mercado Negro</a>
+      <a class="menu-link" href="#progress">18. Progressão</a>
+      <a class="menu-link" href="#craft">19. Crafting & Mods</a>
+      <a class="menu-link" href="#gm">20. Guia do Mestre</a>
     </div>
   </div>
 </div>
@@ -449,24 +445,25 @@
     <nav>
         <div class="nav-content">
             <a href="#intro">1. INTRO</a>
-            <a href="#create">2. CRIAÇÃO</a>
-            <a href="#operative">3. OPERATIVO</a>
-            <a href="#bioactive">4. BIO-ATIVOS</a>
-            <a href="#genesis">5. GÊNESE</a>
-            <a href="#modules">6. TMS</a>
-            <a href="#mega">7. MEGA</a>
-            <a href="#hindrances">8. DEFEITOS</a>
-            <a href="#mechanics">9. REGRAS</a>
-            <a href="#logistics">10. GEAR</a>
-            <a href="#missions">11. MISSÕES</a>
-            <a href="#env">12. CLIMA</a>
-            <a href="#factions">13. FACÇÕES</a>
-            <a href="#npcs">14. NPCS</a>
-            <a href="#cases">15. CASOS</a>
-            <a href="#economy">16. MERCADO</a>
-            <a href="#progress">17. EVOL</a>
-            <a href="#craft">18. CRAFT</a>
-            <a href="#gm">19. MESTRE</a>
+            <a href="#sync">2. S.Y.N.C.</a>
+            <a href="#create">3. CRIAÇÃO</a>
+            <a href="#operative">4. OPERATIVO</a>
+            <a href="#bioactive">5. BIO</a>
+            <a href="#genesis">6. GÊNESE</a>
+            <a href="#modules">7. TMS</a>
+            <a href="#mega">8. MEGA</a>
+            <a href="#hindrances">9. DEFEITOS</a>
+            <a href="#mechanics">10. MECÂNICAS</a>
+            <a href="#logistics">11. GEAR</a>
+            <a href="#missions">12. MISSÕES</a>
+            <a href="#env">13. CLIMA</a>
+            <a href="#factions">14. FACÇÕES</a>
+            <a href="#npcs">15. NPCS</a>
+            <a href="#cases">16. CASOS</a>
+            <a href="#economy">17. MERCADO</a>
+            <a href="#progress">18. EVOL</a>
+            <a href="#craft">19. CRAFT</a>
+            <a href="#gm">20. MESTRE</a>
         </div>
     </nav>
 
@@ -507,8 +504,46 @@
             </div>
         </section>
 
+        <section id="sync">
+            <h2>2. A Regra de Sincronização</h2>
+            <div class="sync-box">
+                <h3 style="margin-top:0; color:var(--brand-primary);">SINCRONIZAÇÃO É A LEI</h3>
+                <p style="color:var(--text-muted);">A captura forçada é crime capital. A Sincronização é um <strong>Desafio Social Estendido</strong> que exige respeito e estratégia.</p>
+                
+                <div class="trait-list" style="margin-top:1.5rem;">
+                    <div class="trait-item" style="border-color:var(--brand-secondary);">
+                        <div class="trait-term">FASE 1: A ABORDAGEM (The Approach)</div>
+                        <div class="trait-desc">
+                            O Operativo deve se aproximar sem ser visto como ameaça. 
+                            <br><strong>Teste:</strong> Furtividade (se oculto) ou Persuasão (se visível).
+                            <br><em>Falha:</em> O Pokémon foge ou ataca (-2 no próximo teste).
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item" style="border-color:var(--brand-warning);">
+                        <div class="trait-term">FASE 2: A OFERTA (The Offering)</div>
+                        <div class="trait-desc">
+                            Demonstração de boa vontade. Pode ser comida (Ração/Berry), cura (Potion) ou proteção contra um predador.
+                            <br><strong>Teste:</strong> Sobrevivência (Comida), Cura (Medicina) ou Intimidar (afastar predador).
+                            <br><em>Bônus:</em> Usar comida favorita da espécie dá +2.
+                        </div>
+                    </div>
+                    
+                    <div class="trait-item" style="border-color:var(--brand-primary);">
+                        <div class="trait-term">FASE 3: O PACTO (The Bond)</div>
+                        <div class="trait-desc">
+                            O teste final de vontade. O humano estende a mão/mente para o link.
+                            <br><strong>Teste:</strong> Espírito vs Espírito do Pokémon.
+                            <br><em>Sucesso:</em> Sincronização completa. O Pokémon aceita o SymbioDex.
+                            <br><em>Falha Crítica:</em> O Pokémon se sente ofendido e ataca com Vantagem.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <section id="create">
-            <h2>2. Criação de Personagem — Passo a Passo</h2>
+            <h2>3. Criação de Personagem — Passo a Passo</h2>
             <div class="card">
               <div class="kicker">Protocolo de Recrutamento</div>
               <ol style="color:var(--text-muted);padding-left:18px; margin-top:10px;">
@@ -523,7 +558,7 @@
         </section>
 
         <section id="operative">
-            <h2>3. O Operativo</h2>
+            <h2>4. O Operativo</h2>
             <p>Não existem classes fixas. Você constrói um perfil profissional usando as regras de Savage Worlds.</p>
             
             <div class="card">
@@ -555,9 +590,9 @@
         </section>
 
         <section id="bioactive">
-            <h2>4. Bio-Ativos: Regras</h2>
+            <h2>5. Bio-Ativos: Regras</h2>
 
-            <h3>4.1 Conversão de Dados (Datadex -> Savage Worlds)</h3>
+            <h3>5.1 Conversão de Dados (Datadex -> Savage Worlds)</h3>
             <p>Utilizamos os stats base da espécie (0-255) para definir os dados de RPG.</p>
             
             <div class="table-wrapper">
@@ -611,7 +646,7 @@
                 </div>
             </div>
 
-            <h3>4.2 Ciclo de Evolução (Patamares)</h3>
+            <h3>5.2 Ciclo de Evolução (Patamares)</h3>
             <p>Evolução via Bio-Data (BD). A cada 5 BD, o Pokémon ganha um Avanço.</p>
 
             <div class="card-grid">
@@ -664,7 +699,7 @@
         </section>
 
         <section id="genesis">
-            <h2>5. Sistema de Gênese & Vantagens</h2>
+            <h2>6. Sistema de Gênese & Vantagens</h2>
             <div class="lore-box">
                 <strong class="title">Custo de Criação:</strong> Você tem <strong>3 PONTOS</strong> iniciais. Max 5 (com defeitos). Desvantagem Menor (+1), Desvantagem Maior (+2).
             </div>
@@ -824,7 +859,7 @@
         </section>
 
         <section id="modules">
-            <h2>6. Protocolos Modulares (TMs & HMs)</h2>
+            <h2>7. Protocolos Modulares (TMs & HMs)</h2>
             <p>Softwares de combate adquiridos com Pontos de Evolução.</p>
             
             <div class="card-grid">
@@ -856,9 +891,10 @@
         </section>
 
         <section id="mega">
-            <h2>7. Mega S.Y.N.C. (Mega Evolução)</h2>
+            <h2>8. Mega S.Y.N.C. (Mega Evolução)</h2>
             <div class="lore-box" style="border-color:var(--brand-mega);">
-                <strong>Ressonância Genética:</strong> Uma transformação temporária que quebra os limites biológicos. Requer Rank Veterano ou superior.
+                <strong class="title">Ressonância Genética</strong>
+                Uma transformação temporária que quebra os limites biológicos. Requer Rank Veterano ou superior.
             </div>
             
             <div class="card-grid">
@@ -883,7 +919,7 @@
         </section>
 
         <section id="hindrances">
-            <h2>8. Desvantagens (Hindrances)</h2>
+            <h2>9. Desvantagens (Hindrances)</h2>
             <div class="card-grid">
                 <div class="card">
                     <h4 style="color: var(--text-accent);">COMPORTAMENTAIS</h4>
@@ -929,51 +965,16 @@
         </section>
 
         <section id="mechanics">
-            <h2>9. Mecânicas & Combate</h2>
+            <h2>10. Mecânicas & Combate</h2>
             
-            <div class="sync-box">
-                <h3 style="margin-top:0; color:var(--brand-primary);">A REGRA DE SINCRONIZAÇÃO</h3>
-                <p style="color:var(--text-muted);">A captura forçada é crime. A Sincronização é um <strong>Desafio Social Estendido</strong> que exige respeito e estratégia.</p>
-                
-                <div class="trait-list" style="margin-top:1.5rem;">
-                    <div class="trait-item" style="border-color:var(--brand-secondary);">
-                        <div class="trait-term">FASE 1: A ABORDAGEM (The Approach)</div>
-                        <div class="trait-desc">
-                            O Operativo deve se aproximar sem ser visto como ameaça. 
-                            <br><strong>Teste:</strong> Furtividade (se oculto) ou Persuasão (se visível).
-                            <br><em>Falha:</em> O Pokémon foge ou ataca (-2 no próximo teste).
-                        </div>
-                    </div>
-                    
-                    <div class="trait-item" style="border-color:var(--brand-warning);">
-                        <div class="trait-term">FASE 2: A OFERTA (The Offering)</div>
-                        <div class="trait-desc">
-                            Demonstração de boa vontade. Pode ser comida (Ração/Berry), cura (Potion) ou proteção contra um predador.
-                            <br><strong>Teste:</strong> Sobrevivência (Comida), Cura (Medicina) ou Intimidar (afastar predador).
-                            <br><em>Bônus:</em> Usar comida favorita da espécie dá +2.
-                        </div>
-                    </div>
-                    
-                    <div class="trait-item" style="border-color:var(--brand-primary);">
-                        <div class="trait-term">FASE 3: O PACTO (The Bond)</div>
-                        <div class="trait-desc">
-                            O teste final de vontade. O humano estende a mão/mente para o link.
-                            <br><strong>Teste:</strong> Espírito vs Espírito do Pokémon.
-                            <br><em>Sucesso:</em> Sincronização completa. O Pokémon aceita o SymbioDex.
-                            <br><em>Falha Crítica:</em> O Pokémon se sente ofendido e ataca com Vantagem.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="card-grid">
                 <div class="card">
                     <div class="kicker">BIO-ENERGIA (PBE)</div>
-                    <p style="font-size:0.9rem; color:var(--text-muted);">Pokémon usam energia metabólica (Base 10-20 PP).</p>
-                    <ul class="tech-list" style="margin-top:10px;">
-                        <li><strong>Ataques Cinéticos:</strong> Custo 0.</li>
-                        <li><strong>Protocolos Especiais:</strong> Custam PBE. Se zerar, perde acesso.</li>
-                        <li><strong>Sobrecarga:</strong> Usar golpe sem PBE custa 1 nível de Fadiga.</li>
+                    <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">Pokémon usam energia metabólica (Base 10-20 PP).</p>
+                    <ul class="tech-list">
+                        <li><strong>Ataques Cinéticos:</strong> Golpes físicos básicos que usam massa e garras (Ex: Tackle, Scratch). Custo 0. Teste de Lutar.</li>
+                        <li><strong>Protocolos Especiais:</strong> Habilidades elementais complexas (Ex: Ember, Thunderbolt). Custam PBE. Teste de Atirar ou Arcana. Se zerar, perde acesso.</li>
+                        <li><strong>Sobrecarga:</strong> Tentar usar golpe especial sem PBE custa 1 nível de Fadiga ao usuário.</li>
                     </ul>
                 </div>
                 <div class="card">
@@ -991,7 +992,7 @@
         </section>
 
         <section id="logistics">
-            <h2>10. Logística Detalhada & Estilo de Vida</h2>
+            <h2>11. Logística Detalhada & Estilo de Vida</h2>
             
             <div class="card" style="margin-bottom:2rem; border-color:var(--brand-green);">
                 <h4 style="color:var(--brand-green)">UPKEEP: ESTILO DE VIDA</h4>
@@ -1012,7 +1013,7 @@
                 </div>
             </div>
 
-            <h3>10.1 Equipamento de Suporte (Humano)</h3>
+            <h3>11.1 Equipamento de Suporte (Humano)</h3>
             <div class="table-wrapper">
                 <table>
                     <thead><tr><th>Item</th><th>Efeito Mecânico</th><th>Custo</th></tr></thead>
@@ -1028,7 +1029,7 @@
                 </table>
             </div>
 
-            <h3>10.2 Battle Gear (Pokémon Held Items)</h3>
+            <h3>11.2 Battle Gear (Pokémon Held Items)</h3>
             <p style="color:var(--text-muted); margin-bottom:1rem;">Itens físicos acoplados ao Pokémon. Apenas 1 slot ativo.</p>
             <div class="card-grid">
                 <div class="card">
@@ -1055,7 +1056,7 @@
         </section>
 
         <section id="missions">
-          <h2>11. Regras para Missões (The Run)</h2>
+          <h2>12. Regras para Missões (The Run)</h2>
           
           <div class="card" style="margin-bottom:2rem; border:1px solid var(--brand-primary); background:rgba(239,68,68,0.05);">
               <h3 style="color:var(--brand-primary); margin-top:0;">MECÂNICA DE "HEAT" (NOTORIEDADE)</h3>
@@ -1100,7 +1101,7 @@
         </section>
 
         <section id="env">
-          <h2>12. Clima & Efeitos Ambientais</h2>
+          <h2>13. Clima & Efeitos Ambientais</h2>
           <div class="lore-box">
               <strong class="title">Clima Instável</strong>
               O clima em Neo-Kanto é artificialmente instável devido à poluição e domos climáticos quebrados.
@@ -1144,7 +1145,7 @@
         </section>
 
         <section id="factions">
-          <h2>13. Facções Detalhadas</h2>
+          <h2>14. Facções Detalhadas</h2>
           <div class="card-grid" style="grid-template-columns: 1fr;">
             
             <div class="card" style="border-left: 4px solid var(--brand-secondary);">
@@ -1185,7 +1186,7 @@
         </section>
 
         <section id="npcs">
-          <h2>14. NPCs & Protocolos de Interação</h2>
+          <h2>15. NPCs & Protocolos de Interação</h2>
           <div class="card"><div class="kicker">Modelos Rápidos</div>
             <ul class="list-tech">
               <li><strong>Informante de Rua:</strong> Skill: Persuasão d6 — valor: 50 NC$</li>
@@ -1197,7 +1198,7 @@
         </section>
 
         <section id="cases">
-          <h2>15. Casos Reais (Missões)</h2>
+          <h2>16. Casos Reais (Missões)</h2>
           <div class="card-grid">
             <div class="card">
                 <div class="kicker">1. O LABORATÓRIO FANTASMA</div>
@@ -1243,7 +1244,7 @@
         </section>
 
         <section id="economy">
-          <h2>16. Mercado Negro</h2>
+          <h2>17. Mercado Negro</h2>
           <div class="lore-box">
               <strong class="title">Contrabando</strong>
               Itens proibidos pela S.Y.N.C. mas essenciais para Operativos. Posse pode levar à prisão.
@@ -1263,7 +1264,7 @@
         </section>
 
         <section id="progress">
-          <h2>17. Progressão Avançada</h2>
+          <h2>18. Progressão Avançada</h2>
           <div class="card"><div class="kicker">Operativo</div>
             <ul class="list-tech">
               <li>Patentes: Novato → Veterano → Oficial → Executor</li>
@@ -1275,7 +1276,7 @@
         </section>
 
         <section id="craft">
-          <h2>18. Crafting & Mods</h2>
+          <h2>19. Crafting & Mods</h2>
           <div class="lore-box">
               <strong class="title">Fabricação exige</strong>
               <div style="font-family:var(--mono);">
@@ -1306,7 +1307,7 @@
         </section>
 
         <section id="gm">
-            <h2>19. Guia do Mestre</h2>
+            <h2>20. Guia do Mestre</h2>
             
             <div class="immersion-tip">
                 <strong>O Tom do Jogo:</strong> Cyberpunk + Pokémon. Menos "Aventura Mágica", mais "Sobrevivência Urbana".
